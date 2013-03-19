@@ -1,0 +1,19 @@
+Star
+
+id        name                           requirement (potentially another table)
+1         Blog Post                      Write blog post
+2         Open source commit             Make an open source commit 
+
+
+Achievement
+
+id        star_id       user_id
+1         1             1
+2         2             1  
+
+
+User
+
+id        name
+1         Danny
+2         Jesse
