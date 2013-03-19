@@ -2,8 +2,7 @@ require 'pry'
 
 class Codeschool 
   include HTTParty
-  base_uri 'codeschool.com/users/'
-
+  base_uri 'http://codeschool.com/users/'
 
   def initialize(username)
     @username = username
@@ -20,7 +19,7 @@ class Codeschool
   end
 
   def get_data_from_codeschool(cs_json)
-    completed_coures = cs_json["courses"]["completed"].collect do |c|
+    completed_courses = cs_json["courses"]["completed"].collect do |c|
       c["title"]
     end
     # raise completed_courses.inspect
@@ -31,7 +30,7 @@ class Codeschool
     user = User.create(:name => "Danny")
       star = Start.find_by_name(c)
       user.achievements.create(:star_id => star.id)
-    end
   end
-
 end
+
+
