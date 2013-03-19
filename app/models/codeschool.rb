@@ -2,19 +2,15 @@ require 'pry'
 
 class Codeschool 
   include HTTParty
-  base_uri 'http://codeschool.com/users/'
+
+  attr_accessor :username
 
   def initialize(username)
     @username = username
   end
 
   def profile_user
-    Codeschool.get("#{@username}.json")
-  end
-
-  def get_json
-    doc = open(profile_user).read
-    cs_json = JSON.parse(doc)
+    cs_json = Codeschool.get("http://codeschool.com/users/#{@username}.json")
     get_data_from_codeschool(cs_json)
   end
 
@@ -27,9 +23,11 @@ class Codeschool
   end
 
   def create_achievement(completed_courses)
-    user = User.create(:name => "Danny")
-      star = Start.find_by_name(c)
+    user = User.create(:name => "Bob")
+    completed_courses.each do |c|
+      star = Star.find_or_create_by_name(c)
       user.achievements.create(:star_id => star.id)
+    end
   end
 end
 
