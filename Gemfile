@@ -21,12 +21,8 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
-<<<<<<< HEAD
 gem 'github_api'
-=======
 gem 'json'
->>>>>>> 8e320a171c5f9caabb5724d8bc428eaf096490ec
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
