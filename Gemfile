@@ -22,8 +22,7 @@ end
 
 gem 'jquery-rails'
 
-
-gem 'github_api'
+gem 'octokit'
 
 gem 'json'
 # To use ActiveModel has_secure_password
