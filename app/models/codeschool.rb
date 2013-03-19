@@ -1,13 +1,20 @@
-require 'open-uri'
+require 'pry'
 
-class CodeSchool < Achievement
+class Codeschool 
+  include HTTParty
+  base_uri 'codeschool.com/users/'
 
-  # def initialize(url) # url = 'http://www.codeschool.com/users/dolinsky.json'
-  #   get_json(url)
-  # end
 
-  def get_json('http://www.codeschool.com/users/dolinsky.json')
-    doc = open(url).read
+  def initialize(username)
+    @username = username
+  end
+
+  def profile_user
+    Codeschool.get("#{@username}.json")
+  end
+
+  def get_json
+    doc = open(profile_user).read
     cs_json = JSON.parse(doc)
     get_data_from_codeschool(cs_json)
   end
@@ -22,8 +29,8 @@ class CodeSchool < Achievement
 
   def create_achievement(completed_courses)
     user = User.create(:name => "Danny")
-    completed_courses.each do |c|
-      user.achievements.create(:name => c)
+      star = Start.find_by_name(c)
+      user.achievements.create(:star_id => star.id)
     end
   end
 
