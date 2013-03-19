@@ -22,6 +22,6 @@ class Github
     @public_repos = response['public_repos']
     @followers = response['followers']
     @following = response['following']
-  end
+  end 
 
 end
