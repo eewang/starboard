@@ -1,0 +1,66 @@
+GOLD STARS:
+
+get a gold star for:
+
+code school badges*
+blog posts*
+github commits
+stackoverflow reputation
+coderwall endorsements*
+treehouse badges
+student stars**
+teacher stars**
+on-time
+attendance
+blog comments**
+side projects
+
+*=important to have
+**= user interaction
+
+
+views:
+my activity/profile
+group profile
+(admin with super user profile)
+
+other: 
+weighing mechanism (what is considered worthy of a gold star)
+charts and streaks
+ability to tweet when you get a gold star
+
+
+OUR STORY:
+
+1. sign in or register
+2. register: multistep form to create username/pw, authenticate coderwall, treehouse, codeschool, blog link (    all profile urls, like flatiron survery)- save and populates where it can given JSON responses
+  - invited to a specific group via email.
+  - front and backend validation.
+3. Home page of team- main leader board. with link to your own profile as well as other students pages
+4. profile pages. 
+
+goals:
+-the stars- normalizing the data. Assume there is only one user. how do i make stars out of them, what does that look like, how do i automate that.
+- then add another user.
+- admin can give students stars to give to other students. 
+
+users and stars in general- define star API.
+stars are cononical. star called "first one in"
+stars are an activerecord class. id and name.  
+- stars from pragmatic events
+- stars from students and teachers- funny and with text and whatever.
+
+model that correlations events to stars and stars to block of code.
+
+star who's event is a code school badge. and actual block of code that calls codeschool. to create the badge for the event.
+
+
+google:
+rest and background job processing. 
+
+
+*internal service. flatiron rss that is just a component that is really great at one thing, great at rss feeds
+-encapsulate that as a service in and of itself
+  - same thing with twitter and github. 
+  - service oriented architecture that provide a simple API so not ever application has to build wrapper for all of these. 
+  -interacting with those services and not our own classes. 
