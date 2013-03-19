@@ -1,6 +1,6 @@
 require 'open-uri'
 
-class CodeSchool < ActiveRecord::Base
+class CodeSchool < Achievement
   attr_accessor :cs_json
 
   def initialize(url) # url = 'http://www.codeschool.com/users/dolinsky.json'
@@ -13,10 +13,13 @@ class CodeSchool < ActiveRecord::Base
   end
 
   def get_data_from_codeschool
-    username = @cs_json["user"]["username"]
     completed_coures = @cs_json["courses"]["completed"].collect do |c|
       c["title"]
     end
+  end
+
+  def create_achievement
+    user.achievements.build(somekindofparams)
   end
 
 end
