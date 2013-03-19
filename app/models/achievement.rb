@@ -6,17 +6,4 @@ class Achievement < ActiveRecord::Base
   belongs_to :user
   belongs_to :star
 
-  def self.get_from_codeschool
-    doc = open('http://www.codeschool.com/users/dolinsky.json').read
-    cs_hash = JSON.parse(doc)
-
-    name = cs_hash["user"]["username"]
-    completed_coures = cs_hash["courses"]["completed"].each do |c|
-      puts c["title"]
-    end
-    nil
-  end
-
-
-
 end
