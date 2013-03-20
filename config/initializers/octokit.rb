@@ -1,0 +1,1 @@
+$octokit = Octokit::Client.new(:auto_traversal => true)

@@ -30,7 +30,10 @@ GEM
       multi_json (~> 1.0)
     addressable (2.3.3)
     arel (3.0.2)
+    awesome_print (1.0.2)
+    boson (1.2.4)
     builder (3.0.4)
+    clipboard (1.0.1)
     coderay (1.0.9)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -41,8 +44,12 @@ GEM
     coffee-script-source (1.6.1)
     curb (0.8.3)
     erubis (2.7.0)
+    every_day_irb (1.4.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    fancy_irb (0.7.3)
+      paint (>= 0.8.1)
+      unicode-display_width (>= 0.1.1)
     faraday (0.8.6)
       multipart-post (~> 1.1)
     faraday_middleware (0.9.0)
@@ -57,11 +64,31 @@ GEM
       json
     hashie (1.2.0)
     hike (1.2.1)
+    hirb (0.7.1)
     httparty (0.10.2)
       multi_json (~> 1.0)
       multi_xml (>= 0.5.2)
     httpauth (0.2.0)
     i18n (0.6.4)
+    interactive_editor (0.0.10)
+      spoon (>= 0.0.1)
+    irbtools (1.4.0)
+      awesome_print (~> 1.0.2)
+      boson (~> 1.2.4)
+      clipboard (~> 1.0.1)
+      coderay (~> 1.0.8)
+      every_day_irb (>= 1.4.0)
+      fancy_irb (>= 0.7.3)
+      g (>= 1.7.1)
+      hirb (~> 0.7.0)
+      interactive_editor (>= 0.0.10)
+      method_locator (>= 0.0.4)
+      method_source (>= 0.8.1)
+      methodfinder (>= 1.2.5)
+      ori (~> 0.1.0)
+      paint (>= 0.8.5)
+      wirb (>= 0.4.3)
+      zucker (>= 12.1)
     journey (1.0.4)
     jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
@@ -75,7 +102,9 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    method_locator (0.0.4)
     method_source (0.8.1)
+    methodfinder (1.2.5)
     mime-types (1.21)
     multi_json (1.7.1)
     multi_xml (0.5.3)
@@ -104,6 +133,11 @@ GEM
     omniauth-stackexchange (0.2.0)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.0)
+<<<<<<< HEAD
+=======
+    ori (0.1.0)
+    paint (0.8.5)
+>>>>>>> master
     polyglot (0.3.3)
     pry (0.9.12)
       coderay (~> 1.0.5)
@@ -142,6 +176,7 @@ GEM
     sax-machine (0.2.0.rc1)
       nokogiri (~> 1.5.2)
     slop (3.4.4)
+    spoon (0.0.1)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -157,6 +192,10 @@ GEM
     uglifier (1.3.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    unicode-display_width (0.1.1)
+    wirb (1.0.1)
+      paint
+    zucker (12.1)
 
 PLATFORMS
   ruby
@@ -165,6 +204,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   feedzirra (~> 0.2.0.rc2)
   httparty
+  irbtools
   jquery-rails
   json
   octokit

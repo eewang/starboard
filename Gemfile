@@ -28,6 +28,7 @@ gem 'json'
 
 gem 'httparty'
 
+gem 'irbtools'
 gem 'pry'
 
 gem 'omniauth-stackexchange'

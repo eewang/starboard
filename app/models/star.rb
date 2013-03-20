@@ -4,4 +4,5 @@ class Star < ActiveRecord::Base
   has_many :achievements
   has_many :users, :through => :achievements
   has_many :requirements
+
 end
