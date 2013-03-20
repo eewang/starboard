@@ -9,6 +9,7 @@ class Codeschool
     @username = username
   end
 
+  #gets json data back from a codeschool user
   def profile_user
     cs_json = Codeschool.get("http://codeschool.com/users/#{@username}.json")
     get_data_from_codeschool(cs_json)
@@ -18,7 +19,6 @@ class Codeschool
     completed_courses = cs_json["courses"]["completed"].collect do |c|
       c["title"]
     end
-    # raise completed_courses.inspect
     create_achievement(completed_courses)
   end
 
