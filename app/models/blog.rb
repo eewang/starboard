@@ -33,9 +33,9 @@ class Blog
   end
 
   def create_blog_achievements
-    user = User.create(:name => "Victoria")
+    user = User.create(:name => "Jesse")
     #compare num_titles to number of current stars for blog posts?
-    @num_entries.each do |entry|
+    @feed.entries.each do |entry|
       star = Star.where(:name => "Blog Post").first #create stars for each completed course
       user.achievements.create(:star_id => star.id)
     end
