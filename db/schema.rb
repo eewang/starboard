@@ -11,13 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130320144358) do
+ActiveRecord::Schema.define(:version => 20130320203340) do
 
   create_table "achievements", :force => true do |t|
     t.integer  "user_id"
     t.integer  "star_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "sender"
+    t.integer  "receiver"
+    t.string   "message"
   end
 
   create_table "requirements", :force => true do |t|
