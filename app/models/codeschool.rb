@@ -2,7 +2,7 @@ require 'pry'
 
 class Codeschool 
   include HTTParty
-
+  
   attr_accessor :username
 
   def initialize(username)
