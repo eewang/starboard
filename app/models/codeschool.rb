@@ -9,12 +9,13 @@ class Codeschool
     @username = username
   end
 
-  #gets json data back from a codeschool user
+  #gets profile data back from codeschool
   def profile_user
     cs_json = Codeschool.get("http://codeschool.com/users/#{@username}.json")
     get_data_from_codeschool(cs_json)
   end
 
+  #create completed courses array
   def get_data_from_codeschool(cs_json)
     completed_courses = cs_json["courses"]["completed"].collect do |c|
       c["title"]
@@ -23,9 +24,9 @@ class Codeschool
   end
 
   def create_achievement(completed_courses)
-    user = User.create(:name => "Bob")
+    user = User.create(:name => "Bob") #hard coded for now, will need to change based on current user
     completed_courses.each do |c|
-      star = Star.find_or_create_by_name(c)
+      star = Star.find_or_create_by_name(c) #create stars for each completed course
       user.achievements.create(:star_id => star.id)
     end
   end
