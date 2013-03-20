@@ -1,4 +1,7 @@
 Starboard::Application.routes.draw do
+  resources :requirements
+
+
   resources :achievements
 
 
