@@ -3,13 +3,16 @@ require 'open-uri'
 require 'pry'
 require 'pp'
 
-url = "http://jlarusso.github.com/atom.xml"
-doc = Nokogiri::XML(open(url))
+Class Blogpost
 
-titles = doc.xpath("//xmlns:title").collect do |title|
-  title.text
-end
+  url = "http://1aurabrown.github.com/atom.xml"
+  doc = Nokogiri::XML(open(url))
 
-titles.shift
-pp titles 
+  titles = doc.xpath("//xmlns:title").collect do |title|
+    title.text
+  end
+
+  titles = titles.shift
+
+
 
