@@ -10,7 +10,7 @@ class Github
   end
 
   def get_github
-    response = Octokit.user(@username)
+    response = $octokit.user(@username)
     @id =        response['id']
     @url =       response['html_url']
     @gists_url = response['gists_url']
@@ -26,11 +26,15 @@ class Github
   end
 
   def get_repos(language=nil)
-    @repos = Octokit.repositories(@username)
+    @repos = $octokit.repositories(@username)
   end
 
   def forked_repos
     @repos.select { |repo| repo.forks > 0 }
+  end
+
+  def count_forked_repos
+    forked_repos.count
   end
 
   def get_repos_by_language(language)
@@ -38,11 +42,15 @@ class Github
   end
 
   def get_events
-    @events = Octokit.user_events(@username)
+    @events = $octokit.user_events(@username)
   end
 
-  def get_closed_pull_requests
+  def get_open_source_commits
     @events.select { |event| event.type == 'PullRequestEvent' && event.payload.action == 'closed'}
+  end
+
+  def count_open_source_commits
+    get_open_source_commits.count
   end
 
 end
