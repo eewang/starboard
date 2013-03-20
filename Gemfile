@@ -28,7 +28,7 @@ gem 'json'
 
 gem 'httparty'
 
-gem 'irbtools'
+gem 'irbtools', :require => false
 gem 'pry'
 
 gem 'omniauth-stackexchange'

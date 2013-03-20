@@ -133,11 +133,8 @@ GEM
     omniauth-stackexchange (0.2.0)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.0)
-<<<<<<< HEAD
-=======
     ori (0.1.0)
     paint (0.8.5)
->>>>>>> master
     polyglot (0.3.3)
     pry (0.9.12)
       coderay (~> 1.0.5)
