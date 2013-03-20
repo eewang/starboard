@@ -1,11 +1,15 @@
 require 'nokogiri'
 require 'open-uri'
 require 'pry'
+require 'pp'
 
 url = "http://jlarusso.github.com/atom.xml"
 doc = Nokogiri::XML(open(url))
 
-doc.xpath("//xmlns:entry")
+titles = doc.xpath("//xmlns:title").collect do |title|
+  title.text
+end
 
-binding.pry
-# blog_urls = doc.xpath()
+titles.shift
+pp titles 
+
