@@ -33,6 +33,10 @@ gem 'pry'
 
 gem 'omniauth-stackexchange'
 
+gem 'feedzirra', "~> 0.2.0.rc2"
+
+# gem 'activesupport'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
