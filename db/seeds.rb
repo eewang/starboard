@@ -5,34 +5,38 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
-users = User.first_or_create([ { name: 'Jesse'},
-                      { name: 'Victoria'},
-                      { name: 'Bob'},
-                      { name: 'Tyler'},
-                      { name: 'Danny'},
-                      { name: 'Jane'},
-                      { name: 'Masha'},
-                      { name: 'Harrison'},
-                      { name: 'Eric'},
-                      { name: 'Sam'},
-                      { name: 'Person'},
-                      { name: 'Chuck'},
-                      { name: 'Sarah'},
-                      { name: 'John'},
-                      { name: 'Mark'},
-                      { name: 'Paul'},
-                      { name: 'Vinnie'},
-                      { name: 'Tina'},
-                      { name: 'Trixie'},
-                      { name: 'Daniel'},
-                      { name: 'Tim'},
-                      { name: 'Christina'},
-                      { name: 'Erin'},
-                      { name: 'Ei-lene'},
-                      ])
+begin
+  users = User.first_or_create([ { name: 'Jesse'},
+                        { name: 'Victoria'},
+                        { name: 'Bob'},
+                        { name: 'Tyler'},
+                        { name: 'Danny'},
+                        { name: 'Jane'},
+                        { name: 'Masha'},
+                        { name: 'Harrison'},
+                        { name: 'Eric'},
+                        { name: 'Sam'},
+                        { name: 'Person'},
+                        { name: 'Chuck'},
+                        { name: 'Sarah'},
+                        { name: 'John'},
+                        { name: 'Mark'},
+                        { name: 'Paul'},
+                        { name: 'Vinnie'},
+                        { name: 'Tina'},
+                        { name: 'Trixie'},
+                        { name: 'Daniel'},
+                        { name: 'Tim'},
+                        { name: 'Christina'},
+                        { name: 'Erin'},
+                        { name: 'Ei-lene'},
+                        ])
+rescue => ex
+  puts "ERROR #{ex}"
+end
 
 User.all.each do |user|
   user.profile_pic = "http://lorempixel.com/210/210/people/"
   user.save
+  puts user.save
 end
