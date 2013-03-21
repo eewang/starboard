@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
   has_many :achievements
   has_many :stars, :through => :achievements
 
-
   def get_user_data
     codeschool = Codeschool.get_codeschool_data(self.codeschool_username)
     check_achievements_by_array(codeschool)
@@ -14,7 +13,10 @@ class User < ActiveRecord::Base
 
   def check_achievement_by_string(string)
     star = Star.where(:name => string).first_or_create
-    self.achievements.build(:star_id => star.id)
+    starids = self.stars.collect { |a| a.id }
+    unless starids.include? star.id
+      self.achievements.build(:star_id => star.id)
+    end
   end
 
   def check_achievements_by_array(array)
