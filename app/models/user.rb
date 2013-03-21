@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :treehouse_username, :codeschool_username, :blog_url
+  attr_accessible :name, :profile_pic, :treehouse_username, :codeschool_username, :blog_url
 
   has_many :achievements
   has_many :stars, :through => :achievements
