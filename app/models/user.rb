@@ -1,14 +1,22 @@
 class User < ActiveRecord::Base
-  before_save :get_user_data
+  before_save :get_external_data
 
   attr_accessible :name, :profile_pic, :treehouse_username, :codeschool_username, :blog_url, :email
 
   has_many :achievements
   has_many :stars, :through => :achievements
 
-  def get_user_data
-    codeschool = Codeschool.get_codeschool_data(self.codeschool_username)
-    check_achievements_by_array(codeschool)
+  def add_code_school_job
+    
+  end
+
+
+  def get_external_data
+    external_services = { Treehouse => self.treehouse_username, Codeschool => self.codeschool_username }
+    external_services.each do |service, username|
+      array = service.get_data(username)
+      check_achievements_by_array(array)
+    end
   end
 
   def check_achievement_by_string(string)
