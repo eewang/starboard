@@ -1,42 +1,10 @@
-<div class="row">
-  <div class="span2">1</div>
-  <div class="span2">2</div>
-  <div class="span2">3</div>
-  <div class="span2">4</div>
-  <div class="span2">5</div>
-  <div class="span2">6</div>
-</div>
-<div class="row">
-  <div class="span2">1</div>
-  <div class="span2">2</div>
-  <div class="span2">3</div>
-  <div class="span2">4</div>
-  <div class="span2">5</div>
-  <div class="span2">6</div>
-</div>
-<div class="row">
-  <div class="span2">1</div>
-  <div class="span2">2</div>
-  <div class="span2">3</div>
-  <div class="span2">4</div>
-  <div class="span2">5</div>
-  <div class="span2">6</div>
-</div>
-<div class="row">
-  <div class="span2">1</div>
-  <div class="span2">2</div>
-  <div class="span2">3</div>
-  <div class="span2">4</div>
-  <div class="span2">5</div>
-  <div class="span2">6</div>
-</div>
-<div class="row">
-  <div class="span2">1</div>
-  <div class="span2">2</div>
-  <div class="span2">3</div>
-  <div class="span2">4</div>
-  <div class="span2">5</div>
-  <div class="span2">6</div>
-</div>
-
-
+<% @users_array.each do |array| %>
+  <div class="row"><% array %>
+    <% array.each do |user| %>
+      <div class="span2">
+        <%= user.name %>
+        <%= image_tag(user.profile_pic) %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
