@@ -1,9 +1,10 @@
+require 'pry'
 class UsersController < ApplicationController
   layout "users"
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users_array = self.class.users_for_grid
 
     respond_to do |format|
       format.html # index.html.erb
@@ -84,26 +85,14 @@ class UsersController < ApplicationController
     end
   end
 
-  def users_for_grid
-    users = Array.new(User.all.size / 6)
+  def self.users_for_grid
+    all_users = User.all
+    users = Array.new(all_users.size / 6)
     # => [nil, nil, nil, nil] if there were 24 users for example...
 
-    users
-
+    users.collect do |user|
+      all_users.shift(6)
+    end
   end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 end
