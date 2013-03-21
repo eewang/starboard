@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   def get_profile_pic_from_email(email)
     hash = Digest::MD5.hexdigest(email.strip.downcase)
-    "http://www.gravatar.com/avatar/" + hash
+    "http://www.gravatar.com/avatar/" + hash + "?s=140"
   end
 
   def get_profile_pic

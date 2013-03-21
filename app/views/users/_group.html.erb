@@ -1,10 +1,13 @@
 <% @users_array.each do |array| %>
   <div class="row"><% array %>
     <% array.each do |user| %>
-      <div class="span2">
-        <%= user.name %>
-        <img src="<%= user.profile_pic %>" />
+      <%= link_to user do %>
+        <div class="span2" style="margin-left:0px; height:140px; width:140px; background: url(<%= user.profile_pic %>);">
+          <span class="hilite">
+            <%= user.name %>
+          </span>
       </div>
+      <% end %>
     <% end %>
   </div>
 <% end %>
