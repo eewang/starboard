@@ -60,6 +60,7 @@ GEM
       loofah (~> 1.2.1)
       nokogiri (~> 1.5.3)
       sax-machine (~> 0.2.0.rc1)
+    g (1.7.2)
     gorillib (0.1.11)
       json
     hashie (1.2.0)
@@ -200,6 +201,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   feedzirra (~> 0.2.0.rc2)
+  g
   httparty
   irbtools
   jquery-rails
