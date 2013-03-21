@@ -129,3 +129,32 @@ requirements = Requirement.first_or_create([
     { description: "Teacher Star", :star_id => 26 },
     { description: "Student Star", :star_id => 27 }
 ])
+
+
+
+achievements = Achievement.first_or_create([
+    { user_id: 1, :star_id => 1 },
+    { user_id: 1, :star_id => 2 },
+    { user_id: 1, :star_id => 3 },
+    { user_id: 1, :star_id => 4 },
+    { user_id: 2, :star_id => 5 },
+    { user_id: 2, :star_id => 6 },
+    { user_id: 2, :star_id => 7 },
+    { user_id: 2, :star_id => 8 },
+    { user_id: 3, :star_id => 1 },
+    { user_id: 3, :star_id => 2 },
+    { user_id: 3, :star_id => 3 },
+    { user_id: 3, :star_id => 4 },
+    { user_id: 4, :star_id => 5 },
+    { user_id: 4, :star_id => 6 },
+    { user_id: 4, :star_id => 7 },
+    { user_id: 4, :star_id => 8 }
+    ])
+
+
+
+
+
+
+
+
