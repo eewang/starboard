@@ -7,15 +7,12 @@
 
 
 <b>Achievements:</b>
+
+
 <ul>
-  <% @user.stars.each do |star| %>
-    <li>Name: <%=star.name%>, Earned at: <%= star.created_at%> </li>
-  <% end %>
+    <%= render :partial => "achievements/achievement", :collection => @achievements %>
 </ul>
 
-<!-- <p>
-  <%#= render :partial => "achievements/_allachievements"%>
-</p> -->
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
