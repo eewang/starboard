@@ -1,35 +1,22 @@
-require 'pry'
-
 class Codeschool 
   include HTTParty
   
-  attr_accessor :username
-
-  def initialize(username)
-    @username = username
-  end
-
-  #gets profile data back from codeschool
-  def profile_user
-    cs_json = Codeschool.get("http://codeschool.com/users/#{@username}.json")
-    get_data_from_codeschool(cs_json)
-  end
-
-  #create completed courses array
-  def get_data_from_codeschool(cs_json)
-    completed_courses = cs_json["courses"]["completed"].collect do |c|
-      c["title"]
-    end
-    create_achievement(completed_courses)
-  end
-
-  def create_achievement(completed_courses)
-    user = User.create(:name => "Bob") #hard coded for now, will need to change based on current user
-    completed_courses.each do |c|
-      star = Star.find_or_create_by_name(c) #create stars for each completed course
-      user.achievements.create(:star_id => star.id)
+  def self.get_data(username)
+    cs_json = self.get("http://codeschool.com/users/#{username}.json")
+    case cs_json.code
+      when 200
+        self.get_completed_courses(cs_json)
+      when 404
+        p "Username not found"
+      when 500..600
+        p "ERROR Pulling from Codeschool #{response.code}"
     end
   end
+
+  def self.get_completed_courses(cs_json)
+    cs_json["courses"]["completed"].collect { |course| course["title"] }
+  end
+
 end
 
 

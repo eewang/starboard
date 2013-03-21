@@ -36,9 +36,14 @@ rescue => ex
 end
 
 User.all.each do |user|
-  user.profile_pic = "http://lorempixel.com/140/140/people/"
+  unless user.email.nil?
+    user.get_profile_pic
+  else
+    user.profile_pic = "http://lorempixel.com/140/140/people/1"
+  end
   user.save
 end
+
 
 stars = Star.first_or_create([
     { name: 'Blog Post' },
@@ -66,8 +71,8 @@ stars = Star.first_or_create([
     { name: 'Github - Opensource a Ruby project' },
     { name: 'Github - Opensource 5 Ruby projects' },
     { name: 'Github - Opensource 10 Ruby projects' },
-    { name: 'Github - Teacher Star' },
-    { name: 'Github - Student Star'}
+    { name: 'Teacher Star' },
+    { name: 'Student Star'}
 ])
 
 requirements = Requirement.first_or_create([
@@ -158,11 +163,4 @@ achievements = Achievement.first_or_create([
     { user_id: 4, star_id: 7 },
     { user_id: 4, star_id: 8 }
 ])
-
-
-
-
-
-
-
 
