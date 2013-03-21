@@ -82,4 +82,27 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def users_for_grid
+    users = Array.new(User.all.size / 6)
+    # => [nil, nil, nil, nil] if there were 24 users for example...
+
+    users
+
+  end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 end
