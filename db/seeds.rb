@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-users = User.create([ { name: 'Jesse'},
+users = User.first_or_create([ { name: 'Jesse'},
                       { name: 'Victoria'},
                       { name: 'Bob'},
                       { name: 'Tyler'},
@@ -34,4 +34,5 @@ users = User.create([ { name: 'Jesse'},
 
 User.all.each do |user|
   user.profile_pic = "http://lorempixel.com/210/210/people/"
+  user.save
 end

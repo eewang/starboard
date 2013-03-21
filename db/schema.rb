@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130321144045) do
+ActiveRecord::Schema.define(:version => 20130321150044) do
 
   create_table "achievements", :force => true do |t|
     t.integer  "user_id"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20130321144045) do
     t.string   "treehouse_username"
     t.string   "codeschool_username"
     t.string   "blog_url"
+    t.string   "profile_pic"
   end
 
 end
