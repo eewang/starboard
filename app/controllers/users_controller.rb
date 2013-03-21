@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @stars = Star.where(:user_id => @user.id)
+    @achievements = @user.achievements
 
     respond_to do |format|
       format.html # show.html.erb

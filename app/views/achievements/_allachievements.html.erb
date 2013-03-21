@@ -1,8 +1,7 @@
 <ul>
-  <% @user.stars.each do |star| %>
-    <li>star.name</li>
-    <li>star.created_at</li>
-
-   <%#= render :partial => "star", :locals => {:star => star } %>
+  <% achievements.each do |achievement| %>
+    <%#= raise achievement.star.name.inspect %>
+    <li><%= render :partial => "stars/star", :locals => { :star => achievement.star } %></li>
   <% end %>
 </ul>
+

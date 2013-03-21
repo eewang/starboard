@@ -1,31 +1,3 @@
-<<<<<<< HEAD
-users = User.first_or_create([
-    { name: 'Jesse' },
-    { name: 'Victoria' },
-    { name: 'Bob' },
-    { name: 'Tyler' },
-    { name: 'Danny' },
-    { name: 'Jane' },
-    { name: 'Masha' },
-    { name: 'Harrison' },
-    { name: 'Eric' },
-    { name: 'Sam' },
-    { name: 'Person' },
-    { name: 'Chuck' },
-    { name: 'Sarah' },
-    { name: 'John' },
-    { name: 'Mark' },
-    { name: 'Paul' },
-    { name: 'Vinnie' },
-    { name: 'Tina' },
-    { name: 'Trixie' },
-    { name: 'Daniel' },
-    { name: 'Tim' },
-    { name: 'Christina' },
-    { name: 'Erin' },
-    { name: 'Ei-lene' }
-])
-=======
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -62,12 +34,14 @@ begin
 rescue => ex
   puts "ERROR #{ex}"
 end
->>>>>>> add rescue to seed file
 
 User.all.each do |user|
   user.profile_pic = "http://lorempixel.com/210/210/people/"
   user.save
 <<<<<<< HEAD
+  puts user.save
+end
+=======
 end
 
 stars = Star.first_or_create([
@@ -169,7 +143,33 @@ requirements = Requirement.first_or_create([
     { description: "Teacher Star", :star_id => 26 },
     { description: "Student Star", :star_id => 27 }
 ])
-=======
-  puts user.save
-end
->>>>>>> add rescue to seed file
+
+
+
+achievements = Achievement.first_or_create([
+    { user_id: 1, :star_id => 1 },
+    { user_id: 1, :star_id => 2 },
+    { user_id: 1, :star_id => 3 },
+    { user_id: 1, :star_id => 4 },
+    { user_id: 2, :star_id => 5 },
+    { user_id: 2, :star_id => 6 },
+    { user_id: 2, :star_id => 7 },
+    { user_id: 2, :star_id => 8 },
+    { user_id: 3, :star_id => 1 },
+    { user_id: 3, :star_id => 2 },
+    { user_id: 3, :star_id => 3 },
+    { user_id: 3, :star_id => 4 },
+    { user_id: 4, :star_id => 5 },
+    { user_id: 4, :star_id => 6 },
+    { user_id: 4, :star_id => 7 },
+    { user_id: 4, :star_id => 8 }
+    ])
+
+
+
+
+
+
+
+
+>>>>>>> achievements-partial-v1
