@@ -36,16 +36,14 @@ rescue => ex
 end
 
 User.all.each do |user|
-<<<<<<< HEAD
   unless user.email.nil?
     user.get_profile_pic
+  else
+    user.profile_pic = "http://lorempixel.com/140/140/people/1"
   end
   user.save
 end
-=======
-  user.profile_pic = "http://lorempixel.com/140/140/people/"
-  user.save
-end
+
 
 stars = Star.first_or_create([
     { name: 'Blog Post' },
@@ -166,11 +164,3 @@ achievements = Achievement.first_or_create([
     { user_id: 4, star_id: 8 }
 ])
 
-
-
-
-
-
-
-
->>>>>>> master
