@@ -12,7 +12,12 @@ class User < ActiveRecord::Base
 
 
   def get_external_data
-    external_services = { Treehouse => self.treehouse_username, Codeschool => self.codeschool_username }
+    external_services = 
+    { 
+      Treehouse => self.treehouse_username,
+      Codeschool => self.codeschool_username
+    }
+    
     external_services.each do |service, username|
       array = service.get_data(username)
       check_achievements_by_array(array)
