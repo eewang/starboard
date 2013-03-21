@@ -9,7 +9,9 @@
 <b>Achievements:</b>
 
 
-  <%= render :partial => "achievements/allachievements", :locals => { :achievements => @achievements } %>
+<ul>
+    <%= render :partial => "achievements/achievement", :collection => @achievements %>
+</ul>
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
