@@ -10,7 +10,7 @@ class Treehouse
         p "Username not found"
       when 500..600
         p "ERROR Pulling from Treehouse #{response.code}"
-      end
+    end
   end
 
   def self.get_names_from_treehouse(th_json)

@@ -71,8 +71,8 @@ stars = Star.first_or_create([
     { name: 'Github - Opensource a Ruby project' },
     { name: 'Github - Opensource 5 Ruby projects' },
     { name: 'Github - Opensource 10 Ruby projects' },
-    { name: 'Github - Teacher Star' },
-    { name: 'Github - Student Star'}
+    { name: 'Teacher Star' },
+    { name: 'Student Star'}
 ])
 
 requirements = Requirement.first_or_create([

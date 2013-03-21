@@ -10,14 +10,12 @@ class User < ActiveRecord::Base
     
   end
 
-
   def get_external_data
     external_services = 
     { 
       Treehouse => self.treehouse_username,
       Codeschool => self.codeschool_username
     }
-    
     external_services.each do |service, username|
       array = service.get_data(username)
       check_achievements_by_array(array)
@@ -34,6 +32,7 @@ class User < ActiveRecord::Base
 
   def check_achievements_by_array(array)
     array.each { |item| check_achievement_by_string(item) }
+  end
 
   def get_profile_pic_from_email(email)
     hash = Digest::MD5.hexdigest(email.strip.downcase)
@@ -45,19 +44,3 @@ class User < ActiveRecord::Base
   end
 
 end
-
-# Avi Notes:
-
-#   attr_accessor :codeschool_username
-
-#   def codeschool
-#     CodeSchool.new(self.codeschool_username)
-#   end
-# end
-
-# avi = User.find_by_name("avi")
-# avi.codeschool.completed_courses
-
-# class CodeSchool
-#   def completed_courses
-#     open("")

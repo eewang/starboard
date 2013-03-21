@@ -3,7 +3,14 @@ class Codeschool
   
   def self.get_data(username)
     cs_json = self.get("http://codeschool.com/users/#{username}.json")
-    self.get_completed_courses(cs_json)
+    case cs_json.code
+      when 200
+        self.get_completed_courses(cs_json)
+      when 404
+        p "Username not found"
+      when 500..600
+        p "ERROR Pulling from Codeschool #{response.code}"
+    end
   end
 
   def self.get_completed_courses(cs_json)
