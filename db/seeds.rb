@@ -36,3 +36,33 @@ User.all.each do |user|
   user.profile_pic = "http://lorempixel.com/210/210/people/"
   user.save
 end
+
+requirements = [{:description => "Write 1 blog post", :star_id => 1},
+                {:description => "Write 1 blog post", :star_id => 1}
+
+
+
+
+
+
+
+
+
+
+
+                ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
