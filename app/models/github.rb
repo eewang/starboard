@@ -3,11 +3,26 @@ class Github
   attr_accessor :events, :id, :issues, :url, :gists_url, :name, :company, :blog, :location, :email, :hireable, :bio, :repos, :followers, :following, :username
 
   def initialize(username)
-    @username = username
     get_github
     get_repos
     get_events
   end
+
+  def self.get_data(username)
+    self.new(username)
+    num_repos = count_forked_repos.inspect
+    forked_achievements = []
+      # case num_repos 
+      #   when >= 1 && < 5
+      #     forked_achievements << 'Github - Have an opensource project forked'
+      #   # when >= 5 && < 9
+      #   #   forked_achievements << 'Github - Have 5 opensource projects forked'
+      #   # when >= 10
+      #   #   forked_achievements << 'Github - Have 10 opensource projects forked'
+      # end
+    forked_achievements = ['Github - Have an opensource project forked']
+  end
+
 
   def get_github
     response = $octokit.user(@username)
