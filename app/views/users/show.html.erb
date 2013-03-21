@@ -6,9 +6,16 @@
 </p>
 
 
-<p>
-  <%= render :partial => "stars/allstars", :locals => {:stars => @stars } %>
-</p>
+<b>Achievements:</b>
+<ul>
+  <% @user.stars.each do |star| %>
+    <li>Name: <%=star.name%>, Earned at: <%= star.created_at%> </li>
+  <% end %>
+</ul>
+
+<!-- <p>
+  <%#= render :partial => "achievements/_allachievements"%>
+</p> -->
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

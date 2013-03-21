@@ -1,22 +1,8 @@
 <h1>Listing stars</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Requirement</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-
-<p>
   <%= render :partial => "stars/allstars", :locals => {:stars => @stars } %>
 </p>
 
-  
-</table>
-
-<br />
 
 <%= link_to 'New Star', new_star_path %>
