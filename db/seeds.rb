@@ -32,8 +32,14 @@ users = [{ name: 'Jesse'},
         { name: 'Ei-lene'},
         ]
 
+<<<<<<< HEAD
 users.each do |user|
   u = User.find_or_create_by_name(user[:name])
   u.profile_pic = "http://lorempixel.com/210/210/people/"
   u.save
+=======
+User.all.each do |user|
+  user.profile_pic = "http://lorempixel.com/210/210/people/"
+  user.save
+>>>>>>> seed
 end
