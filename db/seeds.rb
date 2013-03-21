@@ -36,7 +36,7 @@ rescue => ex
 end
 
 User.all.each do |user|
-  user.profile_pic = "http://lorempixel.com/210/210/people/"
+  user.profile_pic = "http://lorempixel.com/140/140/people/"
   user.save
 end
 
