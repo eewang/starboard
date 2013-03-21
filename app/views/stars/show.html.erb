@@ -6,8 +6,10 @@
 </p>
 
 <p>
-  <b>Requirement:</b>
-  <%= @star.requirement %>
+  <b>Requirements:</b>
+  <% @star.requirements.each do |req|  %>
+    <%= req.description %>
+  <% end %>
 </p>
 
 
