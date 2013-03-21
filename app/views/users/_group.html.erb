@@ -3,7 +3,7 @@
     <% array.each do |user| %>
       <div class="span2">
         <%= user.name %>
-        <%= image_tag(user.profile_pic) %>
+        <img src="<%= user.profile_pic %>" />
       </div>
     <% end %>
   </div>

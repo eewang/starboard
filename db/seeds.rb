@@ -36,7 +36,8 @@ rescue => ex
 end
 
 User.all.each do |user|
-  user.profile_pic = "http://lorempixel.com/210/210/people/"
+  unless user.email.nil?
+    user.get_profile_pic
+  end
   user.save
-  puts user.save
 end
