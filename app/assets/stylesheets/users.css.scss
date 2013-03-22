@@ -26,3 +26,62 @@ body {
 .hilite {
   background: rgba(200, 200, 200, 0.9);
 }
+
+.container {
+  padding-top: 20px;
+}
+.row {
+  margin-bottom: 25px;
+}
+.block, .blank {
+  height: 120px;
+  margin-left: 30px;
+}
+
+.block {
+  background: #444;
+  color: #fff;
+  text-align: center;
+  font-size: 4em;
+  line-height: 2.5em;
+  background: url(http://placekitten.com/g/300/300);
+  background-size: 100%;
+  margin: relative;
+}
+.stats {
+  width: 80%;
+  margin: 0 auto;
+  font-size: .4em;
+  position: relative;
+  top: 30px;
+}
+.github, .codeschool, .treehouse {
+  display: inline;
+  padding: 1px;
+}
+.github, .codeschool {
+  margin-right: 16px;
+}
+
+.github {
+  background: url('/assets/github_small.png') no-repeat center;
+  width: 20px;
+  height: 20px;
+  padding: 10px;
+}
+
+.codeschool {
+  background: url('/assets/codeschool_small.png') no-repeat center;
+  width: 20px;
+  height: 20px;
+  padding: 10px;
+}
+
+.treehouse {
+  background: url('/assets/treehouse_small_icon.jpeg') no-repeat center;
+  width: 20px;
+  height: 20px;
+  padding: 10px;
+}
+
+
