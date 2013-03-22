@@ -51,11 +51,11 @@ class User < ActiveRecord::Base
     self.giftable_star_bank > 0
   end
 
-  def give_achievement_to(reciever, message)
+  def give_achievement_to(receiver, message)
     self.giftable_star_bank -= 1
     star = Star.where(:name => "Gifted Star").first
-    reciever.achievements.create({ :star_id => star.id, 
+    receiver.achievements.create({ :star_id => star, 
                                    :message => message,
-                                   :sender_id => self.id })
+                                   :sender_id => self })
   end
 end
