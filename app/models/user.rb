@@ -53,10 +53,10 @@ class User < ActiveRecord::Base
   end
 
   def give_achievement_to(receiver, message)
-    self.giftable_star_bank -= 1
+    # self.giftable_star_bank -= # REPLACE WITH ACTIVE RECORD COUNTERS
     star = Star.where(:name => "Gifted Star").first
     receiver.achievements.create({ :star_id => star, 
                                    :message => message,
-                                   :sender_id => self.id })
+                                   :sender_id => self })
   end
 end
