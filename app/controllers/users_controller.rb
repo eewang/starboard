@@ -98,9 +98,11 @@ class UsersController < ApplicationController
   # /users/:id
   def give_star
     @current_user = User.where(:name => "Victoria").first # to be replaced by session user
-    @user = User.find(params[:id])
     if @current_user.can_give_star?
+      @user = User.find(params[:id])
       @current_user.give_achievement_to(@user, params[:message])
     end
+    redirect_to @user
   end
+
 end

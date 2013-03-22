@@ -56,6 +56,6 @@ class User < ActiveRecord::Base
     star = Star.where(:name => "Gifted Star").first
     receiver.achievements.create({ :star_id => star, 
                                    :message => message,
-                                   :sender_id => self })
+                                   :sender_id => self.id })
   end
 end
