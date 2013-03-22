@@ -97,7 +97,6 @@ class Github
     self.forked_repos(repos).count
   end
 
-  #this method is incorrect: 
   def self.get_repos_by_language(language, repos)
     repos.select { |repo| repo.language == language }
   end
