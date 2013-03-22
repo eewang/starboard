@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
+
+ActiveRecord::Schema.define(:version => 20130321225245) do
+=======
 ActiveRecord::Schema.define(:version => 20130322181145) do
+>>>>>>> Refactored all of blog post model, added table for blog post, will need to get it working with session/cookie data next week
+
 
   create_table "achievements", :force => true do |t|
     t.integer  "user_id"
@@ -53,8 +59,11 @@ ActiveRecord::Schema.define(:version => 20130322181145) do
     t.string   "blog_url"
     t.string   "profile_pic"
     t.string   "email"
+<<<<<<< HEAD
     t.integer  "giftable_star_bank"
     t.string   "github"
+=======
+>>>>>>> Refactored all of blog post model, added table for blog post, will need to get it working with session/cookie data next week
     t.string   "github_username"
   end
 
