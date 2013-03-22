@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130322152823) do
+ActiveRecord::Schema.define(:version => 20130322161520) do
 
   create_table "achievements", :force => true do |t|
     t.integer  "user_id"
     t.integer  "star_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "sender"
+    t.integer  "sender_id"
     t.integer  "receiver"
     t.string   "message"
   end

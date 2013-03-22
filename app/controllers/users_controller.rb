@@ -97,14 +97,10 @@ class UsersController < ApplicationController
 
   # /users/:id
   def give_star
-    @current_user = User.where(:name => "Victoria") # to be replaced by session user
+    @current_user = User.where(:name => "Victoria").first # to be replaced by session user
     @user = User.find(params[:id])
     if @current_user.can_give_star?
-      @user.give_achievement(@current_user.id)
+      @current_user.give_achievement_to(@user, params[:message])
     end
-  end
-
-  def can_give_star?
-    self.giftable_star_bank > 0
   end
 end

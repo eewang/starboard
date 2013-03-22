@@ -44,9 +44,11 @@ User.all.each do |user|
   user.save
 end
 
-vic = User.where(:name => "Victoria")
-puts vic.name
-vic.refresh_bank
+# vic = User.where(:name => "Victoria")
+# puts vic.name
+# vic.refresh_bank
+
+# Star.create(:name => "Gifted Star") # run once
 
 stars = Star.first_or_create([
     { name: 'Blog Post' },

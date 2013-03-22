@@ -46,12 +46,16 @@ class User < ActiveRecord::Base
   def refresh_bank
     @giftable_star_bank = 1000
   end
-  
-  def give_achievement(sender_id, message)
-    star = Star.where(:name => "Gifted Star").first
-    self.achievements.create({:star_id => star.id, 
-                        :message => message, 
-                        :sender_id => sender_id})
+
+  def can_give_star?
+    self.giftable_star_bank > 0
   end
 
+  def give_achievement_to(reciever, message)
+    self.giftable_star_bank -= 1
+    star = Star.where(:name => "Gifted Star").first
+    reciever.achievements.create({ :star_id => star.id, 
+                                   :message => message,
+                                   :sender_id => self.id })
+  end
 end
