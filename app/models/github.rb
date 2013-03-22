@@ -14,7 +14,25 @@ class Github
     
     events = self.get_events(username)
     result.concat(self.get_open_source_commits_achievements(events))
+
+    language = 'Ruby'
+    result.concat(self.get_ruby_projects(language, repos))
     
+  end
+
+  def self.get_ruby_projects(language, repos)
+    num_ruby_projects = (self.get_repos_by_language(language, repos)).count
+    ruby_achievements = []
+      if num_ruby_projects >= 10
+        ruby_achievements << ['Github - Opensource a Ruby project',
+                               'Github - Opensource 5 Ruby projects',
+                               'Github - Opensource a Ruby project']
+      elsif (num_ruby_projects >=5) && (num_ruby_projects < 10)
+        ruby_achievements << ['Github - Opensource 5 Ruby projects',
+                                'Github - Opensource a Ruby project']
+      elsif (num_ruby_projects > 0) && (num_ruby_projects < 5)
+        ruby_achievements << 'Github - Opensource a Ruby project'
+      end
   end
 
   def self.get_open_source_commits_achievements(events)
@@ -79,8 +97,9 @@ class Github
     self.forked_repos(repos).count
   end
 
+  #this method is incorrect: 
   def self.get_repos_by_language(language, repos)
-    repos.select { |repo| repo.get_repos_by_language.to_s.downcase == language.downcase }
+    repos.select { |repo| repo.language == language }
   end
 
   def self.get_events(username)
