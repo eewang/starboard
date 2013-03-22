@@ -1,0 +1,10 @@
+x = 6
+
+def mutiples
+  if x % 3 == 00 && x % 5 == 00
+    "yes"
+  else
+    "no"
+  end
+end
+
