@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   # before_save :get_external_data
 
-  attr_accessible :name, :profile_pic, :treehouse_username, :codeschool_username, :blog_url, :email
+  attr_accessible :name, :profile_pic, :treehouse_username, :codeschool_username, :github_username, :blog_url, :email
 
   has_many :achievements
   has_many :stars, :through => :achievements
@@ -14,7 +14,8 @@ class User < ActiveRecord::Base
     external_services = 
     { 
       Treehouse => self.treehouse_username,
-      Codeschool => self.codeschool_username
+      Codeschool => self.codeschool_username,
+      Github => self.github_username
     }
     external_services.each do |service, username|
       array = service.get_data(username)
