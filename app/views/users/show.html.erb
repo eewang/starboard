@@ -7,7 +7,18 @@
 
 
 <b>Achievements:</b>
+<ul>
+  <% @stars.each do |star| %>
+    <li><%= star %></li>
+  <% end %>
+</ul>
 
+<b>Messages:</b>
+<ul>
+  <% @messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
 
 <ul>
     <% render :partial => "achievements/achievement", :collection => @achievements%>

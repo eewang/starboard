@@ -55,8 +55,28 @@ class User < ActiveRecord::Base
   def give_achievement_to(receiver, message)
     # self.giftable_star_bank -= # REPLACE WITH ACTIVE RECORD COUNTERS
     star = Star.where(:name => "Gifted Star").first
-    receiver.achievements.create({ :star_id => star, 
+    receiver.achievements.create({ :star_id => star.id, 
                                    :message => message,
-                                   :sender_id => self })
+                                   :sender_id => self.id })
   end
+
+
+   def get_star_id
+   star_ids = self.achievements.collect do |achievement|
+      achievement.star_id
+    end
+    star_ids.uniq.compact
+  end
+
+  def get_star_name
+    stars = Star.all.collect do |star|
+      if self.get_star_id.include?(star.id)
+        star.name
+      else
+        nil
+      end
+    end
+     stars.compact
+  end
+
 end
