@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  before_save :get_external_data
+  # before_save :get_external_data
 
   attr_accessible :name, :profile_pic, :treehouse_username, :codeschool_username, :blog_url, :email
 
@@ -41,6 +41,17 @@ class User < ActiveRecord::Base
 
   def get_profile_pic
     self.profile_pic = get_profile_pic_from_email(self.email)
+  end
+
+  def refresh_bank
+    @giftable_star_bank = 1000
+  end
+  
+  def give_achievement(sender_id, message)
+    star = Star.where(:name => "Gifted Star").first
+    self.achievements.create({:star_id => star.id, 
+                        :message => message, 
+                        :sender_id => sender_id})
   end
 
 end

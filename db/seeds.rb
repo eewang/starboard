@@ -44,6 +44,9 @@ User.all.each do |user|
   user.save
 end
 
+vic = User.where(:name => "Victoria")
+puts vic.name
+vic.refresh_bank
 
 stars = Star.first_or_create([
     { name: 'Blog Post' },
@@ -72,7 +75,8 @@ stars = Star.first_or_create([
     { name: 'Github - Opensource 5 Ruby projects' },
     { name: 'Github - Opensource 10 Ruby projects' },
     { name: 'Teacher Star' },
-    { name: 'Student Star'}
+    { name: 'Student Star'},
+    { name: 'Gifted Star'}
 ])
 
 requirements = Requirement.first_or_create([
