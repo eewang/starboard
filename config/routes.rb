@@ -1,4 +1,7 @@
 Starboard::Application.routes.draw do
+  
+  post '/users/:id' => 'users#give_star'
+
   resources :requirements
 
 
