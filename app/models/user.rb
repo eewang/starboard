@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
   has_many :achievements
   has_many :stars, :through => :achievements
+  has_many :blogs
 
   def add_code_school_job
     
@@ -16,6 +17,7 @@ class User < ActiveRecord::Base
       Treehouse => self.treehouse_username,
       Codeschool => self.codeschool_username,
       Github => self.github_username
+      # Blog => self.blog_url
     }
     external_services.each do |service, username|
       array = service.get_data(username)
