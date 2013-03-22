@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130321225245) do
+ActiveRecord::Schema.define(:version => 20130322161520) do
 
   create_table "achievements", :force => true do |t|
     t.integer  "user_id"
     t.integer  "star_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "sender"
+    t.integer  "sender_id"
     t.integer  "receiver"
     t.string   "message"
   end
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(:version => 20130321225245) do
     t.string   "blog_url"
     t.string   "profile_pic"
     t.string   "email"
-    t.string   "github"
+    t.integer  "giftable_star_bank"
     t.string   "github_username"
   end
 
