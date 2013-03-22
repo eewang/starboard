@@ -8,9 +8,7 @@
 
 <b>Achievements:</b>
 <ul>
-  <% @stars.each do |star| %>
-    <li><%= star %></li>
-  <% end %>
+    <%= render :partial => "achievements/achievement", :collection => @achievements%>
 </ul>
 
 <b>Messages:</b>
@@ -20,9 +18,7 @@
   <% end %>
 </ul>
 
-<ul>
-    <% render :partial => "achievements/achievement", :collection => @achievements%>
-</ul>
+
 
 
 

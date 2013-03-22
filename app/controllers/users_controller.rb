@@ -16,13 +16,10 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    @stars = @user.get_star_name
+    @achievements = @user.get_star_name
     @messages = @user.achievements.collect do |achievement|
       achievement.message
     end.compact
-
-    @achievements = @user.achievements
-
 
     respond_to do |format|
       format.html # show.html.erb
