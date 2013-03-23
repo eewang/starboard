@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
 
   def check_achievement_by_string(string)
     star = Star.where(:name => string).first_or_create
+    # @TODO - has many collection ... star_ids
     starids = self.stars.collect { |a| a.id }
     unless starids.include? star.id
       self.achievements.build(:star_id => star.id)

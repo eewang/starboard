@@ -5,4 +5,6 @@ class Star < ActiveRecord::Base
   has_many :users, :through => :achievements
   has_many :requirements
 
+  #@TODO - Star's responsibility to give a star, not the user
+
 end
