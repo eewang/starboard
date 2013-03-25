@@ -2,43 +2,54 @@ require 'pry'
 require 'pp'
 require 'feedzirra'
 
-class Blog
+class Blog < ActiveRecord::Base
 
-  attr_accessor :feed, :num_entries
+attr_accessible :last_checked
 
-  def blog_url
-    user.blog_link #write a method in user for blog link
-    # url = "http://1aurabrown.github.com/atom.xml"
-    @blog_url
+belongs_to :user
+
+  attr_accessor :last_checked, :user_id
+
+  # update database with last post and created at time
+  # checl to see if entries includes any posts that have published times greater than last_post_created_at
+
+  def self.get_data(blog_url)
+   # NEED TO USE CURRENT USER INFO to find user and then update or create blog timestamp
+    if self.all.count == 0
+      beginning_of_time = self.create
+      beginning_of_time.created_at = Time.at(0)
+    end
+    blog = self.last
+    entries = self.get_entries(blog_url)
+    result = []
+    self.check_entries_for_new(entries, blog.created_at).times do
+      result << 'Write a Blog Post'
+    end
+    self.create
+    result
   end
 
-  def get_feed
-    @feed = Feedzirra::Feed.fetch_and_parse("http://dolin.github.com/atom.xml")
+  def self.check_entries_for_new(entries, last_checked)
+    entries.select { |entry| entry.published > last_checked }.count
   end
 
-  def get_entries_titles
-    @feed.entries.collect do |entry|
+  def self.get_entries(blog_url)
+    Feedzirra::Feed.fetch_and_parse(blog_url).entries
+  end
+
+  def self.get_entries_titles(entries)
+    entries.collect do |entry|
       entry.title
     end
   end
 
-  def get_created_at_times
-    @feed.entries.collect do |entry|
+  def self.get_created_at_times(feed)
+    feed.entries.collect do |entry|
       entry.published
     end
   end
 
-  def count_entries
-    @num_entries = @feed.entries.count
+  def self.count_entries(entries)
+    entries.count
   end
-
-  def create_blog_achievements
-    user = User.create(:name => "Jesse")
-    #compare num_titles to number of current stars for blog posts?
-    @feed.entries.each do |entry|
-      star = Star.where(:name => "Blog Post").first #create stars for each completed course
-      user.achievements.create(:star_id => star.id)
-    end
-  end
-
 end

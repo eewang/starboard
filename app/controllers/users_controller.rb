@@ -16,8 +16,10 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    @stars = Star.where(:user_id => @user.id)
-    @achievements = @user.achievements
+    @achievements = @user.get_star_name
+    @messages = @user.achievements.collect do |achievement|
+      achievement.message
+    end.compact
 
     respond_to do |format|
       format.html # show.html.erb
@@ -93,6 +95,16 @@ class UsersController < ApplicationController
     users.collect do |user|
       all_users.shift(6)
     end
+  end
+
+  # /users/:id
+  def give_star
+    @current_user = User.where(:name => "Victoria").first # to be replaced by session user
+    if @current_user.can_give_star?
+      @user = User.find(params[:id])
+      @current_user.give_achievement_to(@user, params[:message])
+    end
+    redirect_to @user
   end
 
 end

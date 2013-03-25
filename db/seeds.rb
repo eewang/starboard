@@ -5,48 +5,53 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-begin
-  users = User.first_or_create([ { name: 'Jesse'},
-                        { name: 'Victoria'},
-                        { name: 'Bob'},
-                        { name: 'Tyler'},
-                        { name: 'Danny'},
-                        { name: 'Jane'},
-                        { name: 'Masha'},
-                        { name: 'Harrison'},
-                        { name: 'Eric'},
-                        { name: 'Sam'},
-                        { name: 'Person'},
-                        { name: 'Chuck'},
-                        { name: 'Sarah'},
-                        { name: 'John'},
-                        { name: 'Mark'},
-                        { name: 'Paul'},
-                        { name: 'Vinnie'},
-                        { name: 'Tina'},
-                        { name: 'Trixie'},
-                        { name: 'Daniel'},
-                        { name: 'Tim'},
-                        { name: 'Christina'},
-                        { name: 'Erin'},
-                        { name: 'Ei-lene'},
-                        ])
-rescue => ex
-  puts "ERROR #{ex}"
-end
+# begin
+#   users = User.first_or_create([ { name: 'Jesse'},
+#                         { name: 'Victoria'},
+#                         { name: 'Bob'},
+#                         { name: 'Tyler'},
+#                         { name: 'Danny'},
+#                         { name: 'Jane'},
+#                         { name: 'Masha'},
+#                         { name: 'Harrison'},
+#                         { name: 'Eric'},
+#                         { name: 'Sam'},
+#                         { name: 'Person'},
+#                         { name: 'Chuck'},
+#                         { name: 'Sarah'},
+#                         { name: 'John'},
+#                         { name: 'Mark'},
+#                         { name: 'Paul'},
+#                         { name: 'Vinnie'},
+#                         { name: 'Tina'},
+#                         { name: 'Trixie'},
+#                         { name: 'Daniel'},
+#                         { name: 'Tim'},
+#                         { name: 'Christina'},
+#                         { name: 'Erin'},
+#                         { name: 'Ei-lene'},
+#                         ])
+# rescue => ex
+#   puts "ERROR #{ex}"
+# end
 
-User.all.each do |user|
-  unless user.email.nil?
-    user.get_profile_pic
-  else
-    user.profile_pic = "http://lorempixel.com/140/140/people/1"
-  end
-  user.save
-end
+# User.all.each do |user|
+#   unless user.email.nil?
+#     user.get_profile_pic
+#   else
+#     user.profile_pic = "http://lorempixel.com/140/140/people/1"
+#   end
+#   user.save
+# end
 
+# vic = User.where(:name => "Victoria")
+# puts vic.name
+# vic.refresh_bank
+
+# Star.create(:name => "Gifted Star") # run once
 
 stars = Star.first_or_create([
-    { name: 'Blog Post' },
+    { name: 'Write a Blog Post' },
     { name: 'CodeSchool - Try Ruby' },
     { name: 'CodeSchool - Ruby Bits' },
     { name: 'CodeSchool - Ruby Bits 2' },
@@ -72,7 +77,8 @@ stars = Star.first_or_create([
     { name: 'Github - Opensource 5 Ruby projects' },
     { name: 'Github - Opensource 10 Ruby projects' },
     { name: 'Teacher Star' },
-    { name: 'Student Star'}
+    { name: 'Student Star'},
+    { name: 'Gifted Star'}
 ])
 
 requirements = Requirement.first_or_create([

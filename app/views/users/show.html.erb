@@ -7,12 +7,30 @@
 
 
 <b>Achievements:</b>
-
-
 <ul>
-    <%= render :partial => "achievements/achievement", :collection => @achievements %>
+    <%= render :partial => "achievements/achievement", :collection => @achievements%>
 </ul>
+
+<b>Messages:</b>
+<ul>
+  <% @messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
+
+
+
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+
+
+<%= form_tag(give_star_path(@user), :method => 'post') do %>
+  <%# label_tag (:message, 'Enter A Message to Give A Star!') %>
+  Enter A Message to Give A Star!<%= text_field_tag(:message) %>
+  <%= submit_tag ('Submit') %>
+<% end %>
+
+
+

@@ -1,10 +1,11 @@
 class User < ActiveRecord::Base
-  before_save :get_external_data
+  # before_save :get_external_data
 
   attr_accessible :name, :profile_pic, :treehouse_username, :codeschool_username, :github_username, :blog_url, :email
 
   has_many :achievements
   has_many :stars, :through => :achievements
+  has_many :blogs
 
   def add_code_school_job
     
@@ -16,6 +17,7 @@ class User < ActiveRecord::Base
       Treehouse => self.treehouse_username,
       Codeschool => self.codeschool_username,
       Github => self.github_username
+      # Blog => self.blog_url
     }
     external_services.each do |service, username|
       array = service.get_data(username)
@@ -43,6 +45,41 @@ class User < ActiveRecord::Base
 
   def get_profile_pic
     self.profile_pic = get_profile_pic_from_email(self.email)
+  end
+
+  def refresh_bank
+    @giftable_star_bank = 1000
+  end
+
+  def can_give_star?
+    self.giftable_star_bank > 0
+  end
+
+  def give_achievement_to(receiver, message)
+    # self.giftable_star_bank -= # REPLACE WITH ACTIVE RECORD COUNTERS
+    star = Star.where(:name => "Gifted Star").first
+    receiver.achievements.create({ :star_id => star.id, 
+                                   :message => message,
+                                   :sender_id => self.id })
+  end
+
+
+   def get_star_id
+   star_ids = self.achievements.collect do |achievement|
+      achievement.star_id
+    end
+    star_ids.uniq.compact
+  end
+
+  def get_star_name
+    stars = Star.all.collect do |star|
+      if self.get_star_id.include?(star.id)
+        star.name
+      else
+        nil
+      end
+    end
+     stars.compact
   end
 
 end

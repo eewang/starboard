@@ -40,6 +40,8 @@ gem 'g'
 
 gem 'terminal-notifier'
 
+gem 'debugger'
+
 # gem 'activesupport'
 
 # To use ActiveModel has_secure_password
