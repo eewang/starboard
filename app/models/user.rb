@@ -69,8 +69,8 @@ class User < ActiveRecord::Base
   end
 
 
-   def get_star_id
-   star_ids = self.achievements.collect do |achievement|
+  def get_star_id
+    star_ids = self.achievements.collect do |achievement|
       achievement.star_id
     end
     star_ids.uniq.compact
