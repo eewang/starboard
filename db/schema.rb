@@ -53,8 +53,8 @@ ActiveRecord::Schema.define(:version => 20130322181145) do
     t.string   "blog_url"
     t.string   "profile_pic"
     t.string   "email"
-    t.integer  "giftable_star_bank"
     t.string   "github_username"
+    t.integer  "giftable_star_bank"
   end
 
 end
