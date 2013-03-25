@@ -17,6 +17,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="field">
     <%= f.label :treehouse_username %><br />
     <%= f.text_field :treehouse_username %>
   </div>
@@ -34,6 +39,16 @@
    <div class="field">
     <%= f.label :blog %><br />
     <%= f.text_field :blog_url %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
   </div>
 
   <div class="actions">

@@ -1,7 +1,12 @@
 class User < ActiveRecord::Base
   # before_save :get_external_data
 
-  attr_accessible :name, :profile_pic, :treehouse_username, :codeschool_username, :github_username, :blog_url, :email
+  attr_accessible :name, :profile_pic, :treehouse_username, :codeschool_username, :github_username, :blog_url, :email, :password, :password_confirmation
+
+  #@TODO - Build out validation rules
+  validates_uniqueness_of :email
+
+  has_secure_password
 
   has_many :achievements
   has_many :stars, :through => :achievements

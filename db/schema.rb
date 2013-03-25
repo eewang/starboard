@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130322181145) do
+ActiveRecord::Schema.define(:version => 20130325144025) do
 
   create_table "achievements", :force => true do |t|
     t.integer  "user_id"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20130322181145) do
     t.string   "email"
     t.string   "github_username"
     t.integer  "giftable_star_bank"
+    t.string   "password_digest"
   end
 
 end

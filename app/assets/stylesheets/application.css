@@ -11,3 +11,25 @@
  *= require_self
  *= require_tree .
  */
+
+body {
+  .container {
+    margin-top: 40px;
+  }
+}
+
+.span2 {
+  opacity: .6;
+}
+
+.span2:hover {
+  opacity: 1;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.hilite {
+  background: rgba(200, 200, 200, 0.9);
+}
