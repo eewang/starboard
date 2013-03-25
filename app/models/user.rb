@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   before_save :get_external_data
+  after_create :get_blog_data
 
   attr_accessible :name, :profile_pic, :treehouse_username, :codeschool_username, :github_username, :blog_url, :email, :password, :password_confirmation
 
@@ -14,6 +15,18 @@ class User < ActiveRecord::Base
 
   def add_code_school_job
     
+  end
+
+  def get_blog_data
+    external_services = 
+
+    { 
+      Blog => self.blog_url
+    }
+    external_services.each do |service, username|
+      array = service.get_data(username)
+      check_achievements_by_array(array)
+    end
   end
 
   def get_external_data
