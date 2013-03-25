@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    @achievements = @user.get_star_name
+    @achievements = @user.achievements
     @messages = @user.achievements.collect do |achievement|
       achievement.message
     end.compact
