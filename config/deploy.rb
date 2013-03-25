@@ -4,7 +4,7 @@ set :application, "starboard"
 set :repository,  "git@github.com:flatiron-school/starboard.git"
 
 set :user, 'stargroup'
-set :deploy_to, "home/stargroup/starboard"
+set :deploy_to, "/home/stargroup/starboard"
 set :use_sudo, false
 
 set :scm, :git
