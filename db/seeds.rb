@@ -5,48 +5,66 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-# begin
-#   users = User.first_or_create([ { name: 'Jesse'},
-#                         { name: 'Victoria'},
-#                         { name: 'Bob'},
-#                         { name: 'Tyler'},
-#                         { name: 'Danny'},
-#                         { name: 'Jane'},
-#                         { name: 'Masha'},
-#                         { name: 'Harrison'},
-#                         { name: 'Eric'},
-#                         { name: 'Sam'},
-#                         { name: 'Person'},
-#                         { name: 'Chuck'},
-#                         { name: 'Sarah'},
-#                         { name: 'John'},
-#                         { name: 'Mark'},
-#                         { name: 'Paul'},
-#                         { name: 'Vinnie'},
-#                         { name: 'Tina'},
-#                         { name: 'Trixie'},
-#                         { name: 'Daniel'},
-#                         { name: 'Tim'},
-#                         { name: 'Christina'},
-#                         { name: 'Erin'},
-#                         { name: 'Ei-lene'},
-#                         ])
-# rescue => ex
-#   puts "ERROR #{ex}"
-# end
-
-# User.all.each do |user|
-#   unless user.email.nil?
-#     user.get_profile_pic
-#   else
-#     user.profile_pic = "http://lorempixel.com/140/140/people/1"
-#   end
-#   user.save
-# end
-
-# vic = User.where(:name => "Victoria")
-# puts vic.name
-# vic.refresh_bank
+begin
+  users = User.first_or_create([
+    { 
+      name: 'Tyler',
+      email: 'tyler.davis@flatironschool.com',
+      blog: 'tmd.io',
+      github_username: 'tylerdavis', 
+      codeschool_username: 'tylermdavis', 
+      treehouse_username: 'tylerdavis', 
+      stackoverflow_username: 'tylerdavis'
+    },
+    { 
+      name: 'Danny Olinsky',
+      email: 'danny.olinsky@flatironschool.com',
+      blog: 'dolin.github.com',
+      github_username: 'dolin',
+      codeschool_username: 'dolinsky',
+      treehouse_username: 'dannyolinsky',
+      stackoverflow_username: 'danny-olinsky'
+    },
+    {
+      name: 'Jane Vora',
+      email: 'jane.vora@flatironschool.com',
+      blog: 'janeeats.github.com',
+      github_username: 'janeeats',
+      codeschool_username: 'janeeats',
+      treehouse_username: 'janeeats',
+      stackoverflow_username: 'janeeatsless'
+    },
+    {
+      name: 'Dan Gantz',
+      email: 'dan.gantz@flatironschool.com',
+      blog: 'firstgeneration.github.com',
+      github_username: 'firstgeneration',
+      codeschool_username: 'firstgeneration',
+      treehouse_username: 'astonishingperson22',
+      stackoverflow_username: 'firstgeneration'
+    },
+    {
+      name: 'Laura Brown',
+      email: 'laura.brown@flatironschool.com',
+      blog: '1aurabrown.github.com',
+      github_username: '1aurabrown',
+      codeschool_username: '1aurabrown',
+      treehouse_username: '1aurabrown',
+      stackoverflow_username: '1aurabrown'
+    },
+    {
+      name: 'John Kelly Ferguson',
+      email: 'john.ferguson@flatironschool.com',
+      blog: 'johnkellyferguson.github.com'
+      github_username: 'johnkellyferguson',
+      codeschool_username: 'johnkellyferguson',
+      treehouse_username: 'johnkferguson',
+      stackoverflow_username: 'john-kelly-ferguson'
+    }
+  ])
+rescue => ex
+  puts "ERROR #{ex}"
+end
 
 # Star.create(:name => "Gifted Star") # run once
 
