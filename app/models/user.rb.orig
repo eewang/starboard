@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
+<<<<<<< HEAD
+  # before_save :get_external_data
+=======
   before_save :check_blog
               # :get_external_data
+>>>>>>> check blogs works with get_external_data.  blogs update accurately too
 
   attr_accessible :name, :profile_pic, :treehouse_username, :codeschool_username, :github_username, :blog_url, :blog_count, :email, :password, :password_confirmation
 
@@ -33,12 +37,15 @@ class User < ActiveRecord::Base
     { 
       Treehouse => self.treehouse_username,
       Codeschool => self.codeschool_username,
+<<<<<<< HEAD
       # Github => self.github_username
       # Blog => self.blog_url
+=======
       Github => self.github_username
+>>>>>>> check blogs works with get_external_data.  blogs update accurately too
     }
-    external_services.each do |service, username|
-      array = service.get_data(username)
+    external_services.each do |service, identifier|
+      array = service.get_data(identifier)
       check_achievements_by_array(array)
     end
   end

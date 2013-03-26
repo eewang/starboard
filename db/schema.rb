@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130325144025) do
+ActiveRecord::Schema.define(:version => 20130326142216) do
 
   create_table "achievements", :force => true do |t|
     t.integer  "user_id"
@@ -21,13 +21,6 @@ ActiveRecord::Schema.define(:version => 20130325144025) do
     t.integer  "sender_id"
     t.integer  "receiver"
     t.string   "message"
-  end
-
-  create_table "blogs", :force => true do |t|
-    t.datetime "last_checked"
-    t.integer  "user_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
   end
 
   create_table "requirements", :force => true do |t|
@@ -56,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20130325144025) do
     t.string   "github_username"
     t.integer  "giftable_star_bank"
     t.string   "password_digest"
+    t.integer  "blog_count"
   end
 
 end
