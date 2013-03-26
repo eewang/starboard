@@ -33,12 +33,10 @@ class User < ActiveRecord::Base
     { 
       Treehouse => self.treehouse_username,
       Codeschool => self.codeschool_username,
-      # Github => self.github_username
-      # Blog => self.blog_url
       Github => self.github_username
     }
-    external_services.each do |service, username|
-      array = service.get_data(username)
+    external_services.each do |service, identifier|
+      array = service.get_data(identifier)
       check_achievements_by_array(array)
     end
   end
