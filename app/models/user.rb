@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
-  before_save :get_external_data
+  before_save :check_blog
+              # :get_external_data
 
-  attr_accessible :name, :profile_pic, :treehouse_username, :codeschool_username, :github_username, :blog_url, :email, :password, :password_confirmation
+  attr_accessible :name, :profile_pic, :treehouse_username, :codeschool_username, :github_username, :blog_url, :blog_count, :email, :password, :password_confirmation
 
   #@TODO - Build out validation rules
   validates_uniqueness_of :email
@@ -16,16 +17,26 @@ class User < ActiveRecord::Base
     
   end
 
+  def check_blog
+    self.blog_count = 0 if self.blog_count.nil?
+    old_entries_count = self.blog_count
+    current_entry_count = Blog.get_entries(self.blog_url).count
+    new_posts = Array.new(current_entry_count - old_entries_count).collect do |i|
+      "Create a Blog Post"
+    end
+    self.blog_count = current_entry_count
+    self.check_achievements_by_array(new_posts)
+  end
+
   def get_external_data
     external_services = 
     { 
       Treehouse => self.treehouse_username,
       Codeschool => self.codeschool_username,
       Github => self.github_username
-      # Blog => self.blog_url
     }
-    external_services.each do |service, username|
-      array = service.get_data(username)
+    external_services.each do |service, identifier|
+      array = service.get_data(identifier)
       check_achievements_by_array(array)
     end
   end
@@ -34,6 +45,11 @@ class User < ActiveRecord::Base
     star = Star.where(:name => string).first_or_create
     # @TODO - has many collection ... star_ids
     starids = self.stars.collect { |a| a.id }
+
+    # Necessary for updating blog posts.
+    blog_star_id = Star.where(:name => "Create a Blog Post").first.id
+    starids.delete(blog_star_id)
+
     unless starids.include? star.id
       self.achievements.build(:star_id => star.id)
     end
