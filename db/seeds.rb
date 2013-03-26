@@ -68,8 +68,8 @@
 
 # Star.create(:name => "Gifted Star") # run once
 
-# stars = Star.first_or_create([
-#     { name: 'Write a Blog Post' },
+stars = Star.first_or_create([
+    { name: 'Write a Blog Post' },
 #     { name: 'CodeSchool - Try Ruby' },
 #     { name: 'CodeSchool - Ruby Bits' },
 #     { name: 'CodeSchool - Ruby Bits 2' },
@@ -94,10 +94,8 @@
 #     { name: 'Github - Opensource a Ruby project' },
 #     { name: 'Github - Opensource 5 Ruby projects' },
 #     { name: 'Github - Opensource 10 Ruby projects' },
-#     { name: 'Teacher Star' },
-#     { name: 'Student Star'},
-#     { name: 'Gifted Star'}
-# ])
+    { name: 'Gifted Star'}
+])
 
 # requirements = Requirement.first_or_create([
 #     { description: "Complete 1 blog post", star_id: 1 },

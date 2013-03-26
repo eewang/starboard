@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
       old_entries_count = self.blog_count
       current_entry_count = Blog.get_entries(self.blog_url).count
       new_posts = Array.new(current_entry_count - old_entries_count).collect do |i|
-        "Create a Blog Post"
+        "Write a Blog Post"
       end
       self.blog_count = current_entry_count
       self.check_achievements_by_array(new_posts, 'Blog')
@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
     starids = self.stars.collect { |a| a.id }
 
     # Necessary for updating blog posts.
-    blog_star_id = Star.where(:name => "Create a Blog Post").first.id
+    blog_star_id = Star.where(:name => "Write a Blog Post").first.id
     starids.delete(blog_star_id)
 
     unless starids.include? star.id
