@@ -1,15 +1,57 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
 
 
-<b>Achievements:</b>
-<ul>
-    <%= render :partial => "achievements/achievement" %>
-</ul>
+
+<div class="row">
+  <div class="span4">
+    <p>
+      <b>Name:</b>
+      <%= @user.name %>
+    </p>
+
+    <%= link_to 'Edit', edit_user_path(@user) %> |
+    <%= link_to 'Back', users_path %>
+
+    <%= form_tag(give_star_path(@user), :method => 'post') do %>
+      <%# label_tag (:message, 'Enter A Message to Give A Star!') %>
+      Enter A Message to Give A Star!<%= text_field_tag(:message) %>
+      <%= submit_tag ('Submit') %>
+    <% end %>
+
+  </div>
+  <div class="span8">
+
+    <b>Achievements:</b>
+    <ul>
+        <%= render :partial => "achievements/achievement" %>
+    </ul>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <b>Messages:</b>
 <ul>
@@ -17,20 +59,3 @@
     <li><%= msg %></li>
   <% end %>
 </ul>
-
-
-
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
-
-
-<%= form_tag(give_star_path(@user), :method => 'post') do %>
-  <%# label_tag (:message, 'Enter A Message to Give A Star!') %>
-  Enter A Message to Give A Star!<%= text_field_tag(:message) %>
-  <%= submit_tag ('Submit') %>
-<% end %>
-
-
-
