@@ -10,6 +10,10 @@
       <%= @user.name %>
     </p>
 
+    <div>
+      <img src=<%= @user.profile_pic %>>
+    </div>
+
     <%= link_to 'Edit', edit_user_path(@user) %> |
     <%= link_to 'Back', users_path %>
 

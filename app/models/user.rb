@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   before_save :check_blog,
+              :get_profile_pic,
               :get_external_data
 
   attr_accessible :name, :profile_pic, :stackoverflow_username, :treehouse_username, :codeschool_username, :github_username, :blog_url, :blog_count, :email, :password, :password_confirmation
