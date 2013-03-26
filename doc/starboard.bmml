@@ -416,9 +416,9 @@
         <icon>StarIcon%7Csmall</icon>
       </controlProperties>
     </control>
-    <control controlID="119" controlTypeID="com.balsamiq.mockups::Tooltip" x="1124" y="800" w="-1" h="-1" measuredW="79" measuredH="33" zOrder="84" locked="false" isInGroup="-1">
+    <control controlID="119" controlTypeID="com.balsamiq.mockups::Tooltip" x="885" y="1160" w="-1" h="-1" measuredW="123" measuredH="33" zOrder="84" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>stuff</text>
+        <text>jQuery%3A%20Air%201</text>
       </controlProperties>
     </control>
   </controls>
