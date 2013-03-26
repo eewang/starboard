@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  before_save :get_external_data
+  # before_save :get_external_data
 
   attr_accessible :name, :profile_pic, :treehouse_username, :codeschool_username, :github_username, :blog_url, :email, :password, :password_confirmation
 
@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
     { 
       Treehouse => self.treehouse_username,
       Codeschool => self.codeschool_username,
-      Github => self.github_username
+      # Github => self.github_username
       # Blog => self.blog_url
     }
     external_services.each do |service, username|
