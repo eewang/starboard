@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
-  before_save :check_blog
-              # :get_external_data
+  before_save :check_blog,
+              :get_external_data
 
-  attr_accessible :name, :profile_pic, :treehouse_username, :codeschool_username, :github_username, :blog_url, :blog_count, :email, :password, :password_confirmation
+  attr_accessible :name, :profile_pic, :stackoverflow_username, :treehouse_username, :codeschool_username, :github_username, :blog_url, :blog_count, :email, :password, :password_confirmation
 
   #@TODO - Build out validation rules
   validates_uniqueness_of :email
@@ -25,24 +25,25 @@ class User < ActiveRecord::Base
       "Create a Blog Post"
     end
     self.blog_count = current_entry_count
-    self.check_achievements_by_array(new_posts)
+    self.check_achievements_by_array(new_posts, 'Blog')
   end
 
   def get_external_data
     external_services = 
     { 
       Treehouse => self.treehouse_username,
-      Codeschool => self.codeschool_username,
-      Github => self.github_username
+      Codeschool => self.codeschool_username
+      # Github => self.github_username
     }
     external_services.each do |service, identifier|
       array = service.get_data(identifier)
-      check_achievements_by_array(array)
+      check_achievements_by_array(array, service.to_s)
     end
   end
 
-  def check_achievement_by_string(string)
-    star = Star.where(:name => string).first_or_create
+  def check_achievement_by_string(string, source_string)
+    source_id = Source.where(:name => source_string).first.id
+    star = Star.where(:name => string, :source_id => source_id).first_or_create
     # @TODO - has many collection ... star_ids
     starids = self.stars.collect { |a| a.id }
 
@@ -55,8 +56,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  def check_achievements_by_array(array)
-    array.each { |item| check_achievement_by_string(item) }
+  def check_achievements_by_array(array, source_string)
+    array.each { |item| check_achievement_by_string(item, source_string) }
   end
 
   def get_profile_pic_from_email(email)

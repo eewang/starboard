@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130326173213) do
+ActiveRecord::Schema.define(:version => 20130326175337) do
 
   create_table "achievements", :force => true do |t|
     t.integer  "user_id"
@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(:version => 20130326173213) do
 
   create_table "users", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
     t.string   "treehouse_username"
     t.string   "codeschool_username"
     t.string   "blog_url"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20130326173213) do
     t.integer  "giftable_star_bank"
     t.string   "password_digest"
     t.integer  "blog_count"
+    t.string   "stackoverflow_username"
   end
 
 end
