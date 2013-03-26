@@ -18,14 +18,16 @@ class User < ActiveRecord::Base
   end
 
   def check_blog
-    self.blog_count = 0 if self.blog_count.nil?
-    old_entries_count = self.blog_count
-    current_entry_count = Blog.get_entries(self.blog_url).count
-    new_posts = Array.new(current_entry_count - old_entries_count).collect do |i|
-      "Create a Blog Post"
+    unless self.blog_url.empty?
+      self.blog_count = 0 if self.blog_count.nil?
+      old_entries_count = self.blog_count
+      current_entry_count = Blog.get_entries(self.blog_url).count
+      new_posts = Array.new(current_entry_count - old_entries_count).collect do |i|
+        "Create a Blog Post"
+      end
+      self.blog_count = current_entry_count
+      self.check_achievements_by_array(new_posts, 'Blog')
     end
-    self.blog_count = current_entry_count
-    self.check_achievements_by_array(new_posts, 'Blog')
   end
 
   def get_external_data
@@ -36,8 +38,10 @@ class User < ActiveRecord::Base
       # Github => self.github_username
     }
     external_services.each do |service, identifier|
-      array = service.get_data(identifier)
-      check_achievements_by_array(array, service.to_s)
+      if identifier 
+        array = service.get_data(identifier)
+        check_achievements_by_array(array, service.to_s)
+      end
     end
   end
 
