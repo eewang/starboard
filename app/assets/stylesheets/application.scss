@@ -33,3 +33,21 @@ body {
 .hilite {
   background: rgba(200, 200, 200, 0.9);
 }
+
+.group-grid {
+  .user {
+    display: inline-block;
+    width: 160px;
+    height: 160px;
+    position: relative;
+    .name {
+      text-align: center;
+      color: #fff;
+    }
+    .star-count {
+      position: absolute;
+      bottom: 5px;
+      color: #fff;
+    }
+  }
+}

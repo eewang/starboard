@@ -7,16 +7,16 @@ class Codeschool
       when 200
         self.get_completed_courses(cs_json)
       when 404
-        p "Username not found"
+        p 'Username not found'
       when 500..600
         p "ERROR Pulling from Codeschool #{response.code}"
     end
   end
 
   def self.get_completed_courses(cs_json)
-    cs_json["courses"]["completed"].collect { |course| course["title"] }
+    if cs_json['courses']['completed']
+      cs_json['courses']['completed'].collect { |course| course["title"] }
+    end
   end
 
 end
-
-

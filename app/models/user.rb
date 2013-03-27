@@ -14,8 +14,23 @@ class User < ActiveRecord::Base
   has_many :stars, :through => :achievements
   has_many :blogs
 
-  def add_code_school_job
-    
+  def get_external_data
+    external_services = 
+    { 
+      Treehouse => self.treehouse_username,
+      Codeschool => self.codeschool_username
+      # Github => self.github_username
+    }
+    external_services.each do |service, identifier|
+      if identifier
+        begin
+          array = service.get_data(identifier)
+          check_achievements_by_array(array, service.to_s)
+        rescue => e
+          p "There was an error pulling external data - #{e}"
+        end
+      end
+    end
   end
 
   def check_blog
@@ -28,21 +43,6 @@ class User < ActiveRecord::Base
       end
       self.blog_count = current_entry_count
       self.check_achievements_by_array(new_posts, 'Blog')
-    end
-  end
-
-  def get_external_data
-    external_services = 
-    { 
-      Treehouse => self.treehouse_username,
-      Codeschool => self.codeschool_username
-      # Github => self.github_username
-    }
-    external_services.each do |service, identifier|
-      if identifier 
-        array = service.get_data(identifier)
-        check_achievements_by_array(array, service.to_s)
-      end
     end
   end
 
@@ -62,7 +62,9 @@ class User < ActiveRecord::Base
   end
 
   def check_achievements_by_array(array, source_string)
-    array.each { |item| check_achievement_by_string(item, source_string) }
+    if array
+      array.each { |item| check_achievement_by_string(item, source_string) }
+    end
   end
 
   def get_profile_pic_from_email(email)
@@ -88,6 +90,15 @@ class User < ActiveRecord::Base
     receiver.achievements.create({ :star_id => star.id, 
                                    :message => message,
                                    :sender_id => self.id })
+  end
+
+  def as_json(option={})
+    {
+      :id             => self.id,
+      :name           => self.name,
+      :achievements   => self.achievements,
+      :profile_pic    => self.profile_pic
+    }
   end
 
 end

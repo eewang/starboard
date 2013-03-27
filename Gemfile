@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails', '3.2.12'
 
@@ -29,8 +29,10 @@ group :production do
   gem 'pg'
 end
 
+# Frontend Stuff
 gem 'twitter-bootstrap-rails'
 gem 'jquery-rails'
+gem "angular-rails"
 
 gem 'octokit'
 

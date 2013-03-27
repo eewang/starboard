@@ -1,0 +1,8 @@
+<div class="group-grid" ng-controller="GridListController">
+  <a href="/users/{{ user.id }}" ng-repeat="user in users | orderBy:orderProp" >
+    <div class="user" style="background-image:url({{ user.profile_pic }});">
+      <div class="name">{{ user.name }}</div>
+      <div class="star-count">{{ user.achievements.length }}</div>
+    </div>
+  </a>
+</div>

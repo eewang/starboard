@@ -3,10 +3,10 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users_array = self.class.users_for_grid
+    @users = User.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @users }
     end
   end
@@ -91,16 +91,6 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to users_url }
       format.json { head :no_content }
-    end
-  end
-
-  def self.users_for_grid
-    all_users = User.all
-    users = Array.new(all_users.size / 6)
-    # => [nil, nil, nil, nil] if there were 24 users for example...
-
-    users.collect do |user|
-      all_users.shift(6)
     end
   end
 
