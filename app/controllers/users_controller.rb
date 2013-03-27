@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @users = User.all
 
     respond_to do |format|
-      format.html
+      format.html # index.html.erb
       format.json { render json: @users }
     end
   end
@@ -53,6 +53,8 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
+    @user.get_profile_pic
+    @user.reset_giftable_star_bank
 
     respond_to do |format|
       if @user.save
@@ -70,7 +72,6 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
-
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
@@ -94,14 +95,31 @@ class UsersController < ApplicationController
     end
   end
 
+  # def set_as_teacher(user)
+  #   user.is_teacher = true
+  # end
+
   # /users/:id
   def give_star
-    @current_user = User.where(:name => "Victoria").first # to be replaced by session user
-    if @current_user.can_give_star?
-      @user = User.find(params[:id])
-      @current_user.give_achievement_to(@user, params[:message])
+    if current_user.can_give_star?
+      user = User.find(params[:id])
+      current_user.give_achievement_to(user, params[:message])
     end
-    redirect_to @user
+    redirect_to user
+  end
+
+  # /users/refill_star_bank/:id
+  def refill_star_bank
+    if current_user.is_teacher?
+      @user = User.find(params[:id])
+      @user.increment(:giftable_star_bank)
+      redirect_to @user
+    end
+  end
+
+  def create_teacher_star
+    # a user authorized as a teacher can create a new star type.
+    # the source of these stars will be "Teacher".
   end
 
 end
