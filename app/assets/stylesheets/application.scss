@@ -12,7 +12,26 @@
  *= require_tree .
  */
 
+html, body, .container {
+  background-color: rgb(245, 245, 245) !important;
+}
+
 body {
+  .navbar {
+    box-shadow: none;
+    border: none;
+    .navbar-inner {
+      border: none;
+      background-image: none;
+      box-shadow: none;
+      background: rgb(235, 108, 37);
+      .brand, li a {
+        font-family: Helvetica;
+        color: #fff;
+        text-shadow: none;
+      }
+    }
+  }
   .container {
     margin-top: 40px;
   }
@@ -36,7 +55,7 @@ body {
 
 .grid-size {
   position: fixed;
-  top: 100px;
+  top: 80px;
   right: 30px;
   font-size: 2em;
   color: #eee;
@@ -50,33 +69,48 @@ body {
 
 .group-grid {
   text-align: center;
+  box-sizing: border-box;
   a {
     /*width: 320px;*/
-    margin: 0;
+    margin: 0 4px 0 0;
     display: inline-block;
+    box-sizing: border-box;
     .user {
       width: 320px;
       height: 320px;
       position: relative;
       overflow: hidden;
       background-size: 100%;
+      box-sizing: border-box;
+      font-family: HelveticaNeue-Light;
       .name {
-        height: 200px;
-        overflow: hidden;
+        position: absolute;
+        left: 14px;
         text-align: center;
         color: #fff;
         text-align: center;
         color: #fff;
-        font-size: 3em;
+        font-size: 2em;
         line-height: 1.5em;
-        font-family: HelveticaNeue-Light;
         letter-spacing: -1px;
         font-weight: 200;
+        box-sizing: border-box;
       }
       .star-count {
         position: absolute;
-        bottom: 5px;
+        left: 6px;
+        bottom: 16px;
         color: #fff;
+        box-sizing: border-box;
+        font-family: HelveticaNeue;
+        font-size: 5.1em;
+        i {
+          font-size: 0.4em;
+          line-height: 0.4em;
+          position: relative;
+          bottom: 26px;
+          opacity: 0.5;
+        }
       }
     }
   }
