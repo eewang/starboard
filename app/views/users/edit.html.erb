@@ -1,6 +1,10 @@
 <h1>Editing user</h1>
 
-<%= render 'form' %>
+    <%= form_for(@user) do |f| %>
+      <%= f.label :is_teacher %>
+      <%= f.check_box :is_teacher %>
+      <%= f.submit 'Submit' %>
+    <% end %>
 
 <%= link_to 'Show', @user %> |
 <%= link_to 'Back', users_path %>

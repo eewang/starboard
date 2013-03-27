@@ -6,7 +6,7 @@ Starboard::Application.routes.draw do
 
   root :to => 'users#index'
 
-  post '/users/:id' => 'users#give_star', :as => 'give_star'
+  post '/users/give_star/:id' => 'users#give_star', :as => 'give_star'
 
   resources :requirements
 

@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
               :get_profile_pic,
               :get_external_data
 
-  attr_accessible :name, :profile_pic, :stackoverflow_username, :treehouse_username, :codeschool_username, :github_username, :blog_url, :blog_count, :email, :password, :password_confirmation
+  attr_accessible :name, :profile_pic, :stackoverflow_username, :treehouse_username, :codeschool_username, :github_username, :blog_url, :blog_count, :email, :password, :password_confirmation, :is_teacher
 
   #@TODO - Build out validation rules
   validates_uniqueness_of :email
@@ -76,8 +76,8 @@ class User < ActiveRecord::Base
     self.profile_pic = get_profile_pic_from_email(self.email)
   end
 
-  def refresh_bank
-    @giftable_star_bank = 1000
+  def award_giftable_stars(int)
+    self.giftable_star_bank = int
   end
 
   def can_give_star?
