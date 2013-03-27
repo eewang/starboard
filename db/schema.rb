@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130326175337) do
+ActiveRecord::Schema.define(:version => 20130327145916) do
 
   create_table "achievements", :force => true do |t|
     t.integer  "user_id"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20130326175337) do
     t.string   "password_digest"
     t.integer  "blog_count"
     t.string   "stackoverflow_username"
+    t.boolean  "is_teacher"
   end
 
 end
