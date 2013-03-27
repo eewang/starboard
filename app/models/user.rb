@@ -1,7 +1,4 @@
 class User < ActiveRecord::Base
-  before_save :check_blog,
-              :get_profile_pic,
-              :get_external_data
 
   attr_accessible :name, :profile_pic, :stackoverflow_username, :treehouse_username, :codeschool_username, :github_username, :blog_url, :blog_count, :email, :password, :password_confirmation, :is_teacher
 
@@ -16,6 +13,11 @@ class User < ActiveRecord::Base
 
   def add_code_school_job
     
+  end
+
+  def update_from_external_sources
+    check_blog
+    get_external_data
   end
 
   def check_blog
@@ -65,17 +67,13 @@ class User < ActiveRecord::Base
     array.each { |item| check_achievement_by_string(item, source_string) }
   end
 
-  def get_profile_pic_from_email(email)
-    hash = Digest::MD5.hexdigest(email.strip.downcase)
-    "http://www.gravatar.com/avatar/" + hash + "?s=160"
-  end
-
   def get_profile_pic
     self.profile_pic = get_profile_pic_from_email(self.email)
   end
 
-  def award_giftable_stars(int)
-    self.giftable_star_bank = int
+  def get_profile_pic_from_email(email)
+    hash = Digest::MD5.hexdigest(email.strip.downcase)
+    "http://www.gravatar.com/avatar/" + hash + "?s=160"
   end
 
   def can_give_star?
@@ -90,4 +88,7 @@ class User < ActiveRecord::Base
                                    :sender_id => self.id })
   end
 
+  def reset_giftable_star_bank
+    self.update_attribute(:giftable_star_bank => 0)
+  end
 end
