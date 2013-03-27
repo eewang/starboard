@@ -5,6 +5,10 @@ sources = Source.first_or_create([
     {name: "Blog"}
 ])
 
+stars = Star.first_or_create([
+  { name: 'Gifted Star'}
+])
+
 users = User.first_or_create([
   { 
     name: 'Tyler',
@@ -160,10 +164,6 @@ users = User.first_or_create([
     password: 'hella',
     password_confirmation: 'hella'
   }
-])
-
-stars = Star.first_or_create([
-  { name: 'Gifted Star'}
 ])
 
 

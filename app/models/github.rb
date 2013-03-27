@@ -17,6 +17,8 @@ class Github
 
     language = 'Ruby'
     result.concat(self.get_ruby_projects(language, repos))
+
+    result.flatten
     
   end
 
@@ -24,7 +26,7 @@ class Github
     num_ruby_projects = (self.get_repos_by_language(language, repos)).count
     ruby_achievements = []
       if num_ruby_projects >= 10
-        ruby_achievements << ['Github - Opensource a Ruby project',
+        ruby_achievements << ['Github - Opensource 10 Ruby projects',
                                'Github - Opensource 5 Ruby projects',
                                'Github - Opensource a Ruby project']
       elsif (num_ruby_projects >=5) && (num_ruby_projects < 10)
@@ -32,6 +34,8 @@ class Github
                                 'Github - Opensource a Ruby project']
       elsif (num_ruby_projects > 0) && (num_ruby_projects < 5)
         ruby_achievements << 'Github - Opensource a Ruby project'
+      else
+        ruby_achievements << []
       end
   end
 
@@ -48,7 +52,7 @@ class Github
       elsif (num_open_commits > 0) && (num_open_commits < 5)
         commit_achievements << 'Github - Make a commit to an opensource project'
       else
-        commit_achievements << 'You have not made any open source commits, get on it!'
+        commit_achievements << []
       end
   end
 
@@ -64,6 +68,8 @@ class Github
                                 'Github - Have an opensource project forked']
       elsif (num_repos > 0) && (num_repos < 5)
         forked_achievements << 'Github - Have an opensource project forked'
+      else
+        forked_achievements << []
       end
   end
 
@@ -91,6 +97,7 @@ class Github
 
   def self.forked_repos(repos)
     repos.select { |repo| repo.forks > 0 }
+
   end
 
   def self.count_forked_repos(repos)
