@@ -75,7 +75,7 @@ class User < ActiveRecord::Base
   end
 
   def get_profile_pic
-    self.profile_pic = get_profile_pic_from_email(self.email)
+    self.update_attribute(:profile_pic, get_profile_pic_from_email(self.email))
   end
 
   def award_giftable_stars(int)

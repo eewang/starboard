@@ -23,7 +23,7 @@ users = User.first_or_create([
   },
   { 
     name: 'Danny Olinsky',
-    email: 'danny.olinsky@flatironschool.com',
+    email: 'dannyolinsky@gmail.com',
     blog_url: 'http://dolin.github.com/atom.xml',
     github_username: 'dolin',
     codeschool_username: 'dolinsky',
@@ -100,7 +100,7 @@ users = User.first_or_create([
   },
   {
     name: 'Jesse Larusso',
-    email: 'jesse.larusso@flatironschool.com',
+    email: 'jesselarusso@gmail.com',
     blog_url: 'http://jlarusso.github.com/atom.xml',
     github_username: 'jlarusso',
     codeschool_username: 'jlarusso',
@@ -166,4 +166,7 @@ users = User.first_or_create([
   }
 ])
 
-
+# Populate profile pic attribute from email address attribute
+User.all.each do |user|
+  user.get_profile_pic
+end

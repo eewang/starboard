@@ -3,6 +3,7 @@ namespace :achievements do
   task :update => :environment do
     User.all.each do |user|
       user.update_from_external_sources
+      user.save
     end
   end
 end
