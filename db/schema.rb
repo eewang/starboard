@@ -11,9 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
-ActiveRecord::Schema.define(:version => 20130321225245) do
-
+ActiveRecord::Schema.define(:version => 20130327145916) do
 
   create_table "achievements", :force => true do |t|
     t.integer  "user_id"
@@ -32,25 +30,35 @@ ActiveRecord::Schema.define(:version => 20130321225245) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "sources", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "stars", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "type"
+    t.integer  "source_id"
   end
 
   create_table "users", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
     t.string   "treehouse_username"
     t.string   "codeschool_username"
     t.string   "blog_url"
     t.string   "profile_pic"
     t.string   "email"
     t.integer  "giftable_star_bank"
-    t.string   "github"
     t.string   "github_username"
+    t.string   "password_digest"
+    t.integer  "blog_count"
+    t.string   "stackoverflow_username"
+    t.boolean  "is_teacher"
   end
 
 end
