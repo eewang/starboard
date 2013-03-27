@@ -7,7 +7,7 @@ class Treehouse
       when 200
         self.get_names_from_treehouse(th_json)
       when 404
-        p "Username not found"
+        p "Treehouse username not found - #{username}"
       when 500..600
         p "ERROR Pulling from Treehouse #{response.code}"
     end
