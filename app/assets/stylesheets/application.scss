@@ -29,15 +29,16 @@ body {
       background-image: none;
       box-shadow: none;
       background: #EC602F;
-      padding: 8px 20px;
+      padding: 8px 0 4px 20px;
       .brand, li a {
         font-family: 'Open Sans Condensed', sans-serif;
         color: #fff;
         text-shadow: none;
+        line-height: 2em;
       }
       li a {
         display: inline;
-        line-height: 3.4em;
+        line-height: 5em;
       }
     }
   }
