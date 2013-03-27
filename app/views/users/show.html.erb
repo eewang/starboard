@@ -15,13 +15,16 @@
     <%= link_to 'Back', users_path %>
 
     <%= form_tag(give_star_path(@user), :method => 'post') do %>
-      <%# label_tag (:message, 'Enter A Message to Give A Star!') %>
       Enter A Message to Give A Star!<%= text_field_tag(:message) %>
       <%= submit_tag ('Submit') %>
     <% end %>
 
-
-
+    <%# if allow? "users", "refill_star_bank" %>
+      <%= form_tag(refill_star_bank_path(@user), :method => 'post') do %>
+        <p>Add 1 star to <%= @user.name %>'s Star Bank!</p>
+        <%= submit_tag ('Submit') %>
+      <% end %>
+    <%# end %>
 
   </div>
   <div class="span8">

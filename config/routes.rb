@@ -8,6 +8,8 @@ Starboard::Application.routes.draw do
 
   post '/users/give_star/:id' => 'users#give_star', :as => 'give_star'
 
+  post '/users/refill_star_bank/:id' => 'users#refill_star_bank', :as => 'refill_star_bank'
+
   resources :requirements
 
   resources :achievements
