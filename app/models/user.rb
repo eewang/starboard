@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   attr_accessible :name, :profile_pic, :stackoverflow_username, :treehouse_username, :codeschool_username, :github_username, :blog_url, :blog_count, :email, :password, :password_confirmation, :is_teacher
-
+  
   #@TODO - Build out validation rules
   validates_uniqueness_of :email
 
