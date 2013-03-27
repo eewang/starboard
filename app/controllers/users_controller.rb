@@ -112,7 +112,8 @@ class UsersController < ApplicationController
   def refill_star_bank
     if current_user.is_teacher?
       @user = User.find(params[:id])
-      @user.increment(:giftable_star_bank)
+      @user.giftable_star_bank = @user.giftable_star_bank + params[:star_bank].to_i
+      @user.save
       redirect_to @user
     end
   end

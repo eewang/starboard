@@ -21,7 +21,8 @@
 
     <%# if allow? "users", "refill_star_bank" %>
       <%= form_tag(refill_star_bank_path(@user), :method => 'post') do %>
-        <p>Add 1 star to <%= @user.name %>'s Star Bank!</p>
+        <p>Add <%= number_field_tag 'star_bank', :min => 1 %> star to <%= @user.name %>'s Star Bank!</p>
+
         <%= submit_tag ('Submit') %>
       <% end %>
     <%# end %>
