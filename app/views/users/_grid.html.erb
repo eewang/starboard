@@ -1,4 +1,8 @@
 <div class="group-grid" ng-controller="GridListController">
+  <div class="grid-size pull-right">
+    <i class="icon-minus minus" ng-click="zoomOut($event)"></i>
+    <i class="icon-plus plus" ng-click="zoomIn($event)"></i>
+  </div>
   <a href="/users/{{ user.id }}" ng-repeat="user in users | orderBy:orderProp" >
     <div class="user" style="background-image:url({{ user.profile_pic }});">
       <div class="name">{{ user.name }}</div>
