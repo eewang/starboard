@@ -54,7 +54,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     @user.get_profile_pic
-   
+   @user.giftable_star_bank = 2
 
     respond_to do |format|
       if @user.save
