@@ -8,8 +8,10 @@ class Codeschool
         self.get_completed_courses(cs_json)
       when 404
         p "Codeschool username not found - #{username}"
+        return nil
       when 500..600
         p "ERROR Pulling from Codeschool #{response.code}"
+        return nil
     end
   end
 

@@ -8,8 +8,10 @@ class Treehouse
         self.get_names_from_treehouse(th_json)
       when 404
         p "Treehouse username not found - #{username}"
+        return nil
       when 500..600
         p "ERROR Pulling from Treehouse #{response.code}"
+        return nil
     end
   end
 

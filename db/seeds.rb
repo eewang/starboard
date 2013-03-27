@@ -113,7 +113,7 @@ users = User.first_or_create([
     name: 'Ei-lene Heng',
     email: 'eilene.heng@flatironschool.com',
     blog_url: 'http://ei-lene.github.com/atom.xml',
-    github_username: 'eilene',
+    github_username: 'ei-lene',
     codeschool_username: 'eilene',
     treehouse_username: 'eilene',
     stackoverflow_username: 'ei-lene',
