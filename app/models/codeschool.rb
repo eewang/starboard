@@ -7,7 +7,7 @@ class Codeschool
       when 200
         self.get_completed_courses(cs_json)
       when 404
-        p 'Username not found'
+        p "Codeschool username not found - #{username}"
       when 500..600
         p "ERROR Pulling from Codeschool #{response.code}"
     end
