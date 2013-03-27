@@ -7,7 +7,7 @@
     <title><%= content_for?(:title) ? yield(:title) : "Starboard" %></title>
     <%= csrf_meta_tags %>
 
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= favicon_link_tag 'images/apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
@@ -27,11 +27,11 @@
           </a>
           <div class="nav-collapse">
             <a class="brand" href="/"><i class="icon-star"></i>STARBOARD</a>
-            <ul class="nav">
               <% if current_user %>
-                <li><%= link_to "PROFILE", user_path(current_user) %></li>
-                <li><%= link_to "LOG OUT", logout_path %></li>
+            <ul class="nav pull-right">
+                <li class="pull-right"><%= link_to "Logged in as #{current_user.name}", user_path(current_user) %><%= link_to "LOG OUT", logout_path %></li>
               <% else %>
+              <ul class="nav">
                 <li><%= link_to "SIGN UP", signup_path %></li>
                 <li><%= link_to "LOG IN", login_path %></li>
               <% end %>
@@ -42,9 +42,9 @@
 
     <% if current_user %>
       <div class="row">
-        <div class="span2 offset9 label label-info">
-            You have <%= current_user.giftable_star_bank %> stars to give
-        </div>
+        <!-- <div class="span2 offset9 label label-info">
+            You have <%#= current_user.giftable_star_bank %> stars to give
+        </div> -->
      </div>
     <% end %>
 
