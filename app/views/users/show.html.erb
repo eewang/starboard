@@ -38,6 +38,11 @@
   </div>
 </div>
 
+<p><% if current_user.id == params[:id].to_i %>
+    You have <%= current_user.giftable_star_bank %> stars to give
+    <%end %>
+</p>
+
 <b>Messages:</b>
 <ul>
   <% @messages.each do |msg| %>
