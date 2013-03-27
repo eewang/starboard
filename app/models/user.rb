@@ -18,8 +18,8 @@ class User < ActiveRecord::Base
     external_services = 
     { 
       Treehouse => self.treehouse_username,
-      Codeschool => self.codeschool_username
-      # Github => self.github_username
+      Codeschool => self.codeschool_username,
+      Github => self.github_username
     }
     external_services.each do |service, identifier|
       if identifier
