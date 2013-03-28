@@ -120,6 +120,7 @@ class UsersController < ApplicationController
   end
 
   def create_teacher_star
+    if current_user.is_teacher?
     # a user authorized as a teacher can create a new star type.
     # the source of these stars will be "Teacher".
   end
