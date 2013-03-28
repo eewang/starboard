@@ -2,9 +2,9 @@ require 'pry'
 require 'pp'
 require 'feedzirra'
 
-class Blog < ActiveRecord::Base
+class Blog
 
-  def self.get_entries(url)
+  def get_entries(url)
     begin
       Feedzirra::Feed.fetch_and_parse(url).entries
     rescue

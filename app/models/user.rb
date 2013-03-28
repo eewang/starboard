@@ -21,7 +21,8 @@ class User < ActiveRecord::Base
     external_services.each do |service, identifier|
       if identifier
         begin
-          array = service.get_data(identifier)
+          service_object = service.new
+          array = service_object.get_data(identifier)
           check_achievements_by_array(array, service.to_s)
         rescue => e
           p "There was an error pulling external data - #{e}"
@@ -39,7 +40,8 @@ class User < ActiveRecord::Base
     unless self.blog_url.empty?
       self.blog_count = 0 if self.blog_count.nil?
       old_entries_count = self.blog_count
-      current_entry_count = Blog.get_entries(self.blog_url).count
+      blog_object = Blog.new
+      current_entry_count = blog_object.get_entries(self.blog_url).count
       new_posts = Array.new(current_entry_count - old_entries_count).collect do |i|
         "Write a Blog Post"
       end

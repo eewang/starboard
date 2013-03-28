@@ -1,8 +1,8 @@
 class Codeschool 
   include HTTParty
   
-  def self.get_data(username)
-    cs_json = self.get("http://codeschool.com/users/#{username}.json")
+  def get_data(username)
+    cs_json = self.class.get("http://codeschool.com/users/#{username}.json")
     case cs_json.code
       when 200
         self.get_completed_courses(cs_json)
@@ -15,7 +15,7 @@ class Codeschool
     end
   end
 
-  def self.get_completed_courses(cs_json)
+  def get_completed_courses(cs_json)
     if cs_json['courses']['completed']
       cs_json['courses']['completed'].collect { |course| course["title"] }
     end

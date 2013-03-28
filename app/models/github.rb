@@ -6,7 +6,7 @@ class Github
 # create individual methods for each achievement we want to track
 # push achievement into array 
 
-  def self.get_data(username)
+  def get_data(username)
     result = []
     
     repos = self.get_repos(username)
@@ -22,7 +22,7 @@ class Github
     
   end
 
-  def self.get_ruby_projects(language, repos)
+  def get_ruby_projects(language, repos)
     num_ruby_projects = (self.get_repos_by_language(language, repos)).count
     ruby_achievements = []
       if num_ruby_projects >= 10
@@ -39,7 +39,7 @@ class Github
       end
   end
 
-  def self.get_open_source_commits_achievements(events)
+  def get_open_source_commits_achievements(events)
     num_open_commits = self.count_open_source_commits(events)
     commit_achievements = []
       if num_open_commits >= 10
@@ -56,7 +56,7 @@ class Github
       end
   end
 
-  def self.get_forked_repos_achievements(repos)
+  def get_forked_repos_achievements(repos)
     num_repos = self.count_forked_repos(repos)
     forked_achievements = []
       if num_repos >= 10
@@ -73,7 +73,7 @@ class Github
       end
   end
 
-  def self.get_github(username)
+  def get_github(username)
     response = $octokit.user(username)
     {
       :id =>        response['id'],
@@ -91,32 +91,32 @@ class Github
     }
   end
 
-  def self.get_repos(username)
+  def get_repos(username)
     $octokit.repositories(username)
   end
 
-  def self.forked_repos(repos)
+  def forked_repos(repos)
     repos.select { |repo| repo.forks > 0 }
 
   end
 
-  def self.count_forked_repos(repos)
+  def count_forked_repos(repos)
     self.forked_repos(repos).count
   end
 
-  def self.get_repos_by_language(language, repos)
+  def get_repos_by_language(language, repos)
     repos.select { |repo| repo.language == language }
   end
 
-  def self.get_events(username)
+  def get_events(username)
     $octokit.user_events(username)
   end
 
-  def self.get_open_source_commits(events)
+  def get_open_source_commits(events)
     events.select { |event| event.type == 'PullRequestEvent' && event.payload.action == 'closed'}
   end
 
-  def self.count_open_source_commits(events)
+  def count_open_source_commits(events)
     self.get_open_source_commits(events).count
   end
 
