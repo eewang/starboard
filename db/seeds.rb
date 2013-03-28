@@ -2,7 +2,8 @@ sources = Source.first_or_create([
     {name: "Treehouse"},
     {name: "Codeschool"},
     {name: "Github"},
-    {name: "Blog"}
+    {name: "Blog"},
+    {name: "Handraise"}
 ])
 
 stars = Star.first_or_create([

@@ -4,6 +4,8 @@ Starboard::Application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
+  post 'handraise', to: 'handraise#create'
+
   root :to => 'users#index'
 
   post '/users/give_star/:id' => 'users#give_star', :as => 'give_star'
