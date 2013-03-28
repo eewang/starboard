@@ -26,8 +26,8 @@ class Achievement < ActiveRecord::Base
 
     difference_in_words = ''
 
-    difference_in_words << "#{distance_in_hours} #{distance_in_hours > 1 ? 'hours' : 'hour' } and " if distance_in_hours > 0
-    difference_in_words << "#{distance_in_minutes} #{distance_in_minutes == 1 ? 'minute' : 'minutes' }"
+    difference_in_words << "#{distance_in_hours} #{distance_in_hours > 1 ? 'hrs' : 'hr' } and " if distance_in_hours > 0
+    difference_in_words << "#{distance_in_minutes} #{distance_in_minutes == 1 ? 'min' : 'mins' }"
   end
 
   def as_json(option={})
