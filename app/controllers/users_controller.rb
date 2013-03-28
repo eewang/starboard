@@ -28,6 +28,7 @@ class UsersController < ApplicationController
     @gifted_stars = @user.achievements.where(:star_id => gifted_star_id)
     @teacher_stars = Star.where(:source_id => 5)
     @stars_from_teacher = @user.stars.where(:source_id => 5)
+    @handraise_stars = @user.stars.where(:source_id => 6)
 
     respond_to do |format|
       format.html # show.html.erb
