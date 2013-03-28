@@ -1,4 +1,11 @@
 <div>
+  <h3>Teacher's Pet Stars<h3>
+  <%= render :partial => "achievements/teacher", :collection => @stars_from_teacher, :as => "teacher_star"%>
+</div>
+
+<hr>
+
+<div>
   <h3>Github<h3>
   <%= render :partial => "achievements/github", :collection => @github_stars, :as => "github_star"%>
 </div>

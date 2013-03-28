@@ -38,13 +38,16 @@
           <% @teacher_stars.each do |star| %>
             <option value="<%= star.id %>"><%= star.name%></options>
           <% end %>
-        </select>
-        <p> Or create a new star!</p>
-        <p> <%= text_field_tag 'name' %>
-
         <%= submit_tag ('Submit') %>
       <% end %>
+
+      <%= form_tag(teacher_star_path(@user), :method => 'post') do %>
+          <p> Or create a new star!</p>
+          <p> <%= text_field_tag(:name) %>
+          <%= submit_tag ('Submit') %>
+        <% end %>
     <% end %>
+
 
 
   </div>
