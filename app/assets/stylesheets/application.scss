@@ -77,7 +77,14 @@ body {
   }
 }
 
+.activity-feed {
+  float: left;
+  width: 20%;
+}
+
 .group-grid {
+  float: right;
+  width: 80%;
   text-align: center;
   box-sizing: border-box;
   a {

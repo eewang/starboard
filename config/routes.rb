@@ -14,10 +14,9 @@ Starboard::Application.routes.draw do
 
   post '/users/teacher_star/:id' => 'users#create_teacher_star', :as => 'teacher_star'
 
+  get '/achievements/newest/:id' => 'achievements#get_recent_achievements'
 
   resources :requirements
-
-  resources :achievements
 
   resources :stars
 

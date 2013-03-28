@@ -10,6 +10,7 @@ class Star < ActiveRecord::Base
 
     def as_json(option={})
     {
+      :name   => self.name,
       :source => self.source
     }
   end
