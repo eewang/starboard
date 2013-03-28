@@ -10,5 +10,9 @@ class Achievement < ActiveRecord::Base
   #   star = Star.where(:name => "teacher star").first_or_create
   #   star_id = star.id
   # end
-
+  def as_json(option={})
+    {
+      :star             => self.star
+    }
+  end
 end

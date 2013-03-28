@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include HTTParty
 
   attr_accessible :name, :profile_pic, :stackoverflow_username, :treehouse_username, :codeschool_username, :github_username, :blog_url, :blog_count, :email, :password, :password_confirmation, :is_teacher
   
@@ -73,7 +74,22 @@ class User < ActiveRecord::Base
 
   def get_profile_pic_from_email(email)
     hash = Digest::MD5.hexdigest(email.strip.downcase)
-    "http://www.gravatar.com/avatar/" + hash + "?s=440"
+    if check_if_gravatar_exists(hash)
+      "http://www.gravatar.com/avatar/" + hash + "?s=440"
+    else
+      "/assets/defaults/zoo#{rand(9) + 1}.jpg"
+    end
+  end
+
+  def check_if_gravatar_exists(hash)
+    url = "http://www.gravatar.com/avatar/#{hash}?d=404"
+    response = self.class.get(url)
+    case response.code
+    when 200
+      true
+    else
+      false
+    end
   end
 
   def get_profile_pic

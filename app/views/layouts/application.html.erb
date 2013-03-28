@@ -29,11 +29,11 @@
             <a class="brand" href="/"><i class="icon-star"></i>STARBOARD</a>
               <% if current_user %>
             <ul class="nav pull-right">
-                <li class="pull-right"><%= link_to "Logged in as #{current_user.name}", user_path(current_user) %><%= link_to "LOG OUT", logout_path %></li>
+                <li class="pull-right"><%= link_to "Logged in as #{current_user.name}", user_path(current_user) %><%= link_to "LOG OUT", logout_path, :class => "logout" %></li>
               <% else %>
               <ul class="nav">
                 <li><%= link_to "SIGN UP", signup_path %></li>
-                <li><%= link_to "LOG IN", login_path %></li>
+                <li><%= link_to "LOG IN", login_path, :class => 'login' %></li>
               <% end %>
             </ul>
           </div><!--/.nav-collapse -->
