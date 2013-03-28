@@ -21,6 +21,7 @@ class Achievement < ActiveRecord::Base
   def as_json(option={})
     {
       :id               => self.id,
+      :created          => self.created_at,
       :star             => self.star.name,
       :sender           => self.sender_id,
       :message          => self.message,
