@@ -15,11 +15,14 @@
       <%= link_to 'Edit', edit_user_path(@user) %>
     <% end %>
 
-    <%= form_tag(give_star_path(@user), :method => 'post') do %>
-      Enter A Message to Give A Star!<%= text_field_tag(:message) %>
-      <%= submit_tag ('Submit') %>
+    <% unless is_current_user_profile? %>
+      <%= form_tag(give_star_path(@user), :method => 'post') do %>
+        Enter A Message to Give A Star!<%= text_field_tag(:message) %>
+        <%= submit_tag ('Submit') %>
+      <% end %>
     <% end %>
 
+    <% if current_user_is_teacher? %>
     <%# if allow? "users", "refill_star_bank" %>
       <%= form_tag(refill_star_bank_path(@user), :method => 'post') do %>
         <p>Add <%= number_field_tag 'star_bank', :min => 1 %> star to <%= @user.name %>'s Star Bank!</p>
@@ -27,6 +30,7 @@
         <%= submit_tag ('Submit') %>
       <% end %>
     <%# end %>
+    <% end %>
 
   </div>
   <div class="span8">

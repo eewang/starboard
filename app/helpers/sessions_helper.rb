@@ -4,4 +4,8 @@ module SessionsHelper
     current_user.id == params[:id].to_i
   end
 
+  def current_user_is_teacher?
+    current_user.is_teacher
+  end
+
 end
