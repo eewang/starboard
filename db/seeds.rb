@@ -169,4 +169,13 @@ users = User.first_or_create([
 # Populate profile pic attribute from email address attribute
 User.all.each do |user|
   user.get_profile_pic
+  user.giftable_star_bank = 5
+  user.save
 end
+
+
+
+
+
+
+

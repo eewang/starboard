@@ -24,8 +24,8 @@ class UsersController < ApplicationController
     @codeschool_stars = @user.stars.where(:source_id => 2)
     @github_stars = @user.stars.where(:source_id => 3)
     @blog_stars = @user.stars.where(:source_id => 4)
-    given_star_id = Star.where(:name => "Gifted Star").first.id
-    @given_stars = @user.achievements.where(:star_id => given_star_id)
+    gifted_star_id = Star.where(:name => "Gifted Star").first.id
+    @gifted_stars = @user.achievements.where(:star_id => gifted_star_id)
 
     respond_to do |format|
       format.html # show.html.erb
