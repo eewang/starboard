@@ -22,7 +22,6 @@ class Achievement < ActiveRecord::Base
     {
       :id               => self.id,
       :star             => self.star.name,
-      :source           => self.star.source.name,
       :sender           => self.sender_id,
       :message          => self.message,
       :user_id          => self.user.id,
