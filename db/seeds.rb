@@ -3,6 +3,7 @@ sources = Source.first_or_create([
     {name: "Codeschool"},
     {name: "Github"},
     {name: "Blog"},
+    {name: "Teacher"},
     {name: "Handraise"}
 ])
 

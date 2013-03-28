@@ -1,4 +1,18 @@
 <div>
+  <h3>Question's Answered from Handraise<h3>
+  <%= render :partial => "achievements/handraise", :collection => @handraise_stars, :as => "handraise_star"%>
+</div>
+
+<hr>
+
+<div>
+  <h3>Teacher's Pet<h3>
+  <%= render :partial => "achievements/teacher", :collection => @stars_from_teacher, :as => "teacher_star"%>
+</div>
+
+<hr>
+
+<div>
   <h3>Github<h3>
   <%= render :partial => "achievements/github", :collection => @github_stars, :as => "github_star"%>
 </div>
@@ -13,7 +27,7 @@
 <hr>
 
 <div>
-  <h3>Gifted Stars<h3>
+  <h3>Gifted<h3>
   <%= render :partial => "achievements/gifted", :collection => @gifted_stars, :as => "gifted_star" %>
 </div>
 

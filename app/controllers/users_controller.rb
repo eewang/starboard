@@ -26,6 +26,9 @@ class UsersController < ApplicationController
     @blog_stars = @user.stars.where(:source_id => 4)
     gifted_star_id = Star.where(:name => "Gifted Star").first.id
     @gifted_stars = @user.achievements.where(:star_id => gifted_star_id)
+    @teacher_stars = Star.where(:source_id => 5)
+    @stars_from_teacher = @user.stars.where(:source_id => 5)
+    @handraise_stars = @user.stars.where(:source_id => 6)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -120,8 +123,17 @@ class UsersController < ApplicationController
   end
 
   def create_teacher_star
+    if current_user.is_teacher?
+      @user = User.find(params[:id])
+      source_id = Source.where(:name => "Teacher").first.id
+      star = Star.where(:source_id => source_id).find_or_create_by_name(:name => params[:name])
+      @user.achievements.create(:star_id => star.id)
+      redirect_to @user
+
+    end
+  end
     # a user authorized as a teacher can create a new star type.
     # the source of these stars will be "Teacher".
-  end
+
 
 end

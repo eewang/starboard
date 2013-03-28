@@ -12,6 +12,9 @@ Starboard::Application.routes.draw do
 
   post '/users/refill_star_bank/:id' => 'users#refill_star_bank', :as => 'refill_star_bank'
 
+  post '/users/teacher_star/:id' => 'users#create_teacher_star', :as => 'teacher_star'
+
+
   resources :requirements
 
   resources :achievements
