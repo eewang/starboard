@@ -42,6 +42,7 @@ GEM
       debug_inspector (>= 0.0.1)
     boson (1.2.4)
     builder (3.0.4)
+    chronic (0.9.1)
     clipboard (1.0.1)
     coderay (1.0.9)
     coffee-rails (3.2.2)
@@ -214,6 +215,9 @@ GEM
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
     unicode-display_width (0.1.1)
+    whenever (0.8.2)
+      activesupport (>= 2.3.4)
+      chronic (>= 0.6.3)
     wirb (1.0.1)
       paint
     zucker (12.1)
@@ -244,3 +248,4 @@ DEPENDENCIES
   terminal-notifier
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
+  whenever

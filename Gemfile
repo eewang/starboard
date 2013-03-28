@@ -58,6 +58,8 @@ gem 'debugger'
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
+gem 'whenever', :require => false
+
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
