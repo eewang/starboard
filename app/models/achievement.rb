@@ -33,7 +33,7 @@ class Achievement < ActiveRecord::Base
   def as_json(option={})
     {
       :id               => self.id,
-      :created          => self.created_at,
+      :created          => distance_of_time_in_hours_and_minutes(self.created_at, Time.now),
       :star             => self.star.name,
       :sender           => self.sender_id,
       :message          => self.message,
