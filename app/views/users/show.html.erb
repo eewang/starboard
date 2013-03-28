@@ -11,8 +11,9 @@
       <img src=<%= @user.profile_pic %>>
     </div>
 
-    <%= link_to 'Edit', edit_user_path(@user) %> |
-    <%= link_to 'Back', users_path %>
+    <% if is_current_user? %>
+      <%= link_to 'Edit', edit_user_path(@user) %>
+    <% end %>
 
     <%= form_tag(give_star_path(@user), :method => 'post') do %>
       Enter A Message to Give A Star!<%= text_field_tag(:message) %>
