@@ -28,12 +28,15 @@
           <div class="nav-collapse">
             <a class="brand" href="/"><i class="icon-star"></i>STARBOARD</a>
               <% if current_user %>
-            <ul class="nav pull-right">
-                <li class="pull-right"><%= link_to "Logged in as #{current_user.name}", user_path(current_user) %><%= link_to "LOG OUT", logout_path, :class => "logout" %></li>
+                <ul class="nav pull-right">
+                  <li class="pull-right"><%= link_to "Logged in as #{current_user.name}", user_path(current_user) %><%= link_to "Logout", logout_path, :class => "logout" %></li>
+                  <% if current_user_is_teacher? %>
+                    <li class="pull-right"><%= link_to "New Group", new_group_path %></li>
+                  <% end %>
               <% else %>
-              <ul class="nav">
-                <li><%= link_to "SIGN UP", signup_path %></li>
-                <li><%= link_to "LOG IN", login_path, :class => 'login' %></li>
+                <ul class="nav">
+                  <li><%= link_to "SIGN UP", signup_path %></li>
+                  <li><%= link_to "LOG IN", login_path, :class => 'login' %></li>
               <% end %>
             </ul>
           </div><!--/.nav-collapse -->

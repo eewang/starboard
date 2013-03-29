@@ -24,3 +24,7 @@ id      name                   creator(user_id)
 1       Flatiron Spring                 2
 2                                       4
 
+group_user
+
+group_id user_id
+1           

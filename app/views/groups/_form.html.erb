@@ -15,10 +15,12 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :creator_id %><br />
-    <%= f.number_field :creator_id %>
+    
+  <div>
+  <p>Student Emails</p>
+  <%= text_field_tag 'emails' %>
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

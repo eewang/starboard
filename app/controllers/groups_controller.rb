@@ -25,6 +25,7 @@ class GroupsController < ApplicationController
   # GET /groups/new.json
   def new
     @group = Group.new
+    @invitation = @group.invitations.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,6 +42,14 @@ class GroupsController < ApplicationController
   # POST /groups.json
   def create
     @group = Group.new(params[:group])
+
+      @invitation = @group.invitations.build
+      @invitation.email = params[:emails]
+      @invitation.token = 'wrhehwhrwrhwr'
+      @invitation.sender_id = current_user.id
+
+      @group.invitations << @invitation
+
 
     respond_to do |format|
       if @group.save
