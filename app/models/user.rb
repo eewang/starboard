@@ -11,6 +11,9 @@ class User < ActiveRecord::Base
   has_many :achievements
   has_many :stars, :through => :achievements
   has_many :blogs
+  has_many :group_users
+  has_many :groups, :through => :group_users 
+  has_many :invitations, :dependent => :destroy
 
   def get_external_data
     external_services = 

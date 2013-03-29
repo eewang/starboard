@@ -1,5 +1,8 @@
 Starboard::Application.routes.draw do
 
+  resources :groups
+
+
   resources :invitations
 
 
