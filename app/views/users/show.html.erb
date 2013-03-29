@@ -51,19 +51,23 @@
 
 
   </div>
-  <div class="span8">
 
-    <b>Achievements:</b>
-    <ul>
-        <%= render :partial => "achievements/achievement" %>
-    </ul>
+    <% unless current_user_is_teacher? && is_current_user_profile?  %>
+      <div class="span8">
 
-  </div>
+        <b>Achievements:</b>
+        <ul>
+            <%= render :partial => "achievements/achievement" %>
+        </ul>
+
+      </div>
+    <% end %>
+
 </div>
 
-<b>Messages:</b>
-<ul>
-  <% @messages.each do |msg| %>
-    <li><%= msg %></li>
-  <% end %>
-</ul>
+    <b>Messages:</b>
+    <ul>
+      <% @messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
