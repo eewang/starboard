@@ -24,3 +24,7 @@
 # add group password to new signup field for a student 
   # match the group password in params with the group in the table 
   # create the associatioin in the user_groups join table
+
+
+# invitation table to store invitations for a sender(user_id) with potential user emails
+# also need user_groups join table to make association between user and groups 
