@@ -46,11 +46,11 @@ class GroupsController < ApplicationController
 
     @group = Group.new(params[:group], :creator_id => current_user.id)
 
-      emails = params[:emails].split(',').collect
+      emails = params[:emails].split(', ').collect
       emails.each do |email|
         @invitation = @group.invitations.build
         @invitation.email = email
-        @invitation.token = 'wrhehwhrwrhwr'
+        @invitation.generate_token # method in invitations model
         @invitation.sender_id = current_user.id
 
         @group.invitations << @invitation

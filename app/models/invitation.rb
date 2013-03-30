@@ -4,4 +4,8 @@ class Invitation < ActiveRecord::Base
   belongs_to :group
   belongs_to :sender, class_name: "User", foreign_key: "sender_id"
 
+  def generate_token
+    self.token = Digest::SHA1.hexdigest([Time.now, rand].join)
+  end
+
 end
