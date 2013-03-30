@@ -41,15 +41,20 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
-    @group = Group.new(params[:group])
+    #injecting the creator_id in since it isn't passed through in params
+    params[:group][:creator_id] = current_user.id
 
-      @invitation = @group.invitations.build
-      @invitation.email = params[:emails]
-      @invitation.token = 'wrhehwhrwrhwr'
-      @invitation.sender_id = current_user.id
+    @group = Group.new(params[:group], :creator_id => current_user.id)
 
-      @group.invitations << @invitation
+      emails = params[:emails].split(',').collect
+      emails.each do |email|
+        @invitation = @group.invitations.build
+        @invitation.email = email
+        @invitation.token = 'wrhehwhrwrhwr'
+        @invitation.sender_id = current_user.id
 
+        @group.invitations << @invitation
+      end
 
     respond_to do |format|
       if @group.save
