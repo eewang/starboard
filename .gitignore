@@ -15,3 +15,5 @@
 /tmp
 
 *.bak
+
+config/user_pass.yml

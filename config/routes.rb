@@ -5,6 +5,7 @@ Starboard::Application.routes.draw do
 
   resources :invitations
 
+  get '/signup/:invitation_token', :controller => 'users', :action => 'new', as: 'join'
 
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
