@@ -56,7 +56,7 @@ class GroupsController < ApplicationController
             @invitation.sender_id = current_user.id
 
             @group.invitations << @invitation
-            GroupMailer.welcome_invitation(@invitation, join_url(@invitation.token)).deliver
+            GroupMailer.check_invitation(@invitation, join_url(@invitation.token))
           end
         end
 
