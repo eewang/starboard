@@ -31,4 +31,8 @@ Starboard::Application.routes.draw do
   
   resources :sessions
 
+  resources :group_users
+
+  get '/group/join', to: 'group_users#new', as: 'join'
+
 end

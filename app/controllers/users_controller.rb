@@ -47,6 +47,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def join
+    # find invitation based off token in url string
+    # for that invitation, find it's email and check if a user already exists with that email
+    # if user already exists, redirect to a form that asks for username/pw with a submit button that says join group 
+      # create association in group_user
+    # if user doesn't exist, create a new user and make the association in users/groups
+    @invitation = Invitation.where(:id )
+  end
+
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
