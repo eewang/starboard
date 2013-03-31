@@ -33,6 +33,6 @@ Starboard::Application.routes.draw do
 
   resources :group_users
 
-  get '/group/join', to: 'group_users#new', as: 'join'
+  get '/group/join', to: 'group_users#new', as: 'groupsignup'
 
 end

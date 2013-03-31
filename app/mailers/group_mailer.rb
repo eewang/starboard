@@ -29,7 +29,7 @@ class GroupMailer < ActionMailer::Base
   def existing_user_invitation(user, invitation)
     @user = user
     @invitation = invitation
-    @join_url = 'http://localhost:3000/signup/'
+    @join_url = 'http://localhost:3000/group/join'
     @sender = User.where(:id => invitation.sender_id).first
     @group = Group.where(:id => invitation.group_id).first
     mail(:to => user.email,

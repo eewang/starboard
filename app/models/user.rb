@@ -115,6 +115,10 @@ class User < ActiveRecord::Base
                                    :sender_id => self.id })
   end
 
+  def self.find_group(params)
+    Group.where(:name => params[:group_name], :password => params[:group_password]).first
+  end
+
   def as_json(option={})
     {
       :id             => self.id,

@@ -65,8 +65,15 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
+    @user.get_external_data
+    @user.check_blog
     @user.get_profile_pic
-   @user.giftable_star_bank = 2
+    @user.giftable_star_bank = 2
+
+    if User.find_group(params)
+      group_id = User.find_group(params).id
+      @user.group_users.create(:group_id => group_id)
+    end
 
     respond_to do |format|
       if @user.save
