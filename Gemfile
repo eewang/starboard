@@ -36,6 +36,8 @@ gem "angular-rails"
 
 gem 'octokit'
 
+gem 'sidekiq'
+
 gem 'json'
 
 gem 'httparty'
