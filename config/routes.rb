@@ -6,11 +6,10 @@ Starboard::Application.routes.draw do
   resources :invitations
 
   get '/signup/:invitation_token', :controller => 'users', :action => 'new', as: 'join'
+  get '/groups/:id', to: 'groups#show'
 
   get 'teacher/signup', to: 'teachers#new', as: 'teacher_signup'
   post 'teacher/signup', to: 'teachers#create', as: 'teacher_signup'
-
-  get '/users/:id', to: 'users#show'
 
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
