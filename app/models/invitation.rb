@@ -8,4 +8,8 @@ class Invitation < ActiveRecord::Base
     self.token = Digest::SHA1.hexdigest([Time.now, rand].join)
   end
 
+  def self.find_group_by_token(token)
+    self.where(:token => token).first.group
+  end
+
 end

@@ -51,22 +51,18 @@
     <%= f.password_field :password_confirmation %>
   </div>
 
-  -------------------------------------------
-
-  <div class="field">
-  <p>Group Name</p>
-    <%= text_field_tag 'group_name' %>
-  </div>
-
-  <div class="field">
-  <p>Group Password</p>
-    <%= text_field_tag 'group_password' %>
-  </div>
-
   <div class="actions">
     <%= f.submit %>
   </div>
 
 
+  <%= hidden_field_tag 'invitation_token', params[:invitation_token] %> 
 
 <% end %>
+
+
+<!-- u = User.new(:invitation_token => 1)
+u.groups.first == Invite.find_by_token(1).group
+ -->
+
+
