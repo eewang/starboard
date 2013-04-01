@@ -1,0 +1,4 @@
+# change sign up to 'teacher sign-up'
+# create teacher sign up form, name, email, group?
+# create new user in db and have is_teacher as true
+# redirect to teacher page of @teacher
