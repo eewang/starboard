@@ -26,4 +26,21 @@ class TeachersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find(params[:id])
+    if @user.is_teacher?
+      @groups = Group.where(:creator_id => params[:id])
+      render 'users/show'
+    else
+      redirect_to @user
+    end
+
+    
+
+    # respond_to do |format|
+    #   format.html '/users/show.html.erb'
+    #   format.json { render json: @user }
+    # end
+  end
+
 end

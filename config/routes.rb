@@ -16,6 +16,8 @@ Starboard::Application.routes.draw do
 
   post 'handraise', to: 'handraise#create'
 
+  get '/teachers/:id' => 'teachers#show'
+
   root :to => 'teachers#new'
 
   post '/users/give_star/:id' => 'users#give_star', :as => 'give_star'

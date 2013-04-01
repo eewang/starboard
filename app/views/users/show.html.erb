@@ -47,14 +47,29 @@
             <p> Or create a new star!</p>
             <p> <%= text_field_tag(:name) %>
             <%= submit_tag ('Submit') %>
-          <% end %>
+        <% end %>
       <% end %>
 
+      <b>Messages:</b>
+      <ul>
+        <% @messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
 
+  </div>
 
-    </div>
+      <% if current_user_is_teacher? && is_current_user_profile?  %>
+        <div class="span8">
 
-      <% unless current_user_is_teacher? && is_current_user_profile?  %>
+          <b>Groups:</b>
+          <ul>
+              <%= render :partial => "groups/groups" %>
+          </ul>
+
+        </div>
+      <% elsif !current_user_is_teacher? && is_current_user_profile? %>
         <div class="span8">
 
           <b>Achievements:</b>
@@ -65,13 +80,8 @@
         </div>
       <% end %>
 
-  </div>
+</div>
 
-      <b>Messages:</b>
-      <ul>
-        <% @messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    <% end %>
+
+
 
