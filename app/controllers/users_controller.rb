@@ -48,6 +48,7 @@ class UsersController < ApplicationController
   end
 
   def join
+
     # find invitation based off token in url string
     # for that invitation, find it's email and check if a user already exists with that email
     # if user already exists, redirect to a form that asks for username/pw with a submit button that says join group 
