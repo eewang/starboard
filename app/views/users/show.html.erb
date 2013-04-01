@@ -15,59 +15,63 @@
       <%= link_to 'Edit', edit_user_path(@user) %>
     <% end %>
 
-    <% unless is_current_user_profile? %>
-      <%= form_tag(give_star_path(@user), :method => 'post') do %>
-        Enter A Message to Give A Star!<%= text_field_tag(:message) %>
-        <%= submit_tag ('Submit') %>
-      <% end %>
-    <% end %>
+    <% if !is_current_user_profile? || !current_user_is_teacher? %>
 
-    <% if current_user_is_teacher? %>
-      <%= form_tag(refill_star_bank_path(@user), :method => 'post') do %>
-        <p>Add <%= number_field_tag 'star_bank', :min => 1 %> stars to <%= @user.name %>'s Star Bank!</p>
-
-        <%= submit_tag ('Submit') %>
-      <% end %>
-    <% end %>
-
-
-    <% if current_user_is_teacher? %>
-      <%= form_tag(teacher_star_path(@user), :method => 'post') do %>
-      <p>Give a Star! </p>
-        <select name="post[name]">
-          <% @teacher_stars.each do |star| %>
-            <option value="<%= star.id %>"><%= star.name%></options>
-          <% end %>
-        <%= submit_tag ('Submit') %>
-      <% end %>
-
-      <%= form_tag(teacher_star_path(@user), :method => 'post') do %>
-          <p> Or create a new star!</p>
-          <p> <%= text_field_tag(:name) %>
+      <% if !is_current_user_profile? && !current_user_is_teacher? %>
+        <%= form_tag(give_star_path(@user), :method => 'post') do %>
+          Enter A Message to Give A Star!<%= text_field_tag(:message) %>
           <%= submit_tag ('Submit') %>
         <% end %>
-    <% end %>
+      <% end %>
+
+      <% if current_user_is_teacher? %>
+        <%= form_tag(refill_star_bank_path(@user), :method => 'post') do %>
+          <p>Add <%= number_field_tag 'star_bank', :min => 1 %> stars to <%= @user.name %>'s Star Bank!</p>
+
+          <%= submit_tag ('Submit') %>
+        <% end %>
+      <% end %>
 
 
+      <% if current_user_is_teacher? %>
+        <%= form_tag(teacher_star_path(@user), :method => 'post') do %>
+        <p>Give a Star! </p>
+          <select name="post[name]">
+            <% @teacher_stars.each do |star| %>
+              <option value="<%= star.id %>"><%= star.name%></options>
+            <% end %>
+          <%= submit_tag ('Submit') %>
+        <% end %>
+
+        <%= form_tag(teacher_star_path(@user), :method => 'post') do %>
+            <p> Or create a new star!</p>
+            <p> <%= text_field_tag(:name) %>
+            <%= submit_tag ('Submit') %>
+          <% end %>
+      <% end %>
+
+
+
+    </div>
+
+      <% unless current_user_is_teacher? && is_current_user_profile?  %>
+        <div class="span8">
+
+          <b>Achievements:</b>
+          <ul>
+              <%= render :partial => "achievements/achievement" %>
+          </ul>
+
+        </div>
+      <% end %>
 
   </div>
 
-    <% unless current_user_is_teacher? && is_current_user_profile?  %>
-      <div class="span8">
-
-        <b>Achievements:</b>
-        <ul>
-            <%= render :partial => "achievements/achievement" %>
-        </ul>
-
-      </div>
+      <b>Messages:</b>
+      <ul>
+        <% @messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
     <% end %>
 
-</div>
-
-    <b>Messages:</b>
-    <ul>
-      <% @messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
