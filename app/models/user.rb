@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
   include HTTParty
 
   attr_accessible :name, :profile_pic, :stackoverflow_username, :treehouse_username, :codeschool_username, :github_username, :blog_url, :blog_count, :email, :password, :password_confirmation, :is_teacher
-  
+  # attr_accessor :invitation_token
+
   #@TODO - Build out validation rules
   validates_uniqueness_of :email
 
@@ -14,6 +15,11 @@ class User < ActiveRecord::Base
   has_many :group_users
   has_many :groups, :through => :group_users 
   has_many :invitations, :dependent => :destroy
+
+
+  # def invitation_token=(token)
+  #   Invitation.find_by_token(token)
+  # end
 
   def get_external_data
     external_services = 
@@ -115,7 +121,7 @@ class User < ActiveRecord::Base
                                    :sender_id => self.id })
   end
 
-  def self.find_group(params)
+  def find_group(params)
     Group.where(:name => params[:group_name], :password => params[:group_password]).first
   end
 
