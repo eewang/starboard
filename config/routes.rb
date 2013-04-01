@@ -13,7 +13,7 @@ Starboard::Application.routes.draw do
 
   post 'handraise', to: 'handraise#create'
 
-  root :to => 'signup'
+  root :to => 'users#new'
 
   post '/users/give_star/:id' => 'users#give_star', :as => 'give_star'
 
