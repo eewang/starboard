@@ -62,6 +62,10 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem 'whenever', :require => false
 
+# gem 'mechanize'
+
+# gem 'nokogiri'
+
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
