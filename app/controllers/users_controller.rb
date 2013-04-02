@@ -66,15 +66,14 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-    @user.get_external_data
-    @user.check_blog
-    @user.get_profile_pic
     @user.giftable_star_bank = 2
     group_id = Invitation.find_group_by_token(params[:invitation_token]).id
     @user.group_users.build(:group_id => group_id)
 
     respond_to do |format|
       if @user.save
+        UsersWorker.perform_async(@user.id)
+        @user.save
         session[:user_id] = @user.id
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }

@@ -18,5 +18,5 @@ production:
   encoding: unicode
   user: postgres
   database: starboard
-  pool: 5
+  pool: 20
   timeout: 5000
