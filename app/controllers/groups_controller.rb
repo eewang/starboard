@@ -21,25 +21,33 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
-    @group = Group.find(params[:id])
-    # @users_test = User.where( GroupUser.where(:group_id => params[:id])
-    @users = User.joins(:groups).where("group_id = #{params[:id]}")
+    if current_user
+      @group = Group.find(params[:id])
+      # @users_test = User.where( GroupUser.where(:group_id => params[:id])
+      @users = User.joins(:groups).where("group_id = #{params[:id]}")
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @group }
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @group }
+      end
+    else
+      redirect_to root_path
     end
   end
 
   # GET /groups/new
   # GET /groups/new.json
   def new
-    @group = Group.new
-    @invitation = @group.invitations.build
+    if current_user
+      @group = Group.new
+      @invitation = @group.invitations.build
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @group }
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @group }
+      end
+    else
+      redirect_to root_path
     end
   end
 
@@ -51,31 +59,35 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
-    #injecting the creator_id in since it isn't passed through in params
-    params[:group][:creator_id] = current_user.id
-    @group = Group.new(params[:group])
+    if current_user
+      #injecting the creator_id in since it isn't passed through in params
+      params[:group][:creator_id] = current_user.id
+      @group = Group.new(params[:group])
 
-    respond_to do |format|
-      if @group.save
-        if params[:emails]
-          emails = params[:emails].split(', ').collect
-          emails.each do |email|
-            @invitation = @group.invitations.build
-            @invitation.email = email
-            @invitation.generate_token # method in invitations model
-            @invitation.sender_id = current_user.id
+      respond_to do |format|
+        if @group.save
+          if params[:emails]
+            emails = params[:emails].split(', ').collect
+            emails.each do |email|
+              @invitation = @group.invitations.build
+              @invitation.email = email
+              @invitation.generate_token # method in invitations model
+              @invitation.sender_id = current_user.id
 
-            @group.invitations << @invitation
-            GroupMailer.check_invitation(@invitation, join_url(@invitation.token))
+              @group.invitations << @invitation
+              GroupMailer.check_invitation(@invitation, join_url(@invitation.token))
+            end
           end
-        end
 
-        format.html { redirect_to @group, notice: 'Group was successfully created.' }
-        format.json { render json: @group, status: :created, location: @group }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
+          format.html { redirect_to @group, notice: 'Group was successfully created.' }
+          format.json { render json: @group, status: :created, location: @group }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @group.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to root_path
     end
   end
 
@@ -109,10 +121,14 @@ class GroupsController < ApplicationController
 
   # API Stuff
   def get_recent_achievements
-    @group = Group.where(params[:groupid]).first
-    @achievements = @group.get_recent_achievements(params[:groupid], params[:latestachievement])
-    respond_to do |format|
-      format.json { render json: @achievements }
+    if current_user
+      @group = Group.where(params[:groupid]).first
+      @achievements = @group.get_recent_achievements(params[:groupid], params[:latestachievement])
+      respond_to do |format|
+        format.json { render json: @achievements }
+      end
+    else
+      redirect_to root_path
     end
   end
 end

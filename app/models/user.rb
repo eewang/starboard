@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
           array = service_object.get_data(identifier)
           check_achievements_by_array(array, service.to_s)
         rescue => e
-          p "There was an error pulling external data - #{e}"
+          p "There was an error pulling from #{service} for #{identifier} - #{e}"
         end
       end
     end

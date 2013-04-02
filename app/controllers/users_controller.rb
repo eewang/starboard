@@ -14,25 +14,29 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
-    @achievements = @user.achievements
-    @messages = @user.achievements.collect do |achievement|
-      achievement.message
-    end.compact
+    if current_user
+      @user = User.find(params[:id])
+      @achievements = @user.achievements
+      @messages = @user.achievements.collect do |achievement|
+        achievement.message
+      end.compact
 
-    @treehouse_stars = @user.stars.where(:source_id => 1)
-    @codeschool_stars = @user.stars.where(:source_id => 2)
-    @github_stars = @user.stars.where(:source_id => 3)
-    @blog_stars = @user.stars.where(:source_id => 4)
-    gifted_star_id = Star.where(:name => "Gifted Star").first.id
-    @gifted_stars = @user.achievements.where(:star_id => gifted_star_id)
-    @teacher_stars = Star.where(:source_id => 5)
-    @stars_from_teacher = @user.stars.where(:source_id => 5)
-    @handraise_stars = @user.stars.where(:source_id => 6)
+      @treehouse_stars = @user.stars.where(:source_id => 1)
+      @codeschool_stars = @user.stars.where(:source_id => 2)
+      @github_stars = @user.stars.where(:source_id => 3)
+      @blog_stars = @user.stars.where(:source_id => 4)
+      gifted_star_id = Star.where(:name => "Gifted Star").first.id
+      @gifted_stars = @user.achievements.where(:star_id => gifted_star_id)
+      @teacher_stars = Star.where(:source_id => 5)
+      @stars_from_teacher = @user.stars.where(:source_id => 5)
+      @handraise_stars = @user.stars.where(:source_id => 6)
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @user }
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @user }
+      end
+    else
+      redirect_to root_path
     end
   end
 
@@ -54,6 +58,9 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    unless current_user && @user.id == current_user.id
+      redirect_to root_path
+    end
   end
 
   # POST /users
@@ -142,8 +149,4 @@ class UsersController < ApplicationController
 
     end
   end
-    # a user authorized as a teacher can create a new star type.
-    # the source of these stars will be "Teacher".
-
-
 end
