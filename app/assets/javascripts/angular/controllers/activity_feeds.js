@@ -1,5 +1,6 @@
 function ActivityFeedsController ($scope, $http) {
-  $http.get('/achievements/newest/0.json').success(function (data) {
+  var groupId = $(document.URL.split('/')).last()[0];
+  $http.get('/achievements/newest.json?groupid=' + groupId +'&latestachievement=0').success(function (data) {
     $scope.achievements = data;
     $scope.orderProp = '-id';
 
@@ -17,7 +18,7 @@ function ActivityFeedsController ($scope, $http) {
     updateMax($scope.achievements);
 
     var interval = setTimeout(function () {
-      $http.get('/achievements/newest/' + max + '.json').success(function (data) {
+      $http.get('/achievements/newest.json?groupid=' + groupId +'&latestachievement=' + max).success(function (data) {
         // Prepend the scope achievements with the new data,
         // make sure the result is only 20 items long
         $scope.achievements = data.concat($scope.achievements).splice(0, 19);

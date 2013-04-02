@@ -10,13 +10,6 @@ class Achievement < ActiveRecord::Base
   #   star = Star.where(:name => "teacher star").first_or_create
   #   star_id = star.id
   # end
-  def self.get_recent_achievements(id)
-    if id == 0
-      Achievement.find(:all, :order => "id desc", :limit => 20).reverse
-    else
-      Achievement.find(:all, :order => "id desc", :limit => 20, :conditions => ["id > ?", id])
-    end
-  end
 
   def distance_of_time_in_days_hours_and_minutes(from_time, to_time)
     from_time = from_time.to_time if from_time.respond_to?(:to_time)
@@ -27,7 +20,7 @@ class Achievement < ActiveRecord::Base
 
     difference_in_words = ''
 
-    if distance_in_days < 0
+    if distance_in_days < 1
       difference_in_words << "#{distance_in_hours} #{distance_in_hours > 1 ? 'hrs' : 'hr' } and " if distance_in_hours > 0
       difference_in_words << "#{distance_in_minutes} #{distance_in_minutes == 1 ? 'min' : 'mins' }"
     else
