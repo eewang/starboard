@@ -65,11 +65,12 @@
 
           <b>Groups:</b>
           <ul>
-              <%= render :partial => "groups/groups" %>
+              <%= render :partial => "group" %>
           </ul>
 
         </div>
-      <% elsif !current_user_is_teacher? && is_current_user_profile? %>
+      <% end %>
+      <% unless current_user_is_teacher? && is_current_user_profile? %>
         <div class="span8">
 
           <b>Achievements:</b>
