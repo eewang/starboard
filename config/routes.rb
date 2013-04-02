@@ -1,6 +1,10 @@
 Starboard::Application.routes.draw do
 
+  require 'sidekiq/web'
+
   resources :groups
+
+  mount Sidekiq::Web, at: '/sidekiq'
 
 
   resources :invitations
