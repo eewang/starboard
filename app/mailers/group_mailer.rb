@@ -7,18 +7,18 @@ class GroupMailer < ActionMailer::Base
       # create association in group_user
     # if user doesn't exist, create a new user and make the association in users/groups
 
-  def self.check_invitation(invitation, join_url)
+  def self.check_invitation(invitation, token)
     if User.where(:email => invitation.email).first
       user = User.where(:email => invitation.email).first
       GroupMailer.existing_user_invitation(user, invitation).deliver
     else
       @invitation = invitation
-      GroupMailer.new_user_invitation(invitation, join_url).deliver
+      GroupMailer.new_user_invitation(invitation, token).deliver
     end
   end
 
-  def new_user_invitation(invitation, join_url)
-    @join_url = join_url
+  def new_user_invitation(invitation, token)
+    @token = token
     @invitation = invitation
     @sender = User.where(:id => invitation.sender_id).first
     @group = Group.where(:id => invitation.group_id).first

@@ -1,19 +1,19 @@
 class EmailsWorker
 
   include Sidekiq::Worker
+  # sidekiq_options retry: false
 
-  def perform(group_id, params)
+  def perform(group_id, emails)
     group = Group.find(group_id)
-
-    emails = params[:emails].split(', ').collect
-    emails.each do |email|
+    
+    emails.split(', ').each do |email|
       invitation = group.invitations.build
       invitation.email = email.strip
-      invitation.generate_token # method in invitations model
-      invitation.sender_id = current_user.id
+      invitation.generate_token 
+      invitation.sender_id = group.creator_id
 
       group.invitations << invitation
-      GroupMailer.check_invitation(invitation, join_url(invitation.token))
+      GroupMailer.check_invitation(invitation, invitation.token)
     end
   end
 
