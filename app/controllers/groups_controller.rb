@@ -4,9 +4,13 @@ class GroupsController < ApplicationController
   def index
     @groups = Group.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @groups }
+    if @groups.count == 1
+      redirect_to "/groups/#{@groups.first.id}"
+    else
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @groups }
+      end
     end
   end
 

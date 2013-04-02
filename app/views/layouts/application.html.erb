@@ -27,20 +27,19 @@
           </a>
           <div class="nav-collapse">
             <a class="brand" href="/"><i class="icon-star"></i>STARBOARD</a>
-              <% if current_user and current_user_is_teacher? %>
                 <ul class="nav pull-right">
-                  <li class="pull-right"><%= link_to "Logged in as #{current_user.name}", teacher_show_path(current_user) %><li>
+                  <% if current_user and current_user_is_teacher? %>
+                    <li class="pull-right"><%= link_to "Logged in as #{current_user.name}", teacher_show_path(current_user) %><li>
                     <li><%= link_to "Logout", logout_path, :class => "logout" %></li>
                     <li class="pull-right"><%= link_to "New Group", new_group_path %></li>
-              <% elsif current_user && !current_user_is_teacher? %>
+                  <% elsif current_user && !current_user_is_teacher? %>
                     <li class="pull-right"><%= link_to "Logged in as #{current_user.name}", user_path(current_user) %><li>
+                    <li><%= link_to "Logout", logout_path, :class => "logout" %></li>
+                  <% else %>
+                    <li><%= link_to "TEACHER SIGN UP", teacher_signup_path %></li>
+                    <li><%= link_to "LOG IN", login_path, :class => 'login' %></li>
+                  <% end %>
                 </ul>
-              <% else %>
-                <ul class="nav">
-                  <li><%= link_to "TEACHER SIGN UP", teacher_signup_path %></li>
-                  <li><%= link_to "LOG IN", login_path, :class => 'login' %></li>
-                </ul>
-              <% end %>
             </ul>
           </div><!--/.nav-collapse -->
       </div>
