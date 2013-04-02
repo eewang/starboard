@@ -6,6 +6,8 @@ class Star < ActiveRecord::Base
   has_many :requirements
   belongs_to :source
 
+  validates_uniqueness_of :name
+
   #@TODO - Star's responsibility to give a star, not the user
 
     def as_json(option={})

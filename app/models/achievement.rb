@@ -46,4 +46,6 @@ class Achievement < ActiveRecord::Base
       :user_name        => self.user.name
     }
   end
+
+
 end
