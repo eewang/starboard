@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
   include HTTParty
 
   attr_accessible :name, :profile_pic, :stackoverflow_username, :treehouse_username, :codeschool_username, :github_username, :blog_url, :blog_count, :email, :password, :password_confirmation, :is_teacher
-  
+  # attr_accessor :invitation_token
+
   #@TODO - Build out validation rules
   validates_uniqueness_of :email
 
@@ -15,12 +16,18 @@ class User < ActiveRecord::Base
   has_many :groups, :through => :group_users 
   has_many :invitations, :dependent => :destroy
 
+
+  # def invitation_token=(token)
+  #   Invitation.find_by_token(token)
+  # end
+
   def get_external_data
     external_services = 
-    { 
+    {
       Treehouse => self.treehouse_username,
       Codeschool => self.codeschool_username,
-      Github => self.github_username
+      Github => self.github_username,
+      Blog => self
     }
     external_services.each do |service, identifier|
       if identifier
@@ -32,25 +39,6 @@ class User < ActiveRecord::Base
           p "There was an error pulling external data - #{e}"
         end
       end
-    end
-  end
-
-  def update_from_external_sources
-    check_blog
-    get_external_data
-  end
-
-  def check_blog
-    unless self.blog_url.empty?
-      self.blog_count = 0 if self.blog_count.nil?
-      old_entries_count = self.blog_count
-      blog_object = Blog.new
-      current_entry_count = blog_object.get_entries(self.blog_url).count
-      new_posts = Array.new(current_entry_count - old_entries_count).collect do |i|
-        "Write a Blog Post"
-      end
-      self.blog_count = current_entry_count
-      self.check_achievements_by_array(new_posts, 'Blog')
     end
   end
 
@@ -115,7 +103,7 @@ class User < ActiveRecord::Base
                                    :sender_id => self.id })
   end
 
-  def self.find_group(params)
+  def find_group(params)
     Group.where(:name => params[:group_name], :password => params[:group_password]).first
   end
 

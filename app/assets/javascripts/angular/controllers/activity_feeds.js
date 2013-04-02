@@ -16,7 +16,7 @@ function ActivityFeedsController ($scope, $http) {
 
     updateMax($scope.achievements);
 
-    var interval = setInterval(function () {
+    var interval = setTimeout(function () {
       $http.get('/achievements/newest/' + max + '.json').success(function (data) {
         // Prepend the scope achievements with the new data,
         // make sure the result is only 20 items long
@@ -24,7 +24,7 @@ function ActivityFeedsController ($scope, $http) {
         updateMax($scope.achievements);
         $scope.$$phase || $scope.$apply();
       });
-    }, 1000);
+    }, 5000);
 
   });
 }

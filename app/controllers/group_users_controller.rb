@@ -9,6 +9,11 @@ class GroupUsersController < ApplicationController
     end
   end
 
+  # it sucks to have to type in group name and password.
+  # we can get all the information that we want from the token that is in the
+  # route.  lets have that route automatically create a group_user for users that
+  # already exist in the database.
+
   def create
     @group_user = GroupUser.new
     # check name and password in db

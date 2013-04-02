@@ -6,14 +6,19 @@ Starboard::Application.routes.draw do
   resources :invitations
 
   get '/signup/:invitation_token', :controller => 'users', :action => 'new', as: 'join'
+  get '/groups/:id', to: 'groups#show'
 
-  get 'signup', to: 'users#new', as: 'signup'
+  get 'teacher/signup', to: 'teachers#new', as: 'teacher_signup'
+  post 'teacher/signup', to: 'teachers#create', as: 'teacher_signup'
+
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
   post 'handraise', to: 'handraise#create'
 
-  root :to => 'users#index'
+  get '/teachers/:id' => 'teachers#show', as: 'teacher_show'
+
+  root :to => 'teachers#new'
 
   post '/users/give_star/:id' => 'users#give_star', :as => 'give_star'
 
@@ -26,10 +31,10 @@ Starboard::Application.routes.draw do
   resources :requirements
 
   resources :stars
-
-  resources :users
   
   resources :sessions
+
+  resources :users
 
   resources :group_users
 

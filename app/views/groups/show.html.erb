@@ -1,15 +1,8 @@
-<p id="notice"><%= notice %></p>
+<!-- Put this back in once tyler fixes group grid partial -->
+<%# = render 'grid', :collection => @users %>
 
-<p>
-  <b>Name:</b>
-  <%= @group.name %>
-</p>
-
-<p>
-  <b>Creator:</b>
-  <%= @group.creator_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+<ul>
+  <% @users.each do |u| %>
+    <li><%= u.name %></li>
+  <% end %>
+</ul>

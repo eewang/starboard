@@ -14,6 +14,8 @@ class GroupsController < ApplicationController
   # GET /groups/1.json
   def show
     @group = Group.find(params[:id])
+    # @users_test = User.where( GroupUser.where(:group_id => params[:id])
+    @users = User.joins(:groups).where("group_id = #{params[:id]}")
 
     respond_to do |format|
       format.html # show.html.erb

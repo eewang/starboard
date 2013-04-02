@@ -48,6 +48,7 @@ class UsersController < ApplicationController
   end
 
   def join
+
     # find invitation based off token in url string
     # for that invitation, find it's email and check if a user already exists with that email
     # if user already exists, redirect to a form that asks for username/pw with a submit button that says join group 
@@ -69,11 +70,8 @@ class UsersController < ApplicationController
     @user.check_blog
     @user.get_profile_pic
     @user.giftable_star_bank = 2
-
-    if User.find_group(params)
-      group_id = User.find_group(params).id
-      @user.group_users.create(:group_id => group_id)
-    end
+    group_id = Invitation.find_group_by_token(params[:invitation_token]).id
+    @user.group_users.build(:group_id => group_id)
 
     respond_to do |format|
       if @user.save
@@ -81,7 +79,7 @@ class UsersController < ApplicationController
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
-        format.html { render action: "new" }
+        format.html { render action: 'new' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
