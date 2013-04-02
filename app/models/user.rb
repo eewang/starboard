@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
 
   def check_blog
     unless self.blog_url.empty?
-      blog_url = atomify_url(blog_url)
+      blog_url = atomify_url(self.blog_url)
       self.blog_count = 0 if self.blog_count.nil?
       old_entries_count = self.blog_count
       blog_object = Blog.new
