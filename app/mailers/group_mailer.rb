@@ -10,7 +10,7 @@ class GroupMailer < ActionMailer::Base
   def self.check_invitation(invitation, token)
     if User.where(:email => invitation.email).first
       user = User.where(:email => invitation.email).first
-      GroupMailer.existing_user_invitation(user, invitation).deliver
+      GroupMailer.existing_user_invitation(invitation, token, user).deliver
     else
       @invitation = invitation
       GroupMailer.new_user_invitation(invitation, token).deliver
@@ -26,10 +26,10 @@ class GroupMailer < ActionMailer::Base
          :subject => "Join a Starboard Group")
   end
 
-  def existing_user_invitation(user, invitation)
+  def existing_user_invitation(invitation, token, user)
     @user = user
+    @token = token
     @invitation = invitation
-    @join_url = 'http://localhost:3000/group/join'
     @sender = User.where(:id => invitation.sender_id).first
     @group = Group.where(:id => invitation.group_id).first
     mail(:to => user.email,

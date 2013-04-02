@@ -2,6 +2,8 @@ class GroupUsersController < ApplicationController
 
   def new
     @group_user = GroupUser.new
+    @group = Invitation.find_group_by_token(params[:invitation_token])
+    @creator = User.find(@group.creator_id)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -9,21 +11,16 @@ class GroupUsersController < ApplicationController
     end
   end
 
-  # it sucks to have to type in group name and password.
-  # we can get all the information that we want from the token that is in the
-  # route.  lets have that route automatically create a group_user for users that
-  # already exist in the database.
-
   def create
     @group_user = GroupUser.new
-    # check name and password in db
-    # if there, create association between user and group
-    # if not, redirect back to join page with error message
-    if GroupUser.find_group(params)
-      @group_user.user_id = current_user.id
-      @group_user.group_id = GroupUser.find_group(params).id
 
-      respond_to do |format|
+    unless params[:invitation_token].empty?
+      group_id = Invitation.find_group_by_token(params[:invitation_token]).id
+      @group_user.group_id = group_id
+      @group_user.user_id = current_user.id 
+    end
+
+    if respond_to do |format|
         @group_user.save
           format.html { redirect_to root_path, notice: 'Succesfully joined group.' }
           format.json { render json: @group_user.group_id, status: :created, location: @group_user.group_id }

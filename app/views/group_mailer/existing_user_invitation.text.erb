@@ -1,4 +1,5 @@
+<%= @user.name %>,
+
 You are invited to join <%= @sender.name %>'s Starboard group: <%= @group.name %>
 
-Click here to join the group: <%= @join_url %>
-Your group password is: <%= @group.password %>
+Click here to join the group: <%= group_signup_url(:invitation_token => @token) %>
