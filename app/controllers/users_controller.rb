@@ -48,12 +48,6 @@ class UsersController < ApplicationController
   end
 
   def join
-
-    # find invitation based off token in url string
-    # for that invitation, find it's email and check if a user already exists with that email
-    # if user already exists, redirect to a form that asks for username/pw with a submit button that says join group 
-      # create association in group_user
-    # if user doesn't exist, create a new user and make the association in users/groups
     @invitation = Invitation.where(:id )
   end
 
@@ -67,8 +61,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     @user.giftable_star_bank = 2
-    group_id = Invitation.find_group_by_token(params[:invitation_token]).id
-    @user.group_users.build(:group_id => group_id)
+    
+    unless params[:invitation_token].empty?
+      group_id = Invitation.find_group_by_token(params[:invitation_token]).id
+      @user.group_users.build(:group_id => group_id)
+    end
 
     respond_to do |format|
       if @user.save

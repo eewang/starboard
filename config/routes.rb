@@ -22,7 +22,7 @@ Starboard::Application.routes.draw do
 
   get '/teachers/:id' => 'teachers#show', as: 'teacher_show'
 
-  root :to => 'teachers#new'
+  root :to => 'groups#index'
 
   post '/users/give_star/:id' => 'users#give_star', :as => 'give_star'
 

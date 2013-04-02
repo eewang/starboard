@@ -2,15 +2,19 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.all
 
-    if @groups.count == 1
-      redirect_to "/groups/#{@groups.first.id}"
-    else
-      respond_to do |format|
-        format.html # index.html.erb
-        format.json { render json: @groups }
+    if current_user
+      @groups = Group.all
+      if @groups.count == 1
+        redirect_to "/groups/#{@groups.first.id}"
+      else
+        respond_to do |format|
+          format.html # index.html.erb
+          format.json { render json: @groups }
+        end
       end
+    else
+      redirect_to '/users/new'
     end
   end
 
