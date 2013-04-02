@@ -17,15 +17,16 @@ function ActivityFeedsController ($scope, $http) {
 
     updateMax($scope.achievements);
 
-    var interval = setTimeout(function () {
-      $http.get('/achievements/newest.json?groupid=' + groupId +'&latestachievement=' + max).success(function (data) {
-        // Prepend the scope achievements with the new data,
-        // make sure the result is only 20 items long
-        $scope.achievements = data.concat($scope.achievements).splice(0, 19);
-        updateMax($scope.achievements);
-        $scope.$$phase || $scope.$apply();
-      });
-    }, 5000);
-
+    function recursivePoll () {
+      setTimeout(function () {
+        $http.get('/achievements/newest.json?groupid=' + groupId +'&latestachievement=' + max).success(function (data) {
+          // Prepend the scope achievements with the new data,
+          // make sure the result is only 20 items long
+          $scope.achievements = data.concat($scope.achievements).splice(0, 19);
+          updateMax($scope.achievements);
+          $scope.$$phase || $scope.$apply();
+        }).success(recursivePoll);
+      }, 5000);
+    }
   });
 }

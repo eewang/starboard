@@ -13,9 +13,9 @@ class Group < ActiveRecord::Base
     group_achievements = []
     self.users.each do |user|
       if latestid == 0
-        group_achievements << Achievement.find(:all, :order => "id desc", :limit => 10, :conditions => ["user_id == ?", user.id])
+        group_achievements << Achievement.find(:all, :order => "id desc", :limit => 10, :conditions => ["user_id == ?", user.id]).reverse
       else
-        group_achievements << Achievement.find(:all, :order => "id desc", :limit => 10, :conditions => ["id > ? AND user_id == ?", latestid, user.id])
+        group_achievements << Achievement.find(:all, :order => "id desc", :limit => 10, :conditions => ["id > ? AND user_id == ?", latestid, user.id]).reverse
       end
     end
     group_achievements[0]
