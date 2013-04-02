@@ -1,8 +1,3 @@
-<!-- Put this back in once tyler fixes group grid partial -->
-<%# = render 'grid', :collection => @users %>
+<%= render :partial => 'activityfeed' %>
 
-<ul>
-  <% @users.each do |u| %>
-    <li><%= u.name %></li>
-  <% end %>
-</ul>
+<%= render 'grid' %>

@@ -98,4 +98,13 @@ class GroupsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # API Stuff
+  def get_recent_achievements
+    @group = Group.where(params[:groupid]).first
+    @achievements = @group.get_recent_achievements(params[:groupid], params[:latestachievement])
+    respond_to do |format|
+      format.json { render json: @achievements }
+    end
+  end
 end

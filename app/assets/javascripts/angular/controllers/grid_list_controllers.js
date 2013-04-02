@@ -1,6 +1,7 @@
 function GridListController($scope, $http) {
-  $http.get('/users.json').success(function (data) {
-    $scope.users = data;
+  var groupId = $(document.URL.split('/')).last()[0];
+  $http.get('/groups/' + groupId + '.json').success(function (data) {
+    $scope.users = data.students;
     $scope.orderProp = '-achievements';
     $scope.grid = 320;
     $scope.gridEls = $('.group-grid .user');
