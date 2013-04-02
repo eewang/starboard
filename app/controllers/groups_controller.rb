@@ -67,7 +67,7 @@ class GroupsController < ApplicationController
     respond_to do |format|
       if @group.save
         if params[:emails]
-          EmailsWorker.perform_asynch(@group.id, params)
+          EmailsWorker.perform_async(@group.id, params[:emails])
         end
       end
     else
