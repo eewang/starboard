@@ -26,14 +26,14 @@ class Github
     num_ruby_projects = (self.get_repos_by_language(language, repos)).count
     ruby_achievements = []
       if num_ruby_projects >= 10
-        ruby_achievements << ['Github - Opensource 10 Ruby projects',
-                               'Github - Opensource 5 Ruby projects',
-                               'Github - Opensource a Ruby project']
+        ruby_achievements << ['Opensource 10 Ruby projects',
+                               'Opensource 5 Ruby projects',
+                               'Opensource a Ruby project']
       elsif (num_ruby_projects >=5) && (num_ruby_projects < 10)
-        ruby_achievements << ['Github - Opensource 5 Ruby projects',
-                                'Github - Opensource a Ruby project']
+        ruby_achievements << ['Opensource 5 Ruby projects',
+                                'Opensource a Ruby project']
       elsif (num_ruby_projects > 0) && (num_ruby_projects < 5)
-        ruby_achievements << 'Github - Opensource a Ruby project'
+        ruby_achievements << 'Opensource a Ruby project'
       else
         ruby_achievements << []
       end
@@ -43,14 +43,14 @@ class Github
     num_open_commits = self.count_open_source_commits(events)
     commit_achievements = []
       if num_open_commits >= 10
-        commit_achievements << ['Github - Make a commit to 10 opensource projects',
-                               'Github - Make a commit to 5 opensource projects',
-                               'Github - Make a commit to an opensource project']
+        commit_achievements << ['Make a commit to 10 opensource projects',
+                               'Make a commit to 5 opensource projects',
+                               'Make a commit to an opensource project']
       elsif (num_open_commits >=5) && (num_open_commits < 10)
-        commit_achievements << ['Github - Make a commit to 5 opensource projects',
-                                'Github - Make a commit to an opensource project']
+        commit_achievements << ['Make a commit to 5 opensource projects',
+                                'Make a commit to an opensource project']
       elsif (num_open_commits > 0) && (num_open_commits < 5)
-        commit_achievements << 'Github - Make a commit to an opensource project'
+        commit_achievements << 'Make a commit to an opensource project'
       else
         commit_achievements << []
       end
@@ -60,14 +60,14 @@ class Github
     num_repos = self.count_forked_repos(repos)
     forked_achievements = []
       if num_repos >= 10
-        forked_achievements << ['Github - Have 10 opensource projects forked',
-                               'Github - Have 5 opensource projects forked',
-                               'Github - Have an opensource project forked']
+        forked_achievements << ['Have 10 opensource projects forked',
+                               'Have 5 opensource projects forked',
+                               'Have an opensource project forked']
       elsif (num_repos >=5) && (num_repos < 10)
-        forked_achievements << ['Github - Have 5 opensource projects forked',
-                                'Github - Have an opensource project forked']
+        forked_achievements << ['Have 5 opensource projects forked',
+                                'Have an opensource project forked']
       elsif (num_repos > 0) && (num_repos < 5)
-        forked_achievements << 'Github - Have an opensource project forked'
+        forked_achievements << 'Have an opensource project forked'
       else
         forked_achievements << []
       end

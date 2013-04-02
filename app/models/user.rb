@@ -1,10 +1,9 @@
+require 'pry'
 class User < ActiveRecord::Base
   include HTTParty
 
   attr_accessible :name, :profile_pic, :stackoverflow_username, :treehouse_username, :codeschool_username, :github_username, :blog_url, :blog_count, :email, :password, :password_confirmation, :is_teacher
-  # attr_accessor :invitation_token
 
-  #@TODO - Build out validation rules
   validates_uniqueness_of :email
 
   has_secure_password
@@ -15,11 +14,6 @@ class User < ActiveRecord::Base
   has_many :group_users
   has_many :groups, :through => :group_users 
   has_many :invitations, :dependent => :destroy
-
-
-  # def invitation_token=(token)
-  #   Invitation.find_by_token(token)
-  # end
 
   def get_external_data
     external_services = 
@@ -45,14 +39,7 @@ class User < ActiveRecord::Base
   def check_achievement_by_string(string, source_string)
     source_id = Source.where(:name => source_string).first.id
     star = Star.where(:name => string, :source_id => source_id).first_or_create
-    # @TODO - has many collection ... star_ids
-    starids = self.stars.collect { |a| a.id }
-
-    # Necessary for updating blog posts.
-    blog_star_id = Star.where(:name => "Write a Blog Post").first.id
-    starids.delete(blog_star_id)
-
-    unless starids.include? star.id
+    if !self.star_ids.include?(star.id) || star.name = "Write a Blog Post"
       self.achievements.build(:star_id => star.id)
     end
   end

@@ -1,6 +1,6 @@
 function ActivityFeedsController ($scope, $http) {
   var groupId = $(document.URL.split('/')).last()[0];
-  $http.get('/achievements/newest.json?groupid=' + groupId +'&latestachievement=0').success(function (data) {
+  $http.get('/achievements/newest.json?groupid=' + groupId +'&latestachievement=').success(function (data) {
     $scope.achievements = data;
     $scope.orderProp = '-id';
 
@@ -28,5 +28,7 @@ function ActivityFeedsController ($scope, $http) {
         }).success(recursivePoll);
       }, 5000);
     }
+  }).error(function (error) {
+    console.log(error);
   });
 }

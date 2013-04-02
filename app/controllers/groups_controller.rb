@@ -123,7 +123,7 @@ class GroupsController < ApplicationController
   def get_recent_achievements
     if current_user
       @group = Group.where(params[:groupid]).first
-      @achievements = @group.get_recent_achievements(params[:groupid], params[:latestachievement])
+      @achievements = @group.get_recent_achievements(params[:latest])
       respond_to do |format|
         format.json { render json: @achievements }
       end

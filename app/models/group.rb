@@ -9,16 +9,16 @@ class Group < ActiveRecord::Base
 
   belongs_to :creator, class_name: "User", foreign_key: "creator_id"
 
-  def get_recent_achievements(groupId=self.id, latestid=0)
+  def get_recent_achievements(latestid=nil)
     group_achievements = []
     self.users.each do |user|
-      if latestid == 0
-        group_achievements << Achievement.find(:all, :order => "id desc", :limit => 10, :conditions => ["user_id == ?", user.id]).reverse
+      if latestid == nil
+        group_achievements.concat(Achievement.find(:all, :order => "id desc", :limit => 10, :conditions => ["user_id == ?", user.id]))
       else
-        group_achievements << Achievement.find(:all, :order => "id desc", :limit => 10, :conditions => ["id > ? AND user_id == ?", latestid, user.id]).reverse
+        group_achievements.concat(Achievement.find(:all, :order => "id desc", :limit => 10, :conditions => ["id > ? AND user_id == ?", latestid, user.id]))
       end
     end
-    group_achievements[0]
+    group_achievements[0..19]
   end
 
   def as_json(options={})

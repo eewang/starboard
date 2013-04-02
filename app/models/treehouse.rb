@@ -1,3 +1,4 @@
+require 'pry'
 class Treehouse
   include HTTParty
 
@@ -29,43 +30,17 @@ class Treehouse
     end
   end
 
-  # def get_badges_from_treehouse(th_json)
-  #   th_json["badges"].collect { |badge| badge["name"] }
-  # end
-
-  #  def get_names_from_treehouse(th_json)
-  #     array = th_json.symbolize_keys[:badges].each_with_index.map do |badge, index|
-  #       if index > 0
-  #         badge["courses"][1]["title"] if badge["courses"]
-  #       end
-  #     end
-  #   array.compact!.uniq!
-  # end
-
   def check_star_requirement(th_json)
-    completed_stars_array = []
     #check json of badge names on profile
     badges = th_json["badges"].collect { |badge| badge["name"] }
-    @@dictionary.each do |star, requirement|
-      completed_stars_array << star if check_requirements(badges, requirement) 
+    completed_stars_array = @@dictionary.collect do |star, requirement|
+      star if check_requirements(badges, requirement) 
     end
+    completed_stars_array.compact
   end
 
   def check_requirements(badges, requirement)
     (badges & requirement) == requirement
-  end
-
-
- 
-
-
-  # def login_treehouse
-  #   agent = Mechanize.new
-  #   page = agent.get 'http://teamtreehouse.com/login'
-  #   form = page.forms[1]
-  #   form.fields[2].value #email
-  #   form.fields[3].value #password
-  #   form.submit
-  # end
+  end 
 
 end
