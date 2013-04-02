@@ -1,5 +1,5 @@
 class Group < ActiveRecord::Base
-  validates :name, :password, :presence => true
+  validates :name, :presence => true
 
   attr_accessible :creator_id, :name, :password
 
