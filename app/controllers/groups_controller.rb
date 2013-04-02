@@ -64,13 +64,16 @@ class GroupsController < ApplicationController
       params[:group][:creator_id] = current_user.id
       @group = Group.new(params[:group])
 
-    respond_to do |format|
       if @group.save
         if params[:emails]
           EmailsWorker.perform_async(@group.id, params[:emails])
         end
+
+        redirect_to @group
+      else
+        redirect_to new_group_path
       end
-    else
+    else 
       redirect_to root_path
     end
   end
