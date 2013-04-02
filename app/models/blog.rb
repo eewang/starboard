@@ -1,11 +1,9 @@
-require 'pry'
-require 'pp'
 require 'feedzirra'
 
 class Blog
 
-  def get_data(url)
-    
+  def get_data(user)
+    check_blog(user)
   end
 
   def get_entries(url)
@@ -16,24 +14,21 @@ class Blog
     end
   end
 
-  def check_blog
-    unless self.blog_url.empty?
-      blog_url = atomify_url(self.blog_url)
-      self.blog_count = 0 if self.blog_count.nil?
-      old_entries_count = self.blog_count
-      blog_object = Blog.new
-      current_entry_count = blog_object.get_entries(self.blog_url).count
-      new_posts = Array.new(current_entry_count - old_entries_count).collect do |i|
-        "Write a Blog Post"
-      end
-      self.blog_count = current_entry_count
-      self.check_achievements_by_array(new_posts, 'Blog')
+  def check_blog(user)
+    blog_url = atomify_url(user.blog_url)
+    user.blog_count = 0 if user.blog_count.nil?
+    old_entries_count = user.blog_count
+    current_entry_count = self.get_entries(user.blog_url).count
+    new_posts = Array.new(current_entry_count - old_entries_count).collect do |i|
+      "Write a Blog Post"
     end
+    user.blog_count = current_entry_count
+    new_posts
   end
 
   def atomify_url(blog_url)
     blog_url = blog_url.downcase
-
+    
     unless blog_url[-1,1] == "/"
       blog_url = blog_url + "/"
     end
