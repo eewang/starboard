@@ -51,12 +51,13 @@
       <% end %>
 
       <b>Messages:</b>
-      <ul>
-        <% @messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
+      <ul> 
+        <% if @messages %>
+          <% @messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
       </ul>
-    <% end %>
+        <% end %>
 
   </div>
 
@@ -80,9 +81,6 @@
 
         </div>
       <% end %>
+  <% end %>
 
 </div>
-
-
-
-
