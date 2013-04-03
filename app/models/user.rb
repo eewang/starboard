@@ -35,6 +35,21 @@ class User < ActiveRecord::Base
       end
     end
   end
+ 
+ # def check_achievement_by_string(string, source_string)
+ #   source_id = Source.where(:name => source_string).first.id
+ #   star = Star.where(:name => string, :source_id => source_id).first_or_create
+ #  # @TODO - has many collection ... star_ids
+ #    starids = self.stars.collect { |a| a.id }
+
+ #    # Necessary for updating blog posts.
+ #    blog_star_id = Star.where(:name => "Write a Blog Post").first.id
+ #    starids.delete(blog_star_id)
+
+ #    unless starids.include? star.id
+ #    if !self.star_ids.include?(star.id) || star.name = "Write a Blog Post"
+ #     self.achievements.build(:star_id => star.id)
+ #   end
 
   def check_achievement_by_string(string, source_string)
     source_id = Source.where(:name => source_string).first.id
