@@ -1,5 +1,9 @@
 class Star < ActiveRecord::Base
+<<<<<<< HEAD
+  attr_accessible :name, :requirement, :source_id
+=======
   attr_accessible :name, :requirement, :source
+>>>>>>> Groups page completed
 
   has_many :achievements
   has_many :users, :through => :achievements

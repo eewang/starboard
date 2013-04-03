@@ -1,4 +1,3 @@
-require 'pry'
 class User < ActiveRecord::Base
   include HTTParty
 
@@ -108,6 +107,14 @@ class User < ActiveRecord::Base
 
   def course_stars
     self.stars.select { |star| star.source.name == 'Treehouse' || star.source.name == 'Codeschool' }.count
+  end  
+
+  def codeschool_stars
+    self.stars.select { |star| star.source.name == 'Codeschool' }.count
+  end  
+
+  def treehouse_stars
+    self.stars.select { |star| star.source.name == 'Treehouse' }.count
   end
 
   def blog_stars

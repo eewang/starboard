@@ -8,10 +8,17 @@ sources = Source.first_or_create([
     {name: "Student"}
 ])
 
+<<<<<<< HEAD
+source_id = Source.where(:name => 'Student').first.id
+
+stars = Star.first_or_create([
+  { name: 'Gifted Star', :source_id => source_id }
+=======
 # s = Source.where(:name => 'Student').first
 
 star = Star.first_or_create([
   { name: 'Gifted Star' }
+>>>>>>> Groups page completed
 ])
 
 # star.source = s
