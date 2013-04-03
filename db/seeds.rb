@@ -11,7 +11,7 @@ sources = Source.first_or_create([
 s = Source.where(:name => 'Student').first
 
 stars = Star.first_or_create([
-  { name: 'Gifted Star', :source: s }
+  { name: 'Gifted Star', :source => s }
 ])
 
 users = User.first_or_create([
