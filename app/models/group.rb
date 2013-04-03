@@ -1,7 +1,7 @@
 class Group < ActiveRecord::Base
   validates :name, :presence => true
 
-  attr_accessible :creator_id, :name, :password
+  attr_accessible :creator_id, :name
 
   has_many :group_users
   has_many :users, :through => :group_users
