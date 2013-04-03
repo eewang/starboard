@@ -33,10 +33,12 @@ class Achievement < ActiveRecord::Base
       :id               => self.id,
       :created          => distance_of_time_in_days_hours_and_minutes(self.created_at, Time.now),
       :star             => self.star.name,
+      :star_id          => self.star.id,
       :sender           => self.sender_id,
       :message          => self.message,
       :user_id          => self.user.id,
-      :user_name        => self.user.name
+      :user_name        => self.user.name,
+      :user_pic         => self.user.profile_pic
     }
   end
 end

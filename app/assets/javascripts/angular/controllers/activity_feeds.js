@@ -26,7 +26,7 @@ function ActivityFeedsController ($scope, $http) {
           updateMax($scope.achievements);
           $scope.$$phase || $scope.$apply();
         }).success(recursivePoll);
-      }, 5000);
+      }, 20000);
     }
 
     recursivePoll();

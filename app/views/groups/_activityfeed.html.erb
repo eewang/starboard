@@ -1,10 +1,9 @@
 <div class="activity-feed span3" ng-controller="ActivityFeedsController">
-  <h2>Activity</h2>
   <div class="achievement" ng-repeat="achievement in achievements | orderBy:orderProp" >
-      <p>
-        <span class="time" ng-bind="achievement.created + ' ago ' || ''"></span>
-        <a href="/users/{{ achievement.user_id }}" class="name" ng-bind="achievement.user_name + ' earned the ' || ''"></a>
-        <span class="star" ng-bind="achievement.star + ' star!' || ''"></span>
-      </p>
+        <img src="{{ achievement.user_pic }}" alt="">
+        <p class="text"><a href="/users/{{ achievement.user_id }}" class="name" ng-bind="achievement.user_name + '' || ''"></a> earned the <a href="/stars/{{ achievement.star_id }}">
+        <span class="star" ng-bind="achievement.star + '' || ''"></span></a> star!</p>
+        <p class="time" ng-bind="achievement.created + ' ago ' || ''"></p>
+        <div class="clearfix"></div>
   </div>
 </div>

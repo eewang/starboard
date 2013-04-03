@@ -1,9 +1,9 @@
 <div class="group-grid span9">
-  <% unless @group.users.blank? %>
-    <% @group.users.each do |user| %>
-      <a href="/users/<%= user.id %>" class="user">
+  <% unless @users.blank? %>
+    <% @users.each do |user| %>
+      <a href="/users/<%= user.id %>" class="user span4">
         <div class="head">
-          <div class="profile-pic" style="background-image: url('<%= user.profile_pic %>');"></div>
+          <%= image_tag user.profile_pic, :class => 'profile-pic' %>
           <div class="name">
             <h2><%= user.name %></h2>
             <p>I am an awesome person.</p>
