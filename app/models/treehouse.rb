@@ -13,7 +13,7 @@ class Treehouse
       "Build a Responsive Website" => ["Introduction to Responsive Web Design", "Fluid Foundation", "Adaptive Design", "Responsive Design", "Advanced Techniques"],
       "Introduction to Programming" => ["Basics", "Control Structures", "Objects and Arrays", "Functions"],
       "JavaScript Foundations" => ["Introduction Variables", "JavaScript Strings", "JavaScript Numbers", "JavaScript Arrays", "JavaScript Functions", "JavaScript Objects"],
-      "Ruby Foundations" => ["Ruby Basics", "Objects, Classes, and Variables", "Strings", "Numbers", "Arrays", "Hashes", "Methods", "Loops", "Blocks", "Procs & Lambdas", "Modules", "Ruby Core", "Ruby Standard Library", "Testing"],
+      "Ruby Foundations" => ["Ruby Basics", "Objects, Classes, and Variables", "Ruby Strings", "Ruby Numbers", "Ruby Arrays", "Ruby Hashes", "Ruby Methods", "Ruby Loops", "Ruby Blocks", "Ruby Procs & Lambdas", "Ruby Modules", "Ruby Core", "Ruby Standard Library", "Testing"],
       "Build a Simple Ruby on Rails Application" => ["Getting Started with Rails", "Frontend Development", "Creating an Authentication System", "Customizing Forms", "Writing Tests", "Designing URLs", "Testing the Whole App", "Building the Profile Page", "Deploying"]
   }
 

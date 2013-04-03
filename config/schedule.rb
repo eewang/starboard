@@ -26,6 +26,6 @@ set :whenever_command, "bundle exec whenever"
 set :environment, "development"
 set :output, {:error => "log/cron_error_log.log", :standard => "log/cron_log.log"}
 
-every 1.minute do
+every 1.day do
   rake 'achievements:update'
 end

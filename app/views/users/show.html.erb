@@ -73,7 +73,6 @@
       <% end %>
       <% unless current_user_is_teacher? && is_current_user_profile? %>
         <div class="span8">
-
           <b>Achievements:</b>
           <ul>
               <%= render :partial => "achievements/achievement" %>
@@ -82,5 +81,4 @@
         </div>
       <% end %>
   <% end %>
-
 </div>
