@@ -24,7 +24,6 @@ users = User.first_or_create([
     github_username: 'tylerdavis', 
     codeschool_username: 'tylermdavis', 
     treehouse_username: 'tylerdavis', 
-    stackoverflow_username: 'tylerdavis',
     password: 'hella',
     password_confirmation: 'hella'
   },
@@ -35,7 +34,6 @@ users = User.first_or_create([
     github_username: 'dolin',
     codeschool_username: 'dolinsky',
     treehouse_username: 'dannyolinsky',
-    stackoverflow_username: 'danny-olinsky',
     password: 'hella',
     password_confirmation: 'hella'
   },
@@ -46,7 +44,6 @@ users = User.first_or_create([
     github_username: 'janeeats',
     codeschool_username: 'janeeats',
     treehouse_username: 'janeeats',
-    stackoverflow_username: 'janeeatsless',
     password: 'hella',
     password_confirmation: 'hella'
   },
@@ -57,7 +54,6 @@ users = User.first_or_create([
     github_username: 'firstgeneration',
     codeschool_username: 'firstgeneration',
     treehouse_username: 'astonishingperson22',
-    stackoverflow_username: 'firstgeneration',
     password: 'hella',
     password_confirmation: 'hella'
   },
@@ -68,7 +64,6 @@ users = User.first_or_create([
     github_username: '1aurabrown',
     codeschool_username: '1aurabrown',
     treehouse_username: '1aurabrown',
-    stackoverflow_username: '1aurabrown',
     password: 'hella',
     password_confirmation: 'hella'
   },
@@ -79,7 +74,6 @@ users = User.first_or_create([
     github_username: 'johnkellyferguson',
     codeschool_username: 'johnkellyferguson',
     treehouse_username: 'johnkferguson',
-    stackoverflow_username: 'john-kelly-ferguson',
     password: 'hella',
     password_confirmation: 'hella'
   }, 
@@ -90,7 +84,6 @@ users = User.first_or_create([
     github_username: 'janeeats',
     codeschool_username: 'janeeats',
     treehouse_username: 'janeeats',
-    stackoverflow_username: 'janeeatsless',
     password: 'hella',
     password_confirmation: 'hella'
   },
@@ -101,7 +94,6 @@ users = User.first_or_create([
     github_username: 'iacutone',
     codeschool_username: 'iactuone',
     treehouse_username: 'iactuone',
-    stackoverflow_username: 'iactuone',
     password: 'hella',
     password_confirmation: 'hella'
   },
@@ -112,7 +104,6 @@ users = User.first_or_create([
     github_username: 'jlarusso',
     codeschool_username: 'jlarusso',
     treehouse_username: 'jesselarusso',
-    stackoverflow_username: 'jlarusso',
     password: 'hella',
     password_confirmation: 'hella'
   },
@@ -123,7 +114,6 @@ users = User.first_or_create([
     github_username: 'ei-lene',
     codeschool_username: 'eilene',
     treehouse_username: 'eilene',
-    stackoverflow_username: 'ei-lene',
     password: 'hella',
     password_confirmation: 'hella'
   },
@@ -134,7 +124,6 @@ users = User.first_or_create([
     github_username: 'christinachang',
     codeschool_username: 'christinachang',
     treehouse_username: 'christinachang',
-    stackoverflow_username: 'christinachang',
     password: 'hella',
     password_confirmation: 'hella'
   },
@@ -145,7 +134,6 @@ users = User.first_or_create([
     github_username: 'rseshan',
     codeschool_username: 'rseshan',
     treehouse_username: 'rseshan',
-    stackoverflow_username: 'rseshan',
     password: 'hella',
     password_confirmation: 'hella'
   },
@@ -156,7 +144,6 @@ users = User.first_or_create([
     github_username: 'ChoKim',
     codeschool_username: 'ChoKim',
     treehouse_username: 'chokim',
-    stackoverflow_username: 'ChoKim',
     password: 'hella',
     password_confirmation: 'hella'
   },
@@ -167,7 +154,6 @@ users = User.first_or_create([
     github_username: 'andrewcallahan',
     codeschool_username: 'andrewcallahan',
     treehouse_username: 'andrewcallahan',
-    stackoverflow_username: 'andrewcallahan',
     password: 'hella',
     password_confirmation: 'hella'
   }
