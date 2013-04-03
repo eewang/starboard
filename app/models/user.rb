@@ -2,7 +2,7 @@ require 'pry'
 class User < ActiveRecord::Base
   include HTTParty
 
-  attr_accessible :name, :profile_pic, :stackoverflow_username, :treehouse_username, :codeschool_username, :github_username, :blog_url, :blog_count, :email, :password, :password_confirmation, :is_teacher
+  attr_accessible :name, :profile_pic, :treehouse_username, :codeschool_username, :github_username, :blog_url, :blog_count, :email, :password, :password_confirmation, :is_teacher
 
   validates_uniqueness_of :email
 
