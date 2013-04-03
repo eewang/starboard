@@ -35,17 +35,33 @@ class User < ActiveRecord::Base
       end
     end
   end
+ 
+ def check_achievement_by_string(string, source_string)
+   source_id = Source.where(:name => source_string).first.id
+   star = Star.where(:name => string, :source_id => source_id).first_or_create
+  # @TODO - has many collection ... star_ids
+    starids = self.stars.collect { |a| a.id }
 
-  def check_achievement_by_string(string, source_string)
-    source_id = Source.where(:name => source_string).first.id
-    star = Star.where(:name => string, :source_id => source_id).first_or_create
-    if !self.star_ids.include?(star.id) || star.name = "Write a Blog Post"
-      self.achievements.build(:star_id => star.id)
-    end
-  end
+    # Necessary for updating blog posts.
+    blog_star_id = Star.where(:name => "Write a Blog Post").first.id
+    starids.delete(blog_star_id)
+
+    # move me out to get_external_data
+    unless starids.include? star.id
+       self.achievements.build(:star_id => star.id)
+     end
+   end
+
+  # def check_achievement_by_string(string, source_string)
+  #   source_id = Source.where(:name => source_string).first.id
+  #   star = Star.where(:name => string, :source_id => source_id).first_or_create
+  #   if !self.star_ids.include?(star.id) || star.name = "Write a Blog Post"
+  #     self.achievements.build(:star_id => star.id)
+  #   end
+  # end
 
   def check_achievements_by_array(array, source_string)
-    if array
+    if array #at this point, i want to check what's in the array, if blog post do 1 thing, else do typical path
       array.each { |item| check_achievement_by_string(item, source_string) }
     end
   end
