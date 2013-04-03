@@ -65,6 +65,9 @@ gem 'whenever', :require => false
 gem 'sinatra', require: false
 gem 'slim'
 
+gem 'quiet_assets', :group => :development
+
+gem 'thin'
 # gem 'mechanize'
 
 # gem 'nokogiri'
