@@ -1,5 +1,8 @@
 require 'bundler/capistrano'
 
+set :whenever_command, "bundle exec whenever"
+require "whenever/capistrano"
+
 set :application, "starboard"
 set :repository,  "git@github.com:flatiron-school/starboard.git"
 
