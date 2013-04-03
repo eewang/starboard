@@ -1,0 +1,1 @@
+$('.user .foot .online-courses, .user .foot .github, .user .foot .blog-posts').tooltip({delay: { show: 500, hide: 100 }});

@@ -4,11 +4,14 @@ sources = Source.first_or_create([
     {name: "Github"},
     {name: "Blog"},
     {name: "Teacher"},
-    {name: "Handraise"}
+    {name: "Handraise"},
+    {name: "Student"}
 ])
 
+s = Source.where(:name => 'Student').first
+
 stars = Star.first_or_create([
-  { name: 'Gifted Star'}
+  { name: 'Gifted Star', :source: s }
 ])
 
 users = User.first_or_create([

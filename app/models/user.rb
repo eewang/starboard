@@ -90,6 +90,18 @@ class User < ActiveRecord::Base
                                    :sender_id => self.id })
   end
 
+  def course_stars
+    self.stars.select { |star| star.source.name == 'Treehouse' || star.source.name == 'Codeschool' }.count
+  end
+
+  def blog_stars
+    self.stars.select { |star| star.source.name == 'Blog' }.count
+  end
+
+  def github_stars
+    self.stars.select { |star| star.source.name == 'Github' }.count
+  end
+
   def find_group(params)
     Group.where(:name => params[:group_name], :password => params[:group_password]).first
   end

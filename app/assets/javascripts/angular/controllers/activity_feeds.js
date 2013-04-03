@@ -28,6 +28,9 @@ function ActivityFeedsController ($scope, $http) {
         }).success(recursivePoll);
       }, 5000);
     }
+
+    recursivePoll();
+    
   }).error(function (error) {
     console.log(error);
   });

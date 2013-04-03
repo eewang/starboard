@@ -20,25 +20,42 @@ h1, h2, h3, h4, p, a, ol, ul {
   font-family: 'Open Sans Condensed', sans-serif !important;
 }
 
+a {
+  text-decoration: none !important;
+}
+
+
 body {
   .navbar {
     box-shadow: none;
     border: none;
+    .btn-navbar {
+      background-color: #EC602F;
+      background-image: none;
+      border-color: rgba(255, 255, 255, 0.9);
+      .icon-bar {
+        box-shadow: none;
+      }
+    }
+    .btn-navbar:hover {
+      background-color: #EC602F;
+      background-image: none;
+    }
     .navbar-inner {
       border: none;
       background-image: none;
       box-shadow: none;
       background: #EC602F;
-      padding: 8px 0 4px 20px;
+      padding: 7px 0 4px 20px;
       .brand, li a {
         font-family: 'Open Sans Condensed', sans-serif;
         color: #fff;
         text-shadow: none;
-        line-height: 2em;
+        line-height: 1em;
       }
       li a {
         display: inline;
-        line-height: 5em;
+        line-height: 2.8em;
       }
     }
   }

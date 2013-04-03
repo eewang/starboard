@@ -17,56 +17,71 @@
 }
 
 .activity-feed {
-  float: left;
-  width: 20%;
+}
+
+.tooltip.top {
+  width: 100px;
+}
+
+.tooltip .tooltip-inner {
+  background-color: #EC602F;
+  position: relative;
+  right: 26px;
+}
+
+.tooltip.top .tooltip-arrow {
+  border-top-color: #EC602F;
 }
 
 .group-grid {
-  float: right;
-  width: 80%;
-  text-align: center;
-  box-sizing: border-box;
-  a {
-    /*width: 320px;*/
-    margin: 0 4px 0 0;
+
+  a.user {
+    background-color: #fff;
     display: inline-block;
-    box-sizing: border-box;
-    .user {
-      width: 320px;
-      height: 320px;
-      position: relative;
-      overflow: hidden;
-      background-size: 100%;
-      box-sizing: border-box;
-      font-family: HelveticaNeue-Light;
-      .name {
-        position: absolute;
-        left: 14px;
-        text-align: center;
-        color: #fff;
-        text-align: center;
-        color: #fff;
-        font-size: 2em;
-        line-height: 1.5em;
-        letter-spacing: -1px;
-        font-weight: 200;
-        box-sizing: border-box;
+    width: 378px;
+    border-radius: 8px;
+    margin: 0 0 10px 10px;
+    box-shadow: 1px 1px 5px rgba(120, 120, 120, 0.4);
+
+    .head {
+      .profile-pic {
+        width: 160px;
+        height: 160px;
+        float: left;
+        background-size: 100%;
+        border-radius: 8px 0 0 0;
       }
-      .star-count {
-        position: absolute;
-        left: 6px;
-        bottom: 10px;
-        color: #fff;
-        box-sizing: border-box;
-        font-family: HelveticaNeue;
-        font-size: 5.1em;
-        i {
-          font-size: 0.4em;
-          line-height: 0.4em;
-          position: relative;
-          bottom: 26px;
-          opacity: 0.5;
+      .name {
+        float: right;
+        width: 198px;
+        text-align: left;
+        padding-left: 20px;
+        padding-top: 30px;
+        overflow: hidden;
+        color: #564A3D;
+        h1 {
+          font-weight: 800;
         }
+      }
+    }
+
+    .foot {
+      background-color: #F6F1ED;
+      color: #B7AAA1;
+      text-align: center;
+      font-size: 1.2em;
+      font-family: Helvetica;
+      border-radius: 0 0 8px 8px;
+      div.count:first-child {
+      }
+      div.count {
+        display: inline-block;
+        padding: 10px 44px;
+        border-right: 1px solid rgba(255, 255, 255, 0.8);
+      }
+      div.count:last-child {
+        padding-right: none;
+        border-right: none;
       }
     }
   }

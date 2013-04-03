@@ -1,14 +1,19 @@
-<div class="group-grid" ng-controller="GridListController">
-  <div class="grid-size pull-right">
-    <i class="icon-minus minus" ng-click="zoomOut($event)"></i>
-    <i class="icon-plus plus" ng-click="zoomIn($event)"></i>
-  </div>
+<div class="group-grid span9">
   <% unless @group.users.blank? %>
     <% @group.users.each do |user| %>
-      <a href="/users/<%= user.id %>">
-        <div class="user" style="background-image:url(<%= user.profile_pic %>);">
-          <div class="name"><%= user.name %></div>
-          <div class="star-count"><span><%= user.achievements.count %></span><i class="icon-star"></i></div>
+      <a href="/users/<%= user.id %>" class="user">
+        <div class="head">
+          <div class="profile-pic" style="background-image: url('<%= user.profile_pic %>');"></div>
+          <div class="name">
+            <h2><%= user.name %></h2>
+            <p>I am an awesome person.</p>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="foot">
+          <div class="count online-courses" data-toggle="tooltip" data-placement="top" title data-original-title="Courses"><i class="icon-desktop"></i> <span><%= user.course_stars %></span></div>
+          <div class="count github" data-toggle="tooltip" data-placement="top" title data-original-title="Github"><i class="icon-github"></i> <span><%= user.github_stars %></span></div>
+          <div class="count blog-posts" data-toggle="tooltip" data-placement="top" title data-original-title="Blog Posts"><i class="icon-book"></i> <span><%= user.blog_stars %></span></div>
         </div>
       </a>
     <% end %>

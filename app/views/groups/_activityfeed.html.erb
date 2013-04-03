@@ -1,5 +1,5 @@
-<div class="activity-feed" ng-controller="ActivityFeedsController">
-  <h2>Group Activity Feed</h2>
+<div class="activity-feed span3" ng-controller="ActivityFeedsController">
+  <h2>Activity</h2>
   <div class="achievement" ng-repeat="achievement in achievements | orderBy:orderProp" >
       <p>
         <span class="time" ng-bind="achievement.created + ' ago ' || ''"></span>
