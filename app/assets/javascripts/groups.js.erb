@@ -1,0 +1,25 @@
+$('.user .foot .online-courses, .user .foot .github, .user .foot .blog-posts').tooltip({delay: { show: 500, hide: 100 }});
+
+$(function() {
+  new Highcharts.Chart({
+    chart: {
+      renderTo: "user_chart"
+
+    },
+    title: {
+      text: "users"
+    },
+    xAxis: {
+      type: "time"
+    },
+    yAxis: {
+      title: {
+        text: "stars"
+      }
+    },
+    series: [{
+      pointInterval: <%= Time.now %>,
+      data: [1, 2, 5, 7, 3]
+    }]
+  });
+});
