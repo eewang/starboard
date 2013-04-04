@@ -52,14 +52,12 @@
 }
 
 .group-grid {
-  padding: 0 0 0 15px;
-  margin-right: 10px;
   background: #fafafa;
+  margin: 0;
 
   a.user {
     background-color: #ededed;
-    display: inline-block;
-    margin: 0 2px 2px 0;
+    margin: 0 0 10px 10px;
 
     .head {
       .profile-pic {
