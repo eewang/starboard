@@ -31,6 +31,7 @@ class GroupsController < ApplicationController
         format.json { render json: @group }
       end
     else
+      flash[:notice] = "Could not create group, please try again"
       redirect_to root_path
     end
   end
