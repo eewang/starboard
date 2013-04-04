@@ -62,7 +62,7 @@
             <div class="sidebar">
               <div class="profile-pic">
                 <% if current_user %>
-                  <%= image_tag current_user.profile_pic %>
+                  <%= image_tag current_user.safe_profile_pic %>
                 </div>
                 <ul class="navigation">
                   <li class="head">Profile<a href="#">See All</a></li>
@@ -84,7 +84,7 @@
                     <li class="head classmates">Class</li>
                     <ul>
                       <% @users.each do |user| %>
-                        <li class="classmate"> <%= image_tag user.profile_pic %> <%= link_to user.name, user_path(user) %> <span class="count"><%= user.achievements.count %></span></li>
+                        <li class="classmate"> <%= image_tag user.safe_profile_pic %> <%= link_to user.name, user_path(user) %> <span class="count"><%= user.achievements.count %></span></li>
                       <% end %>
                     </ul>
                   <% end %>

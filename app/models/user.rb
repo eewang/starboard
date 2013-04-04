@@ -60,6 +60,13 @@ class User < ActiveRecord::Base
     end
   end
 
+  def safe_profile_pic
+    if !self.profile_pic 
+      self.update_attribute(:profile_pic, "/assets/defaults/zoo#{rand(9) + 1}.jpg")
+    end
+    profile_pic
+  end
+  
   def get_profile_pic_from_email(email)
     hash = Digest::MD5.hexdigest(email.strip.downcase)
     if check_if_gravatar_exists(hash)

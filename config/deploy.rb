@@ -38,14 +38,12 @@ end
 
 namespace :customs do
   task :symlink, :roles => :app do 
-    run <<-CMD
-      ln -nfs #{shared_path}/system/uploads/octokit.rb #{release_path}/config/initializers/octokit.rb
-      ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml
-    CMD
+    run "ln -nfs #{shared_path}/system/uploads/octokit.rb #{release_path}/config/initializers/octokit.rb"
+    run "ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml"
   end
 end
 
-after "deploy","customs:symlink"
+before "deploy:assets:precompile","customs:symlink"
 after "deploy","deploy:cleanup"
 
 desc "tail production log files" 
