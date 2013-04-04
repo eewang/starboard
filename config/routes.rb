@@ -6,6 +6,7 @@ Starboard::Application.routes.draw do
 
   mount Sidekiq::Web, at: '/sidekiq'
 
+  post '/:somewhereonsite/:id' => 'achievements#give_achievement', :as => 'give_achievement'
 
   resources :invitations
 
@@ -33,6 +34,8 @@ Starboard::Application.routes.draw do
   get '/achievements/newest.json' => 'groups#get_recent_achievements'
 
   resources :requirements
+
+  resources :achievements
 
   resources :stars
   
