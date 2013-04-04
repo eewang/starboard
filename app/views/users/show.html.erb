@@ -7,10 +7,6 @@
       <%= @user.name %>
     </p>
 
-    <div>
-      <img src=<%= @user.safe_profile_pic %>>
-    </div>
-
     <% if is_current_user_profile? %>
       <%= link_to 'Edit', edit_user_path(@user) %>
     <% end %>
