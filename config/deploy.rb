@@ -40,6 +40,7 @@ namespace :customs do
   task :symlink, :roles => :app do 
     run <<-CMD
       ln -nfs #{shared_path}/system/uploads/octokit.rb #{release_path}/config/initializers/octokit.rb
+      ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml
     CMD
   end
 end
@@ -47,3 +48,12 @@ end
 after "deploy","customs:symlink"
 after "deploy","deploy:cleanup"
 
+desc "tail production log files" 
+task :tail_logs, :roles => :app do
+  trap("INT") { puts 'Interupted'; exit 0; }
+  run "tail -f #{shared_path}/log/production.log" do |channel, stream, data|
+    puts  # for an extra line break before the host name
+    puts "#{channel[:host]}: #{data}" 
+    break if stream == :err
+  end
+end
