@@ -22,10 +22,10 @@
 # if you make a chance to this file, run whenever --update-crontab
 
 
-set :whenever_command, "bundle exec whenever"
-set :environment, "development"
-set :output, {:error => "log/cron_error_log.log", :standard => "log/cron_log.log"}
+# set :whenever_command, "bundle exec whenever"
+# set :environment, "development"
+# set :output, {:error => "log/cron_error_log.log", :standard => "log/cron_log.log"}
 
-every 5.minutes do
-  rake 'achievements:update'
-end
+# every 5.minutes do
+#   rake 'achievements:update'
+# end
