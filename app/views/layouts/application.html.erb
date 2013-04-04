@@ -61,9 +61,15 @@
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <h3 id="myModalLabel">Modal header</h3>
-          </div>
+          </div>       
           <div class="modal-body">
-            <p>One fine body…</p>
+            <%#= form_tag(give_star_path(@user), :method => 'post') do %>
+              <p>Who would you like to starify?</p>
+              <input type="text" class="span3" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source="<%= @group.users.collect { |u| u.name } %>">
+              <p>Enter A Message!</p>
+              <%= text_area_tag(:message) %>
+              <%#= submit_tag ('Submit') %>
+            <%# end %>
           </div>
           <div class="modal-footer">
             <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
