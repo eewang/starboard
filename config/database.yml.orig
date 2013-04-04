@@ -9,7 +9,6 @@ development:
   database: starboard
   encoding: unicode
   host: localhost
-  pool: 10
   timeout: 8000
 
 
@@ -25,7 +24,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  user: starboard
+  user: stargroup
   database: starboard
-  pool: 10
+  pool: 100
   timeout: 5000
