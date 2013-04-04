@@ -65,7 +65,7 @@
           <div class="modal-body">
             <%= form_for @achievement do |f| %>
               <p>Who would you like to starify?</p>
-              <input type="text" class="span3" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source="<%= @group.users.collect { |u| u.name } %>" name="achievement[user_name]">
+              <input type="text" class="span3" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source="<%= @group.users.collect { |u| u.name } %>" name="user_name">
                
               <div class="field">
                 <%= f.label "Enter A Message!"%><br />
