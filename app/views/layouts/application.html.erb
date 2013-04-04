@@ -56,6 +56,7 @@
           </div>
         </div>
 
+      <% if @group %>
         <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" 
           aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-header">
@@ -63,21 +64,24 @@
             <h3 id="myModalLabel">Modal header</h3>
           </div>       
           <div class="modal-body">
-            <%= form_for @achievement do |f| %>
-              <p>Who would you like to starify?</p>
-              <input type="text" class="span3" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source="<%= @group.users.collect { |u| u.name } %>" name="user_name">
-               
-              <div class="field">
-                <%= f.label "Enter A Message!"%><br />
-                <%= f.text_field :message %>
-              </div>
-                <%= submit_tag ('Submit') %>
+              <%= form_for @achievement do |f| %>
+                <p>Who would you like to starify?</p>
+                <input type="text" class="span3" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source="<%= @group.users.collect { |u| u.name } %>" name="user_name">
+                 
+                <div class="field">
+                  <%= f.label "Enter A Message!"%><br />
+                  <%= f.text_field :message %>
+                </div>
+                <div class="modal-footer">
+                  <%= submit_tag ('Submit'),  %>
+              <% end %>
+                </div>    
             <% end %>
           </div>
-          <div class="modal-footer">
+          
             <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
             <button class="btn btn-primary">Save changes</button>
-          </div>
+          
         </div>
         
         <div class="page">
