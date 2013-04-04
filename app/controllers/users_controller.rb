@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+  before_filter :instantiate_achievement
   # GET /users
   # GET /users.json
   def index
