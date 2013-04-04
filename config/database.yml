@@ -24,7 +24,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  user: starboard
+  user: stargroup
   database: starboard
   pool: 100
   timeout: 5000
