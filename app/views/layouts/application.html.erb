@@ -46,15 +46,17 @@
           </div>
         </div>
 
-        <div class="subnav navbar">
-          <div class="navbar-inner">
-            <ul class="nav">
-              <li class="give-star"><a href="#" class="give-star-btn btn">Give a Star</a></li>
-              <li><a class="section-title"><i class="icon-th-large"></i>  All Groups</a></li>
-              <!-- <li class="filter"><a href="#">Filter by: This Week</a></li> -->
-            </ul>
+        <% if current_user %>
+          <div class="subnav navbar">
+            <div class="navbar-inner">
+              <ul class="nav">
+                <li class="give-star"><a href="#" class="give-star-btn btn">Give a Star</a></li>
+                <li><a class="section-title"><i class="icon-th-large"></i>  All Groups</a></li>
+                <!-- <li class="filter"><a href="#">Filter by: This Week</a></li> -->
+              </ul>
+            </div>
           </div>
-        </div>
+        <% end %>
         
         <div class="page">
             <div class="sidebar">
@@ -70,12 +72,14 @@
                     <li class="view-nav"><i class="icon-reorder"></i> Codeschool <span class="count"><%= current_user.codeschool_stars %></span></li>
                     <li class="view-nav"><i class="icon-reorder"></i> Treehouse <span class="count"><%= current_user.treehouse_stars %></span></li>
                   </ul>
-                  <li class="head">Group <%= link_to 'See All', groups_path %></li>
-                  <ul>
-                    <li class="view-nav"><i class="icon-tasks"></i> Combined</li>
-                    <li class="view-nav active"><i class="icon-th-large"></i> Leaderboard</li>
-                    <li class="view-nav"><i class="icon-reorder"></i> Activty Feed</li>
+                  <% if @group %>
+                    <li class="head"><%= @group.name %> <%= link_to 'See All', groups_path %></li>
+                    <ul>
+                      <li class="view-nav"><i class="icon-tasks"></i> Combined</li>
+                      <li class="view-nav active"><i class="icon-th-large"></i> Leaderboard</li>
+                      <li class="view-nav"><i class="icon-reorder"></i> Activty Feed</li>
                   </ul>
+                  <% end %>
                   <% if @users %>
                     <li class="head classmates">Class</li>
                     <ul>

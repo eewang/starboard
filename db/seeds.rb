@@ -8,13 +8,11 @@ sources = Source.first_or_create([
     {name: "Student"}
 ])
 
-# s = Source.where(:name => 'Student').first
+s = Source.where(:name => 'Student').first
 
 star = Star.first_or_create([
-  { name: 'Gifted Star' }
+  { name: 'Gifted Star', source_id: s.id }
 ])
-
-# star.source = s
 
 users = User.first_or_create([
   { 
@@ -159,8 +157,8 @@ users = User.first_or_create([
   }
 ])
 
-group1 = Group.create({name: 'Flatiron 001', password: 'hella', creator_id: 1})
-group2 = Group.create({name: 'Flatiron 002', password: 'hella', creator_id: 1})
+group1 = Group.create({name: 'Flatiron 001', creator_id: 1})
+group2 = Group.create({name: 'Flatiron 002', creator_id: 1})
 
 # Populate profile pic attribute from email address attribute
 User.all.each do |user|

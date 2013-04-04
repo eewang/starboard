@@ -2,8 +2,8 @@ require 'feedzirra'
 
 class Blog
 
-  def get_data(user)
-    check_blog(user)
+  def get_data(user_id)
+    check_blog(user_id)
   end
 
   def get_entries(url)
@@ -14,7 +14,8 @@ class Blog
     end
   end
 
-  def check_blog(user)
+  def check_blog(user_id)
+    user = User.find(user_id)
     blog_url = atomify_url(user.blog_url)
     user.blog_count = 0 if user.blog_count.nil?
     old_entries_count = user.blog_count
@@ -23,6 +24,7 @@ class Blog
       "Write a Blog Post"
     end
     user.blog_count = current_entry_count
+    user.save
     new_posts
   end
 

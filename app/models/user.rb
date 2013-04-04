@@ -17,20 +17,15 @@ class User < ActiveRecord::Base
   def get_external_data
     external_services = 
     {
-      Treehouse => self.treehouse_username,
-      Codeschool => self.codeschool_username,
-      Github => self.github_username,
-      Blog => self
+      'Treehouse' => self.treehouse_username,
+      'Codeschool' => self.codeschool_username,
+      'Github' => self.github_username,
+      'Blog' => self.id
     }
+    
     external_services.each do |service, identifier|
       if identifier
-        begin
-          service_object = service.new
-          array = service_object.get_data(identifier)
-          check_achievements_by_array(array, service.to_s)
-        rescue => e
-          p "There was an error pulling from #{service} for #{identifier} - #{e}"
-        end
+        UsersWorker.perform_async(self.id, service, identifier)
       end
     end
   end
@@ -47,7 +42,7 @@ class User < ActiveRecord::Base
 
     # move me out to get_external_data
     unless starids.include? star.id
-       self.achievements.build(:star_id => star.id)
+       self.achievements.create(:star_id => star.id)
      end
    end
 

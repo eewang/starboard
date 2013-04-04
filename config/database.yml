@@ -1,8 +1,16 @@
+# development:
+#   adapter: sqlite3
+#   database: db/development.sqlite3
+#   pool: 5
+#   timeout: 5000
+
 development:
-  adapter: sqlite3
-  database: db/development.sqlite3
-  pool: 5
-  timeout: 5000
+  adapter: postgresql
+  database: starboard
+  encoding: unicode
+  host: localhost
+  timeout: 8000
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -18,5 +26,5 @@ production:
   encoding: unicode
   user: starboard
   database: starboard
-  pool: 20
+  pool: 100
   timeout: 5000
