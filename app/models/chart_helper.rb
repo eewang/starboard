@@ -46,8 +46,9 @@ class ChartHelper
   def self.count_achievements_by_day(day_array)
     hash = Hash.new(0)
     day_array.each do |day|
-      hash[v] += 1
+      hash[day] += 1
     end
+    hash
   end
 
   def self.compare_days(count_hash, timestamp_array)
