@@ -1,5 +1,5 @@
 class Star < ActiveRecord::Base
-  attr_accessible :name, :requirement
+  attr_accessible :name, :requirement, :source_id
 
   has_many :achievements
   has_many :users, :through => :achievements

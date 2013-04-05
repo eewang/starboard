@@ -1,0 +1,25 @@
+<div class="navbar navbar-static-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="/"><i class="icon-star"></i>STARBOARD</a>
+      <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <div class="nav-collapse">
+        <ul class="nav pull-right">
+          <% if current_user and current_user_is_teacher? %>
+            <li><%= link_to "LOGOUT", logout_path, :class => "logout" %></li>
+            <li class="pull-right"><%= link_to "New Group", new_group_path %></li>
+          <% elsif current_user && !current_user_is_teacher? %>
+            <li><%= link_to "LOGOUT", logout_path, :class => "logout" %></li>
+          <% else %>
+            <li><%= link_to "LOG IN", login_path, :class => 'login' %></li>
+            <li><%= link_to "TEACHER SIGN UP", teacher_signup_path %></li>
+          <% end %>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>

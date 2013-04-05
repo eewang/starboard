@@ -1,5 +1,8 @@
 require 'bundler/capistrano'
 
+set :whenever_command, "bundle exec whenever"
+require "whenever/capistrano"
+
 set :application, "starboard"
 set :repository,  "git@github.com:flatiron-school/starboard.git"
 
@@ -32,3 +35,27 @@ namespace :deploy do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 end
+
+namespace :customs do
+  task :symlink, :roles => :app do 
+    run "ln -nfs #{shared_path}/system/uploads/octokit.rb #{release_path}/config/initializers/octokit.rb"
+    run "ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml"
+  end
+end
+
+before "deploy:assets:precompile","customs:symlink"
+after "deploy","deploy:cleanup"
+
+desc "tail production log files" 
+task :tail_logs, :roles => :app do
+  trap("INT") { puts 'Interupted'; exit 0; }
+  run "tail -f #{shared_path}/log/production.log" do |channel, stream, data|
+    puts  # for an extra line break before the host name
+    puts "#{channel[:host]}: #{data}" 
+    break if stream == :err
+  end
+end
+
+
+
+

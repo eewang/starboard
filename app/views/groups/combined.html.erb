@@ -1,0 +1,10 @@
+<% content_for :section_title do %>
+  <%= @group.name %>
+<% end %>
+
+<div class="span4 hidden-phone">
+  <%= render :partial => 'grid' %>
+</div>
+<div class="span4 hidden-phone" ng-app>
+  <%= render :partial => 'activityfeed' %>
+</div>

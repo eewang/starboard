@@ -1,9 +1,9 @@
-<div class="group-grid span9">
+<div class="group-grid hidden-phone">
   <% unless @users.blank? %>
     <% @users.each do |user| %>
       <a href="/users/<%= user.id %>" class="user span4">
         <div class="head">
-          <%= image_tag user.profile_pic, :class => 'profile-pic' %>
+          <%= image_tag user.safe_profile_pic, :class => 'profile-pic' %>
           <div class="name">
             <h2><%= user.name %></h2>
             <p>I am an awesome person.</p>

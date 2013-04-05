@@ -4,7 +4,7 @@
     <i class="icon-plus plus" ng-click="zoomIn($event)"></i>
   </div>
   <a href="/users/{{ user.id }}" ng-repeat="user in users | orderBy:orderProp" >
-    <div class="user" style="background-image:url({{ user.profile_pic }});">
+    <div class="user" style="background-image:url({{ user.safe_profile_pic }});">
       <div class="name" ng-bind="user.name || '?'"></div>
       <div class="star-count"><span ng-bind="user.achievements.length || '?'"></span><i class="icon-star"></i></div>
     </div>
