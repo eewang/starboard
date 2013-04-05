@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   end
 
   def check_achievements_by_array(array, source_string)
-    binding.pry
+    puts "check_achievements_by_array"
     if array.include?("Write a Blog Post")
       blog_star_id = Star.where(:name => "Write a Blog Post").first.id
       array.each do |string|
