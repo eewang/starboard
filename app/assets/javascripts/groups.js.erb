@@ -77,10 +77,14 @@ $(function () {
                 y: 100,
                 borderWidth: 0
             },
-            series: [{
-                name: 'Someone',
-                data: [<%= ChartHelper.build_achievement_data(User.first) %>]
-            }]
+            series: [
+            <% User.includes.each do |user| %>
+            {
+                name: '<%= user.name %>',
+                data: [<%= ChartHelper.build_achievement_data(user) %>]
+            },
+            <% end %>
+            ]
         });
     });
 
