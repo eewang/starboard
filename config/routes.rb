@@ -4,6 +4,7 @@ Starboard::Application.routes.draw do
 
   resources :groups
 
+  get '/groups/:id/stats' => 'groups#stats', :as => 'stats'
   get '/groups/:id/leaderboard' => 'groups#leaderboard', :as => 'leaderboard'
   get '/groups/:id/activity' => 'groups#activity', :as => 'activity'
   get '/groups/:id/combined' => 'groups#combined', :as => 'combined'

@@ -129,4 +129,9 @@ class GroupsController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def stats
+    @group = Group.where(:id => params[:id]).first
+
+  end
 end
