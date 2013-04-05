@@ -11,7 +11,7 @@ $(function(){
     } else {
       $.get('/achievements/new', function(html, status){      
         $("body").append(html);
-        $('#achievement_new_group_select').modal('toggle');
+        $('#achievement_new_group_select').modal('toggle')
         // when the select box is changed
           // fire another request to the server to get HTML that
           // will allow you to give a new star to that group

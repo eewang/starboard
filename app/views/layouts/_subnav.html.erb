@@ -1,7 +1,9 @@
 <div class="subnav hidden-phone">
   <div class="container">
     <div class="row">
-      <div class="give-star span3"><a href="#myModal" role="button" data-toggle="modal" class="give-star-btn btn">Give a Star</a></div>
+      <div class="give-star span2">
+        <%= link_to 'Give a Star', '#give-star', :role => 'button', :class => 'give-star-btn btn', :data => {:group => current_group_id} %>
+      </div>
       <div class="section-title span3"><i class="icon-th-large"></i>  <%= yield :section_title %></div>
       <div class="section-title span3">
         <% if current_user %>
