@@ -10,8 +10,6 @@ Starboard::Application.routes.draw do
 
   mount Sidekiq::Web, at: '/sidekiq'
 
-  post '/:somewhereonsite/:id' => 'achievements#give_achievement', :as => 'give_achievement'
-
   resources :invitations
 
   get '/signup/:invitation_token', :controller => 'users', :action => 'new', as: 'join'
