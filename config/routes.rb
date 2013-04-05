@@ -3,10 +3,16 @@ Starboard::Application.routes.draw do
   require 'sidekiq/web'
 
   resources :groups
+  # Group views
+  ['leaderboard', 'activity', 'combined'].each do |service|
+    get "/groups/:id/#{ service }" => "groups##{ service }", :as => service
+  end
 
-  get '/groups/:id/leaderboard' => 'groups#leaderboard', :as => 'leaderboard'
-  get '/groups/:id/activity' => 'groups#activity', :as => 'activity'
-  get '/groups/:id/combined' => 'groups#combined', :as => 'combined'
+  resources :users
+  # User star views
+  ['blog', 'codeschool', 'github', 'handraise', 'student', 'teacher', 'treehouse'].each do |service|
+    get "/users/:id/#{ service }" => "users##{ service }", :as => service
+  end
 
   mount Sidekiq::Web, at: '/sidekiq'
 
@@ -43,7 +49,6 @@ Starboard::Application.routes.draw do
   
   resources :sessions
 
-  resources :users
 
   resources :group_users
 

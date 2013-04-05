@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-
   def instantiate_achievement
     @achievement = Achievement.new
   end

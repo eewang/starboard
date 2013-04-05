@@ -1,46 +1,46 @@
 <div>
   <h3>Handraise<h3>
-  <%= render :partial => "achievements/handraise", :collection => @handraise_stars, :as => "handraise_star"%>
+  <%= render :partial => "achievements/handraise", :collection => @user.handraise_stars, :as => "handraise_star"%>
 </div>
 
 <hr>
 
 <div>
   <h3>Teacher's Pet<h3>
-  <%= render :partial => "achievements/teacher", :collection => @stars_from_teacher, :as => "teacher_star"%>
+  <%= render :partial => "achievements/teacher", :collection => @user.teacher_stars, :as => "teacher_star"%>
 </div>
 
 <hr>
 
 <div>
   <h3>Github<h3>
-  <%= render :partial => "achievements/github", :collection => @github_stars, :as => "github_star"%>
+  <%= render :partial => "achievements/github", :collection => @user.github_stars, :as => "github_star"%>
 </div>
 
 <hr>
 
 <div>
   <h3>Blog<h3>
-  <%= render :partial => "achievements/blog", :collection => @blog_stars, :as => "blog_star" %>
+  <%= render :partial => "achievements/blog", :collection => @user.blog_stars, :as => "blog_star" %>
 </div>
 
 <hr>
 
 <div>
-  <h3>Gifted<h3>
-  <%= render :partial => "achievements/gifted", :collection => @gifted_stars, :as => "gifted_star" %>
+  <h3>Student<h3>
+  <%= render :partial => "achievements/student", :collection => @user.student_stars, :as => "student_star" %>
 </div>
 
 <hr>
 
 <div>
   <h3>Treehouse</h3>
-  <%= render :partial => "achievements/treehouse", :collection => @treehouse_stars, :as => "treehouse_star" %>
+  <%= render :partial => "achievements/treehouse", :collection => @user.treehouse_stars, :as => "treehouse_star" %>
 </div>
 
 <hr>
 
 <div>
   <h3>Codeschool</h3>
-  <%= render :partial => "achievements/codeschool", :collection => @codeschool_stars, :as => "codeschool_star" %>
+  <%= render :partial => "achievements/codeschool", :collection => @user.codeschool_stars, :as => "codeschool_star" %>
 </div>

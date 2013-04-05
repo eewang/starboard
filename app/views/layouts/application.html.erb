@@ -20,7 +20,9 @@
 
     <%= render :partial => 'layouts/navbar' %>
 
-    <%= render :partial => 'layouts/subnav' %>
+    <% if current_user %>
+      <%= render :partial => 'layouts/subnav' %>
+    <% end %>
   
     <div class="page container">
       <div class="row">

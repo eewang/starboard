@@ -15,7 +15,7 @@ class GroupsController < ApplicationController
         end
       end
     else
-      redirect_to '/users/new'
+      redirect_to '/login'
     end
   end
 
@@ -28,8 +28,8 @@ class GroupsController < ApplicationController
   def self.group_views(*views)
     views.each do |view|
       define_method "#{view}" do
-        @active_nav = view.to_s
         if current_user
+          @active_nav = view.to_s
           @group = Group.find(params[:id])
           @users = User.joins(:groups).where("group_id = #{params[:id]}").sort_by { |user| user.achievements.count }.reverse
 
@@ -37,7 +37,7 @@ class GroupsController < ApplicationController
             format.html # leaderboard.html.erb
           end
         else
-          flash[:notice] = "Could not create group, please try again"
+          flash[:notice] = "You need to login."
           redirect_to root_path
         end
       end
