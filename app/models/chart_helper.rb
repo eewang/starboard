@@ -56,16 +56,23 @@ class ChartHelper
       "#{timestamp.month}/#{timestamp.day}"
     end
 
-    final_answer = []
+    star_array = []
     count_hash.each do |key, value|
       if compare_array.include? key
-        final_answer << value
+        star_array << value
       end
     end
-    if final_answer.size <= 1
-      final_answer.join.to_s
+    if star_array.size <= 1
+      format_final_answer(star_array.join.to_s)
     else
-      final_answer.join(', ')
+      format_final_answer(star_array.join(', '))
     end
+  end
+
+  def self.format_final_answer(star_array)
+    while star_array.size <15
+      star_array.unshift(0)
+    end
+    star_array
   end
 end
