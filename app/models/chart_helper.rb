@@ -62,6 +62,10 @@ class ChartHelper
         final_answer << value
       end
     end
-    final_answer
+    if final_answer.size <= 1
+      final_answer.join.to_s
+    else
+      final_answer.join(', ')
+    end
   end
 end
