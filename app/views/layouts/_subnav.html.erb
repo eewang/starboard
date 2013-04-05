@@ -1,8 +1,15 @@
 <div class="subnav hidden-phone">
-  <div class="container">
+  <div class="container">users
     <div class="row">
       <div class="give-star span4"><a href="#myModal" role="button" data-toggle="modal" class="give-star-btn btn">Give a Star</a></div>
-      <div class="section-title span8"><i class="icon-th-large"></i>  <%= yield :section_title %></div>
+      <div class="section-title span4"><i class="icon-th-large"></i>  <%= yield :section_title %></div>
+      <div class="section-title span4">
+        <% if current_user %>
+        <% current_user.groups.each do |group| %>
+            <%=link_to group.name, leaderboard_path(group) %> 
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
