@@ -1,10 +1,9 @@
 class GroupsController < ApplicationController
-
   before_filter :instantiate_achievement
+
   # GET /groups
   # GET /groups.json
   def index
-
     if current_user
       @groups = Group.all
       if @groups.count == 1
@@ -23,20 +22,29 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
-    if current_user
-      @group = Group.find(params[:id])
-      # @users_test = User.where( GroupUser.where(:group_id => params[:id])
-      @users = User.joins(:groups).where("group_id = #{params[:id]}").sort_by { |user| user.achievements.count }.reverse
+    redirect_to "/groups/#{params[:id]}/leaderboard"
+  end
 
-      respond_to do |format|
-        format.html # show.html.erb
-        format.json { render json: @group }
+  def self.group_views(*views)
+    views.each do |view|
+      define_method "#{view}" do
+        @active_nav = view.to_s
+        if current_user
+          @group = Group.find(params[:id])
+          @users = User.joins(:groups).where("group_id = #{params[:id]}").sort_by { |user| user.achievements.count }.reverse
+
+          respond_to do |format|
+            format.html # leaderboard.html.erb
+          end
+        else
+          flash[:notice] = "Could not create group, please try again"
+          redirect_to root_path
+        end
       end
-    else
-      flash[:notice] = "Could not create group, please try again"
-      redirect_to root_path
     end
   end
+
+  group_views :leaderboard, :activity, :combined
 
   # GET /groups/new
   # GET /groups/new.json
@@ -112,7 +120,7 @@ class GroupsController < ApplicationController
   # API Stuff
   def get_recent_achievements
     if current_user
-      @group = Group.where(params[:groupid]).first
+      @group = Group.find(params[:groupid])
       @achievements = @group.get_recent_achievements(params[:latest])
       respond_to do |format|
         format.json { render json: @achievements }

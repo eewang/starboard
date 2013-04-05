@@ -123,7 +123,7 @@ a {
       }
       li.head {
         background-color: rgba(255, 255, 255, 0.2);
-        a {
+        a.see-all {
           font-size: 0.9em;
           float: right;
           color: #ffff6e;
@@ -132,6 +132,9 @@ a {
       ul {
         list-style: inherit;
         margin: 0;
+        a {
+          color: #fff;
+        }
         li.view-nav {
           span.count {
             float: right;

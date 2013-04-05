@@ -4,6 +4,10 @@ Starboard::Application.routes.draw do
 
   resources :groups
 
+  get '/groups/:id/leaderboard' => 'groups#leaderboard', :as => 'leaderboard'
+  get '/groups/:id/activity' => 'groups#activity', :as => 'activity'
+  get '/groups/:id/combined' => 'groups#combined', :as => 'combined'
+
   mount Sidekiq::Web, at: '/sidekiq'
 
   post '/:somewhereonsite/:id' => 'achievements#give_achievement', :as => 'give_achievement'

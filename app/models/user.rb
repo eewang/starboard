@@ -110,24 +110,36 @@ class User < ActiveRecord::Base
                                    :sender_id => self.id })
   end
 
-  def course_stars
-    self.stars.select { |star| star.source.name == 'Treehouse' || star.source.name == 'Codeschool' }.count
-  end  
-
-  def codeschool_stars
-    self.stars.select { |star| star.source.name == 'Codeschool' }.count
-  end  
-
-  def treehouse_stars
-    self.stars.select { |star| star.source.name == 'Treehouse' }.count
-  end
-
   def blog_stars
     self.stars.select { |star| star.source.name == 'Blog' }.count
   end
 
+  def codeschool_stars
+    self.stars.select { |star| star.source.name == 'Codeschool' }.count
+  end
+
+  def course_stars
+    self.stars.select { |star| star.source.name == 'Treehouse' || star.source.name == 'Codeschool' }.count
+  end
+
   def github_stars
     self.stars.select { |star| star.source.name == 'Github' }.count
+  end
+
+  def handraise_stars
+    self.stars.select { |star| star.source.name == 'Handraise' }.count
+  end
+
+  def student_stars
+    self.stars.select { |star| star.source.name == 'Student' }.count
+  end
+
+  def teacher_stars
+    self.stars.select { |star| star.source.name == 'Teacher' }.count
+  end
+
+  def treehouse_stars
+    self.stars.select { |star| star.source.name == 'Treehouse' }.count
   end
 
   def find_group(params)
