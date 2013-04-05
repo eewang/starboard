@@ -47,12 +47,12 @@
           </div>
         </div>
 
-    <% if current_user %>
-          <div class="subnav">
+        <% if current_user %>
+          <div class="subnav hidden-phone">
             <div class="container">
               <div class="row">
-                <div class="give-star span3"><a href="#myModal" role="button" data-toggle="modal" class="give-star-btn btn">Give a Star</a></div>
-                <div class="section-title span8 hidden-phone"><i class="icon-th-large"></i>  Flatiron 001</div>
+                <div class="give-star span4"><a href="#" class="give-star-btn btn">Give a Star</a></div>
+                <div class="section-title span8"><i class="icon-th-large"></i>  Flatiron 001</div>
               </div>
             </div>
           </div>
@@ -66,29 +66,27 @@
             <h3 id="myModalLabel">Starification</h3>
           </div>       
           <div class="modal-body">
-              <%= form_for @achievement do |f| %>
-                <p>Who would you like to starify?</p>
-                <input type="text" class="span3" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source="<%= @group.users.collect { |u| u.name } %>" name="user_name">
-                 
-                <div class="field">
-                  <%= f.label "Enter A Message!"%><br />
-                  <%= f.text_field :message %>
-                </div>
-                <div class="modal-footer">
-                  <%= submit_tag ('Submit')  %>
-              <% end %>
-                </div>    
-      <% end %>
+            <%= form_for @achievement do |f| %>
+              <p>Who would you like to starify?</p>
+              <input type="text" class="span4" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source="<%= @group.users.collect { |u| u.name } %>" name="user_name">
+               
+              <div class="field">
+                <%= f.label "Enter A Message!"%><br />
+                <%= f.text_field :message %>
+              </div>
           </div>
-          
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-            <button class="btn btn-primary">Save changes</button>
-          
+              <div class="modal-footer">
+                <%= submit_tag ('Submit')  %>
+              </div>    
+              <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+              <button class="btn btn-primary">Save changes</button>
+            <% end %>
         </div>
+      <% end %>
         
         <div class="page container">
           <div class="row">
-            <div class="sidebar span3">
+            <div class="sidebar span4">
               <div class="profile-pic">
                 <% if current_user %>
                   <%= image_tag current_user.safe_profile_pic %>
@@ -102,8 +100,8 @@
                     <li class="view-nav"><i class="icon-reorder"></i> Treehouse <span class="count"><%= current_user.treehouse_stars %></span></li>
                   </ul>
                   <% if @group %>
-                    <li class="head"><%= @group.name %> <%= link_to 'See All', groups_path %></li>
-                    <ul>
+                    <li class="head hidden-phone"><%= @group.name %> <%= link_to 'See All', groups_path %></li>
+                    <ul class="hidden-phone">
                       <li class="view-nav"><i class="icon-tasks"></i> Combined</li>
                       <li class="view-nav active"><i class="icon-th-large"></i> Leaderboard</li>
                       <li class="view-nav"><i class="icon-reorder"></i> Activty Feed</li>
@@ -117,6 +115,7 @@
                       <% end %>
                     </ul>
                   <% end %>
+                <% end %>
                 <% end %>
               </ul>
             </div>
