@@ -54,7 +54,7 @@ $(function () {
                 x: -20
             },
             xAxis: {
-                categories: "<%= ChartHelper.build_x_axis(:as_string => true) %>"
+                categories: <%= ChartHelper.build_x_axis(:as_string => true).split(', ') %>
             },
             yAxis: {
                 title: {
