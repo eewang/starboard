@@ -1,0 +1,23 @@
+<% if @group %>
+  <div id="refillStarModal" class="modal hide fade" tabindex="-1" role="dialog" 
+          aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel">Refill Star Bank!</h3>
+    </div>       
+    <div class="modal-body">
+    <div class="field">
+      <label for="star-receiver" >Give #{user.name} A Star! </label>
+      <input type="text" id="star-receiver" class="span3" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source="" name="user_name">
+      <%= form_tag(refill_star_bank_path(@user), :method => 'post') do %>
+        <p>Add <%= number_field_tag 'star_bank', :min => 1 %> stars to <%= @user.name %>'s Star Bank!</p>
+      <% end %>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+      <button class="btn btn-primary">Save changes</button>
+      <%= submit_tag ('Submit')  %>
+    </div>    
+  <% end %>
+</div>  
+</div> 
