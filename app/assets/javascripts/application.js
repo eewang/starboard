@@ -18,26 +18,3 @@
 //= require angular.min
 //= require angle-up
 //= require_tree ./angular
-
-$(function() {
-  new Highcharts.Chart({
-    chart: {
-      renderTo: "user_chart"
-
-    },
-    title: {
-      text: "users"
-    },
-    xAxis: {
-      type: "time"
-    },
-    yAxis: {
-      title: {
-        text: "stars"
-      }
-    },
-    series: [{
-      data: [1, 2, 5, 7, 3]
-    }]
-  });
-});

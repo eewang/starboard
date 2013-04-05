@@ -62,7 +62,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem 'whenever', :require => false
 
-gem 'sinatra', require: false
+gem 'sinatra', :require => false
 gem 'slim'
 
 # gem 'mechanize'

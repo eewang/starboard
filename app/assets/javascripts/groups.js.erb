@@ -1,7 +1,12 @@
 $('.user .foot .online-courses, .user .foot .github, .user .foot .blog-posts').tooltip({delay: { show: 500, hide: 100 }});
 
+var series_interval = <%= 2 %>;
+
+
 $(function() {
   new Highcharts.Chart({
+
+
     chart: {
       renderTo: "user_chart"
 
@@ -18,8 +23,13 @@ $(function() {
       }
     },
     series: [{
-      pointInterval: <%= Time.now %>,
-      data: [1, 2, 5, 7, 3]
+      pointInterval: series_interval,
+      name: 'one',
+      data: [1, 0, 4, 5, 6, 7]
+    }, {
+      pointInterval: series_interval,
+      name: 'two',
+      data: [9, 4, 5, 0, 0, 7]
     }]
   });
 });
