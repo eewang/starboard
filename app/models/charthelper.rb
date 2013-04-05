@@ -5,7 +5,7 @@ class ChartHelper
     x_categories = x_categories.each_with_index.collect do |day, index|
       day = (Time.now  - index.day)
     end
-    x_categories.reverse
+    x_categories.reverse.join(', ')
   end
 
 end
