@@ -33,19 +33,19 @@ class ChartHelper
 
   # Count achievements for a user by day
   def self.build_achievement_data(user)
-    day_array = user.achievements.includes.collect do |achievement|
+    achievements_array = user.achievements.includes.collect do |achievement|
       "#{achievement.created_at.month}/#{achievement.created_at.day}"
     end
 
-    count_hash = count_achievements_by_day(day_array)
+    count_hash = count_achievements_by_day(achievements_array)
     timestamp_array = ChartHelper.build_x_axis(:as_timestamps => true)
 
     compare_days(count_hash, timestamp_array)
   end
 
-  def self.count_achievements_by_day(day_array)
+  def self.count_achievements_by_day(achievements_array)
     hash = Hash.new(0)
-    day_array.each do |day|
+    achievements_array.each do |day|
       hash[day] += 1
     end
     hash
