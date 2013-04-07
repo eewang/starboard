@@ -4,7 +4,7 @@ Starboard::Application.routes.draw do
 
   resources :groups
   # Group views
-  ['leaderboard', 'activity', 'combined'].each do |service|
+  ['stats', 'activity', 'combined'].each do |service|
     get "/groups/:id/#{ service }" => "groups##{ service }", :as => service
   end
 

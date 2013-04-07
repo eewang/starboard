@@ -130,8 +130,12 @@ class GroupsController < ApplicationController
     end
   end
 
+  # GET /groups/1/stats
   def stats
-    @group = Group.where(:id => params[:id]).first
-
+    # Right now, the group stats shows all user's achievements.
+    # Once we have some nice groupings, we can limit this view to
+      # whatever group you are declaring in the route.
+      
+    # @group = Group.where(:id => params[:id]).first
   end
 end
