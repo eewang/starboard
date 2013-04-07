@@ -11,9 +11,9 @@
           <div class="clearfix"></div>
         </div>
         <div class="foot">
-          <div class="count online-courses" data-toggle="tooltip" data-placement="top" title data-original-title="Courses"><i class="icon-desktop"></i> <span><%= user.course_stars %></span></div>
-          <div class="count github" data-toggle="tooltip" data-placement="top" title data-original-title="Github"><i class="icon-github"></i> <span><%= user.github_stars %></span></div>
-          <div class="count blog-posts" data-toggle="tooltip" data-placement="top" title data-original-title="Blog Posts"><i class="icon-book"></i> <span><%= user.blog_stars %></span></div>
+          <div class="count online-courses" data-toggle="tooltip" data-placement="top" title data-original-title="Courses"><i class="icon-desktop"></i> <span><%= user.course_stars.count %></span></div>
+          <div class="count github" data-toggle="tooltip" data-placement="top" title data-original-title="Github"><i class="icon-github"></i> <span><%= user.github_stars.count %></span></div>
+          <div class="count blog-posts" data-toggle="tooltip" data-placement="top" title data-original-title="Blog Posts"><i class="icon-book"></i> <span><%= user.blog_stars.count %></span></div>
         </div>
       </a>
     <% end %>

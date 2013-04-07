@@ -6,34 +6,19 @@
   <%= image_tag @user.safe_profile_pic %>
 <% end %>
 
-<% content_for :blog_count do %>
-  <%= @user.blog_stars %>
+<% @star_types.each do |star| %>
+  <% content_for ("#{ star }_count").to_sym do %>
+    <%= @user.send("#{ star }_stars").count unless star == 'show' %>
+  <% end %>
 <% end %>
 
-<% content_for :codeschool_count do %>
-  <%= @user.codeschool_stars %>
-<% end %>
-
-<% content_for :github_count do %>
-  <%= @user.github_stars %>
-<% end %>
-
-<% content_for :handraise_count do %>
-  <%= @user.handraise_stars %>
-<% end %>
-
-<% content_for :student_count do %>
-  <%= @user.student_stars %>
-<% end %>
-
-<% content_for :teacher_count do %>
-  <%= @user.teacher_stars %>
-<% end %>
-
-<% content_for :treehouse_count do %>
-  <%= @user.treehouse_stars %>
+<% @star_types.each do |star| %>
+  <% content_for ("#{ star }_link").to_sym do %>
+    <%= link_to "#{ star.capitalize }", "/users/#{ @user.id }/#{ star }" %>
+  <% end %>
 <% end %>
 
 <div class="span8 hidden-phone">
   <%= render :partial => "achievements/achievement" %>
+
 </div>
