@@ -54,7 +54,7 @@ $(function () {
                 x: -20
             },
             xAxis: {
-                categories: <%= ChartHelper.build_x_axis(:as_string => true).split(', ') %>
+                categories: <%= ChartHelper.build_x_axis %>
             },
             yAxis: {
                 title: {
@@ -81,7 +81,7 @@ $(function () {
             <% User.includes.each do |user| %>
             {
                 name: '<%= user.name %>',
-                data: [<%= ChartHelper.build_achievement_data(user) %>]
+                data: <%= ChartHelper.build_achievements_for(user) %>
             },
             <% end %>
             ]
