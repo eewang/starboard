@@ -5,23 +5,21 @@ class ChartHelper
 
   # Get an array of formatted days ("3/23")
   def self.build_x_axis
-    days = Array.new(15).each_with_index.collect do |day, index|
-      day = (Time.now  - index.day)
+    dates = Array.new(15).each_with_index.collect do |date, index|
+      date = (Time.now  - index.day)
     end
-    days = days.reverse
+    dates = dates.reverse
 
-    format_x_axis(days)
+    format_x_axis(dates)
   end
 
-  def self.format_x_axis(timestamp_array)
-    timestamp_array.collect! do |timestamp|
-      "#{timestamp.month}/#{timestamp.day}"
+  def self.format_x_axis(dates)
+    dates.collect! do |date|
+      "#{date.month}/#{date.day}"
     end
-    # timestamp_array.join(', ')
   end
 
-
-  # Count achievements for a user by day
+  # Count cumulative achievements for a user by day
   def self.build_achievements_for(user)
     achievements_array = user.achievements.includes.where("created_at > ?", Time.now - 15.days)
     achievements_array.collect! do |achievement|
@@ -30,8 +28,6 @@ class ChartHelper
 
     x_axis_days_array = ChartHelper.build_x_axis
     count_hash = count_achievements_by_day(x_axis_days_array, achievements_array)
-
-    # compare_days(count_hash, x_axis_days_array)
   end
 
   def self.count_achievements_by_day(x_axis_days_array, achievements_array)
@@ -54,32 +50,4 @@ class ChartHelper
     sum = 0
     achievements_array.collect { |int| sum += int }
   end
-
-  def self.testit
-    self.build_achievements_for(User.find(4))
-  end
-#   def self.compare_days(count_hash, x_axis_days_array)
-#     compare_array = x_axis_days_array.collect do |timestamp|
-#       "#{timestamp.month}/#{timestamp.day}"
-#     end
-
-#     star_array = []
-#     count_hash.each do |key, value|
-#       if compare_array.include? key
-#         star_array << value
-#       end
-#     end
-#     if star_array.size <= 1
-#       format_final_answer(star_array.join.to_s)
-#     else
-#       format_final_answer(star_array.join(', '))
-#     end
-#   end
-
-#   def self.format_final_answer(star_array)
-#     while star_array.size <15
-#       star_array.unshift(0)
-#     end
-#     star_array
-#   end
 end
