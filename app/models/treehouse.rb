@@ -6,15 +6,16 @@ class Treehouse
 
   @@dictionary = {
       "Website Basics" => ["Website Basics"],
+      "Technology Foundations" => ['Graphic Basics'],
       "Aesthetic Foundations" => ["Elements", "Principles", "Color Theory"],
-      "HTML" => ["Introduction", "Text", "List", "Links", "Objects", "Tables", "Forms"],
-      "CSS Foundations" => ["Introduction", "Selectors", "Datatypes", "Text", "Box Model", "Page Layout", "Printing", "Framework Foundations"],
-      "CSS3" => ["Selectors", "Typography", "Webfonts", "Borders", "Gradients", "Backgrounds", "Transitions", "Transforms", "Animation", "Multi-Column Layouts", "Media Queries"],
+      "HTML" => ["Introduction", "Text", "Lists", "Links", "Objects", "Tables", "Forms"],
+      "CSS Foundations" => ["Introduction", "Selectors", "Data Types", "Text", "Box Model", "Page Layout", "Printing", "Framework Foundations"],
+      "CSS3" => ["Selectors", "Typography", "Web Fonts", "Borders", "Gradients", "Backgrounds", "Transitions", "Transforms", "Animation", "Multi-Column Layouts", "Media Queries"],
       "Build a Responsive Website" => ["Introduction to Response Web Design", "Fluid Foundation", "Adaptive Design", "Responsive Design", "Advanced Techniques"],
-      "Introduction to Programming" => ["Basics", "Control Structures", "Objects and Arrays", "Advanced Techniques"],
+      "Introduction to Programming" => ["Basics", "Control Structures", "Objects and Arrays", "Functions"],
       "JavaScript Foundations" => ["Introduction Variables", "JavaScript Strings", "JavaScript Numbers", "JavaScript Arrays", "JavaScript Functions", "JavaScript Objects"],
-      "Ruby Foundations" => ["Ruby Basics", "Objects, Classes, and Variables", "Ruby Strings", "Ruby Numbers", "Ruby Arrays", "Ruby Hashes", "Ruby Methods", "Ruby Loops", "Ruby Blocks", "Ruby Procs and Lambdas", "Ruby Modules", "Ruby Core", "Standard Library", "Ruby Testing"],
-      "Build a Simple Ruby on Rails Application" => ["Getting Started with Rails", "Frontend Development", "Creating an Authentication System", "Customizing Forms", "Writing Tests", "Designing URLs", "Testing the Whole App", "Building the Profile Page", "Deploying"]
+      "Ruby Foundations" => ["Ruby Basics", "Objects, Classes, and Variables", "Ruby Strings", "Ruby Numbers", "Ruby Arrays", "Ruby Hashes", "Ruby Methods", "Ruby Loops", "Ruby Blocks", "Ruby Procs & Lambdas", "Ruby Modules", "Ruby Core", "Standard Library", "Ruby Testing"],
+      "Build a Simple Ruby on Rails Application" => ["Getting Started with Rails", "Rails Frontend Development", "Ruby on Rails Authentication", "Customizing Ruby on Rails Forms", "Writing Tests", "Rails Routing", "Testing the Whole App", "Building the Profile Page", "Rails Deployment"]
   }
 
   def get_data(username)
