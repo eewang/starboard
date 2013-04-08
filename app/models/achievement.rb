@@ -1,5 +1,5 @@
 class Achievement < ActiveRecord::Base
-  attr_accessible :star_id, :user_id, :sender_id, :sender, :message, :star
+  attr_accessible :star_id, :user_id, :sender_id, :sender, :message, :star, :created_at
 
   belongs_to :user
   belongs_to :star
