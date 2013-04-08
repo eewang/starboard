@@ -3,7 +3,7 @@ class Achievement < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :star
-
+  
   # def self.create_from_user(sender_id, receiver_id, message)
   #   sender = User.find(sender_id)
   #   receiver = User.find(receiver_id)

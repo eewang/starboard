@@ -7,7 +7,7 @@ class AchievementsController < ApplicationController
       @users = @group.users
     end
 
-    source_id = Source.where(:name => "Teacher").first.id
+    source_id = Source.teacher.id
     @teacher_stars = Star.where(:source_id => source_id)
     render :layout => false
   end
@@ -16,13 +16,14 @@ class AchievementsController < ApplicationController
     @achievement = Achievement.new(params[:achievement])
 
     if params[:star_name]
-      star_id = Star.first_or_create(:name => params[:star_name]).id
+      star_id = Source.teacher.stars.where(:name => params[:star_name]).first_or_create.id
+      @achievement.star_id = Source.teacher.id
     else
       star_id = Star.where(:name => "Gifted Star").first.id
+      @achievement.star_id = star_id
     end
 
     @achievement.sender_id = current_user.id
-    @achievement.star_id = star_id
     @achievement.user_id = User.where(:name => params[:user_name]).first.id
 
     @achievement.save
