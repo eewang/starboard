@@ -26,7 +26,7 @@
           <span class="count"><%= content_for?(:blog_count) ? yield(:blog_count) : current_user.blog_stars.count %></span>
         </li>
         <li class="view-nav <%= 'active' if @active_nav == 'codeschool' %>">
-          <i class="icon-reorder"></i>
+          <i class="icon-columns"></i>
           <%= content_for?(:codeschool_link) ? yield(:codeschool_link) : link_to('Codeschool', "/users/#{current_user.id}/codeschool") %>
           <span class="count"><%= content_for?(:codeschool_count) ? yield(:codeschool_count) : current_user.codeschool_stars.count %></span>
         </li>
@@ -36,22 +36,22 @@
           <span class="count"><%= content_for?(:github_count) ? yield(:github_count) : current_user.github_stars.count %></span>
         </li>
         <li class="view-nav <%= 'active' if @active_nav == 'handraise' %>">
-          <i class="icon-github"></i>
+          <i class="icon-hand-up"></i>
           <%= content_for?(:handraise_link) ? yield(:handraise_link) : link_to('Handraise', "/users/#{current_user.id}/handraise") %>
-          <span class="count"><%= content_for?(:handraise_count) ? yield(:handraise_count) : current_user.github_stars.count %></span>
+          <span class="count"><%= content_for?(:handraise_count) ? yield(:handraise_count) : current_user.handraise_stars.count %></span>
         </li>
         <li class="view-nav <%= 'active' if @active_nav == 'student' %>">
-          <i class="icon-github"></i>
+          <i class="icon-beer"></i>
           <%= content_for?(:student_link) ? yield(:student_link) : link_to('Student', "/users/#{current_user.id}/student") %> 
-          <span class="count"><%= content_for?(:student_count) ? yield(:student_count) : current_user.github_stars.count %></span>
+          <span class="count"><%= content_for?(:student_count) ? yield(:student_count) : current_user.student_stars.count %></span>
         </li>
         <li class="view-nav <%= 'active' if @active_nav == 'teacher' %>">
-          <i class="icon-github"></i>
+          <i class="icon-coffee"></i>
           <%= content_for?(:teacher_link) ? yield(:teacher_link) : link_to('Teacher', "/users/#{current_user.id}/teacher") %>
-          <span class="count"><%= content_for?(:teacher_count) ? yield(:teacher_count) : current_user.github_stars.count %></span>
+          <span class="count"><%= content_for?(:teacher_count) ? yield(:teacher_count) : current_user.teacher_stars.count %></span>
         </li>
         <li class="view-nav <%= 'active' if @active_nav == 'treehouse' %>">
-          <i class="icon-reorder"></i>
+          <i class="icon-leaf"></i>
           <%= content_for?(:treehouse_link) ? yield(:treehouse_link) : link_to('Treehouse', "/users/#{current_user.id}/treehouse") %> 
           <span class="count"><%= content_for?(:treehouse_count) ? yield(:treehouse_count) : current_user.treehouse_stars.count %></span>
         </li>

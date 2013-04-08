@@ -31,20 +31,19 @@ class User < ActiveRecord::Base
   end
 
   def check_achievement_by_string(string, source_string)
-      source_id = Source.where(:name => source_string).first.id
-      star = Star.where(:name => string, :source_id => source_id).first_or_create
-    starids = self.stars.collect { |a| a.id }
-    self.achievements.create(:star_id => star.id)
+    source = Source.where(:name => source_string).first
+    star = Star.where(:name => string, :source_id => source.id).first_or_create
+    if source.name == 'Blog'
+      self.achievements.create(:star_id => star.id)
+    else
+      unless self.star_ids.include? star.id
+        self.achievements.create(:star_id => star.id)
+      end
+    end
   end
 
   def check_achievements_by_array(array, source_string)
-    puts "check_achievements_by_array"
-    if array.include?("Write a Blog Post")
-      blog_star_id = Star.where(:name => "Write a Blog Post").first.id
-      array.each do |string|
-        self.achievements.create(:star_id => star.id)
-      end
-    else
+    if array
       array.each do |item|
         self.check_achievement_by_string(item, source_string)
       end
