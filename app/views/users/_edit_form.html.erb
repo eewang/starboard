@@ -1,3 +1,5 @@
+<h3>Edit User Form</h3>
+
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -12,52 +14,32 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email %>
-  </div>
-
-  <div class="field">
     <%= f.label :treehouse_username %><br />
     <%= f.text_field :treehouse_username %>
   </div>
 
-   <div class="field">
+  <div class="field">
     <%= f.label :codeschool_username %><br />
     <%= f.text_field :codeschool_username %>
   </div>
 
-   <div class="field">
+  <div class="field">
     <%= f.label :github_username %><br />
     <%= f.text_field :github_username %>
   </div>
 
-   <div class="field">
+  <div class="field">
     <%= f.label :blog %><br />
     <%= f.text_field :blog_url %>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
+    <%= f.label :is_teacher %>
+    <%= f.check_box :is_teacher %>
   </div>
 
   <div class="actions">
     <%= f.submit %>
   </div>
 
-
-  <%= hidden_field_tag 'invitation_token', params[:invitation_token] %> 
-
 <% end %>
-
-
