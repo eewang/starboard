@@ -1,10 +1,8 @@
 module ApplicationHelper
 
-  def flash_class(level)
-    case level
-    when :notice then "info"
-    when :error then "error"
-    when :alert then "warning"
-    end
+  def js_flash_notice(text)
+    j(content_tag(:p, :class => 'alert alert-info') do
+      text
+    end)
   end
 end
