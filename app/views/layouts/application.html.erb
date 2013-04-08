@@ -24,15 +24,14 @@
     <% if current_user %>
       <%= render :partial => 'layouts/subnav' %>
     <% end %>
-    
-    <div class="flash">
-    </div>
 
     <div class="page container">
       <div class="row">
         <%= render :partial => 'layouts/sidebar' %>
         <div class="content">
           <%= bootstrap_flash %>
+          <div class="flash">
+          </div>
           <%= yield %>
         </div>
       </div>
