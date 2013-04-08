@@ -21,3 +21,5 @@ config/initializers/octokit.rb
 config/database.yml
 
 dump.rdb
+
+*.orig
