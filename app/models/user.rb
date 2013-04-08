@@ -133,6 +133,13 @@ class User < ActiveRecord::Base
     Group.where(:name => params[:group_name])
   end
 
+  def self.update_all_users
+    self.find_each do |user|
+      user.get_external_data
+      user.save
+    end
+  end
+
   def as_json(option={})
     {
       :id             => self.id,

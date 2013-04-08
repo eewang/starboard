@@ -1,3 +1,3 @@
 every 5.minutes do
-  rake "achievements:update"
+  rake "User.update_all_users"
 end
