@@ -17,3 +17,5 @@
     <%= link_to "#{ star.capitalize }", "/users/#{ @user.id }/#{ star }" %>
   <% end %>
 <% end %>
+
+<%= render :partial => 'achievements/codeschool', :collection => @user.codeschool_stars, :as => "codeschool_star"  %>

@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require highcharts
 //= require twitter/bootstrap
 //= require_tree .
 //= require angular.min

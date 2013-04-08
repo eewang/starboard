@@ -29,25 +29,13 @@ class User < ActiveRecord::Base
       end
     end
   end
-  
-  
- 
+
   def check_achievement_by_string(string, source_string)
       source_id = Source.where(:name => source_string).first.id
       star = Star.where(:name => string, :source_id => source_id).first_or_create
     starids = self.stars.collect { |a| a.id }
     self.achievements.create(:star_id => star.id)
   end
-
-
-  # def check_achievement_by_string(string, source_string)
-  #   source_id = Source.where(:name => source_string).first.id
-  #   star = Star.where(:name => string, :source_id => source_id).first_or_create
-  #   if !self.star_ids.include?(star.id) || star.name = "Write a Blog Post"
-  #     self.achievements.build(:star_id => star.id)
-  #   end
-  # end
-
 
   def check_achievements_by_array(array, source_string)
     puts "check_achievements_by_array"
@@ -111,35 +99,35 @@ class User < ActiveRecord::Base
   end
 
   def blog_stars
-    self.stars.select { |star| star.source.name == 'Blog' }.count
+    self.stars.select { |star| star.source.name == 'Blog' }
   end
 
   def codeschool_stars
-    self.stars.select { |star| star.source.name == 'Codeschool' }.count
+    self.stars.select { |star| star.source.name == 'Codeschool' }
   end
 
   def course_stars
-    self.stars.select { |star| star.source.name == 'Treehouse' || star.source.name == 'Codeschool' }.count
+    self.stars.select { |star| star.source.name == 'Treehouse' || star.source.name == 'Codeschool' }
   end
 
   def github_stars
-    self.stars.select { |star| star.source.name == 'Github' }.count
+    self.stars.select { |star| star.source.name == 'Github' }
   end
 
   def handraise_stars
-    self.stars.select { |star| star.source.name == 'Handraise' }.count
+    self.stars.select { |star| star.source.name == 'Handraise' }
   end
 
   def student_stars
-    self.stars.select { |star| star.source.name == 'Student' }.count
+    self.stars.select { |star| star.source.name == 'Student' }
   end
 
   def teacher_stars
-    self.stars.select { |star| star.source.name == 'Teacher' }.count
+    self.stars.select { |star| star.source.name == 'Teacher' }
   end
 
   def treehouse_stars
-    self.stars.select { |star| star.source.name == 'Treehouse' }.count
+    self.stars.select { |star| star.source.name == 'Treehouse' }
   end
 
   def find_group(params)

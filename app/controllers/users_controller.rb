@@ -17,20 +17,6 @@ class UsersController < ApplicationController
   def show
     if current_user
       @user = User.find(params[:id])
-      @achievements = @user.achievements
-      @messages = @user.achievements.collect do |achievement|
-        achievement.message
-      end.compact
-
-      @treehouse_stars = @user.stars.where(:source_id => 1)
-      @codeschool_stars = @user.stars.where(:source_id => 2)
-      @github_stars = @user.stars.where(:source_id => 3)
-      @blog_stars = @user.stars.where(:source_id => 4)
-      gifted_star_id = Star.where(:name => "Gifted Star").first.id
-      @gifted_stars = @user.achievements.where(:star_id => gifted_star_id)
-      @teacher_stars = Star.where(:source_id => 5)
-      @stars_from_teacher = @user.stars.where(:source_id => 5)
-      @handraise_stars = @user.stars.where(:source_id => 6)
 
       respond_to do |format|
         format.html # show.html.erb
@@ -40,6 +26,25 @@ class UsersController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def self.user_views(*views)
+    views.each do |view|
+      define_method "#{view}" do
+        if current_user
+          @active_nav = view.to_s
+          @user = User.find(params[:id])
+          @star_types = views.collect { |type| type.to_s }
+
+          respond_to do |format|
+            format.html
+            format.json { render json: @user }
+          end
+        end
+      end
+    end
+  end
+
+  user_views :show, :blog, :codeschool, :github, :handraise, :student, :teacher, :treehouse
 
   # GET /users/new
   # GET /users/new.json
@@ -147,7 +152,6 @@ class UsersController < ApplicationController
       star = Star.where(:source_id => source_id).find_or_create_by_name(:name => params[:name])
       @user.achievements.create(:star_id => star.id)
       redirect_to @user
-
     end
   end
 end

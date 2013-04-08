@@ -1,3 +1,4 @@
+//ACTIVITY FEED
 function ActivityFeedsController ($scope, $http) {
   $http.get('/achievements/newest.json?groupid=' + 1 + '&latestachievement=').success(function (data) {
     $scope.achievements = data;
@@ -15,6 +16,7 @@ function ActivityFeedsController ($scope, $http) {
     }
 
     updateMax($scope.achievements);
+
 
     function recursivePoll () {
       setTimeout(function () {
@@ -35,5 +37,56 @@ function ActivityFeedsController ($scope, $http) {
   });
 }
 
+//HIGHCHARTS
+$(function () {
+        $('#user_chart').highcharts({
+            chart: {
+                type: 'line',
+                marginRight: 130,
+                marginBottom: 25
+            },
+            title: {
+                text: 'Group Star Chart',
+                x: -20 //center
+            },
+            subtitle: {
+                text: '(subtitle optional)',
+                x: -20
+            },
+            xAxis: {
+                categories: <%= ChartHelper.build_x_axis %>
+            },
+            yAxis: {
+                title: {
+                    text: 'Stars'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: ' stars'
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -10,
+                y: 100,
+                borderWidth: 0
+            },
+            series: [
+            <% User.includes.each do |user| %>
+            {
+                name: '<%= user.name %>',
+                data: <%= ChartHelper.build_achievements_for(user) %>
+            },
+            <% end %>
+            ]
+        });
+    });
 
-$('.user .foot .online-courses, .user .foot .github, .user .foot .blog-posts').tooltip({delay: { show: 500, hide: 100 }});
+
+
