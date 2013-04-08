@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_filter :instantiate_achievement
+  after_filter :add_flash_to_header
 
   # GET /groups
   # GET /groups.json
@@ -137,5 +138,13 @@ class GroupsController < ApplicationController
       # whatever group you are declaring in the route.
       
     # @group = Group.where(:id => params[:id]).first
+  end
+
+  def add_flash_to_header
+    return unless request.js?
+
+    response.headers['X-Flash-Notice'] = flash[:notice] unless flash[:notice].blank?
+
+    flash.discard
   end
 end
