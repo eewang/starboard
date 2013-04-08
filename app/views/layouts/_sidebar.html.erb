@@ -5,7 +5,7 @@
     </div>
     <ul class="navigation">
       <% if @group %>
-        <li class="head hidden-phone"><%= @group.name %> <%= link_to 'See All', groups_path, :class => 'see-all' %></li>
+        <li class="head hidden-phone"><%= @group.name %> <%= link_to 'See All Groups', groups_path, :class => 'see-all' %></li>
           <ul class="hidden-phone">
             <a href="/groups/<%= @group.id %>/activity">
               <li class="view-nav <%= 'active' if @active_nav == 'activity' %>"><i class="icon-reorder"></i> Activity Feed</li>
