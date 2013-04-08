@@ -1,7 +1,10 @@
 class EmailsWorker
 
   include Sidekiq::Worker
+    sidekiq_options queue: "email"
   # sidekiq_options retry: false
+
+  REDIS_POOL = ConnectionPool.new(:size => 5, :timeout => 3) { Redis.new }
 
   def perform(group_id, emails)
     group = Group.find(group_id)
