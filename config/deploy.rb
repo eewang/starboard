@@ -41,6 +41,7 @@ namespace :customs do
   task :symlink, :roles => :app do 
     run "ln -nfs #{shared_path}/system/uploads/octokit.rb #{release_path}/config/initializers/octokit.rb"
     run "ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml"
+    run "ln -nfs #{shared_path}/user_pass.yml #{release_path}/config/user_pass.yml"
   end
 end
 
