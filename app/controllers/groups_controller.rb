@@ -44,7 +44,7 @@ class GroupsController < ApplicationController
     end
   end
 
-  group_views :leaderboard, :activity, :combined
+  group_views :leaderboard, :activity, :combined, :stats
 
   # GET /groups/new
   # GET /groups/new.json
