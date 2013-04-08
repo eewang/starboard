@@ -19,3 +19,7 @@
 config/user_pass.yml
 config/initializers/octokit.rb
 config/database.yml
+
+dump.rdb
+
+*.orig

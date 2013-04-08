@@ -1,0 +1,35 @@
+<div id="achievement_new_group_select" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Starification</h3>
+  </div>       
+  
+<% if @group %>
+  <div class="modal-body">
+
+   <%= form_for @achievement, :remote => true do |f| %>
+          <div class="field">
+            <label for="star-receiver" >Who would you like to starify?</label>
+            <input type="text" id="star-receiver" class="span3" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source="<%= @users.collect { |u| u.name } %>" name="user_name">
+           </div>
+          <div class="field">
+            <%= f.label "Enter A Message!", :for => 'message' %>
+            <%= f.text_field :message, :id => 'message' %>
+          </div>
+          <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            <button type="Submit" class="btn btn-primary">Give Star!</button>
+          </div>    
+        <% end %>
+    </div>
+<% else %>
+  <div class="modal-body">
+    <select name="group_id">
+      <option>Select a group please!</option>
+      <option value="1">Group 1</option>
+      <option value="2">Group 2</option>
+    </select>
+  </div>  
+<% end %>
+
+</div>        
