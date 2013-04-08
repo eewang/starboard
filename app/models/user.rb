@@ -45,7 +45,6 @@ class User < ActiveRecord::Base
       end
     else
       array.each do |item|
-        binding.pry
         self.check_achievement_by_string(item, source_string)
       end
     end
