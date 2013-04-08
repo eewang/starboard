@@ -6,7 +6,6 @@ class UsersWorker
   REDIS_POOL = ConnectionPool.new(:size => 5, :timeout => 3) { Redis.new }
 
   def perform(user_id, service, identifier)
-      binding.pry
       user = User.find(user_id)
       service_object = service.classify.constantize.new
       array = service_object.get_data(identifier)

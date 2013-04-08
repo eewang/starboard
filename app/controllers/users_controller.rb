@@ -82,7 +82,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        UsersWorker.perform_async(@user.id)
+        @user.get_external_data
         @user.save
         session[:user_id] = @user.id
         format.html { redirect_to @user, notice: 'User was successfully created.' }
