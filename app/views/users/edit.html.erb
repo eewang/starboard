@@ -6,18 +6,6 @@
   <%= image_tag @user.safe_profile_pic %>
 <% end %>
 
-<% @star_types.each do |star| %>
-  <% content_for ("#{ star }_count").to_sym do %>
-    <%= @user.send("#{ star }_stars").count unless star == 'show' %>
-  <% end %>
-<% end %>
-
-<% @star_types.each do |star| %>
-  <% content_for ("#{ star }_link").to_sym do %>
-    <%= link_to "#{ star.capitalize }", "/users/#{ @user.id }/#{ star }" %>
-  <% end %>
-<% end %>
-
 <h1>Editing user</h1>
 
     <%= form_for(@user) do |f| %>
