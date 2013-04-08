@@ -1,2 +1,10 @@
 $('#achievement_new_group_select').modal('toggle')
+
+$("div.flash").html("<%= js_flash_notice("Whatever") %>")
+setTimeout(function(){
+$("div.flash p").fadeOut(3000), 1000  
+});
+
+
+
 $('#achievement_new_group_select').remove();
