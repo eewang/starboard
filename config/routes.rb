@@ -14,6 +14,9 @@ Starboard::Application.routes.draw do
     get "/users/:id/#{ service }" => "users##{ service }", :as => service
   end
 
+  get '/signup', :controller => 'users', :action => 'new'
+
+
   mount Sidekiq::Web, at: '/sidekiq'
 
   resources :invitations
