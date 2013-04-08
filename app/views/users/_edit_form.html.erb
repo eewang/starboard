@@ -1,3 +1,7 @@
+<div id="loading">
+  <img src="http://www.webdesign.org/img_articles/13053/loading-gif-animation.gif" alt="loading" />
+</div>
+
 <h3>Edit User Form</h3>
 
 <%= form_for(@user) do |f| %>
@@ -28,7 +32,7 @@
     <%= f.text_field :github_username %>
   </div>
 
-  <div class="field">
+  <div class="field" id="field">
     <%= f.label :blog %><br />
     <%= f.text_field :blog_url %>
   </div>
@@ -38,8 +42,8 @@
     <%= f.check_box :is_teacher %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions" >
+    <%= f.submit 'Update', class: "edit_user" %>
   </div>
 
 <% end %>
