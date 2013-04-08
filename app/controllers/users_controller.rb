@@ -105,7 +105,7 @@ class UsersController < ApplicationController
       if @user.update_attributes(params[:user])
         @user.get_external_data
         @user.save
-        format.html { redirect_to @user, notice: "You've been starified!" }
+        format.html { redirect_to @user, notice: "Your stars are traveling through space to get here. Refresh your page in a few seconds!" }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
