@@ -26,8 +26,9 @@
   <div class="modal-body">
     <select name="group_id">
       <option>Select a group please!</option>
-      <option value="1">Group 1</option>
-      <option value="2">Group 2</option>
+      <% current_user.groups.each do |group| %>
+        <option value="<%= group.id %>"><%= group.name %></option>
+      <% end %>
     </select>
   </div>  
 <% end %>

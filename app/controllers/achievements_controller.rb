@@ -19,6 +19,7 @@ class AchievementsController < ApplicationController
     @achievement.save
       
     respond_to do |f|
+      flash.now[:notice] = "hey"
       f.js {}
       f.html {}
     end
