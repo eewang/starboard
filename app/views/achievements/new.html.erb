@@ -2,35 +2,58 @@
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel">Starification</h3>
-  </div>       
-  
+  </div> <!-- modal header -->   
+
 <% if @group %>
+
   <div class="modal-body">
 
-   <%= form_for @achievement, :remote => true do |f| %>
-          <div class="field">
-            <label for="star-receiver" >Who would you like to starify?</label>
-            <input type="text" id="star-receiver" class="span3" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source="<%= @users.collect { |u| u.name } %>" name="user_name">
-           </div>
-          <div class="field">
-            <%= f.label "Enter A Message!", :for => 'message' %>
-            <%= f.text_field :message, :id => 'message' %>
-          </div>
-          <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-            <button type="Submit" class="btn btn-primary">Give Star!</button>
-          </div>    
-        <% end %>
+  <%= form_for @achievement, :remote => true do |f| %>
+
+    <div class="field">
+      <label for="star-receiver" >Who would you like to starify?</label>
+      <input type="text" id="star-receiver" class="span3" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source="<%= @users.collect { |u| u.name } %>" name="user_name">
     </div>
+
+    <% if current_user.is_teacher? %>
+      
+      <div class="field">
+        <label for="teacher-star" >Which star do you want to give?</label>
+        <input type="text" id="star-name" class="span3" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source="<%= @teacher_stars.collect { |s| s.name } %>" name="star_name">
+      </div>
+
+    <% end %>
+
+    <div class="field">
+      <%= f.label "Enter A Message!", :for => 'message' %>
+      <%= f.text_field :message, :id => 'message' %>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+      <button type="Submit" class="btn btn-primary">Give Star!</button>
+    </div> 
+
+  <% end %>
+
+  </div> <!-- modal body -->
+
 <% else %>
+
   <div class="modal-body">
     <select name="group_id">
       <option>Select a group please!</option>
+
       <% current_user.groups.each do |group| %>
         <option value="<%= group.id %>"><%= group.name %></option>
       <% end %>
+
     </select>
-  </div>  
+  </div> <!-- modal body -->
+
 <% end %>
 
-</div>        
+</div> <!-- modal window -->      
+
+
+if its a teacher list already stars or create new
