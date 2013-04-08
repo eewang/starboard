@@ -13,7 +13,7 @@
         <% end %>
       </div>
       <div class="give-star span2">
-          <% if current_user_is_teacher? %>
+          <% if current_user && current_user.is_teacher? %>
              <a href="#refillStarModal" role="button" data-toggle="modal" class="give-star-btn btn">Refill Star Bank</a>
           <% end %>
       </div>
