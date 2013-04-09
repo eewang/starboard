@@ -9,10 +9,12 @@
       <div class="accordion-inner">
         <ul>
           <% @user.groups.each do |g| %>
-            <li>
+            <li class="title-names">
               <%= link_to g.name, g %>
-              <%= link_to 'edit', edit_group_path(g) %>
+              <span class="edit-buttons">
+              <%= link_to 'edit', edit_group_path(g), class: "btn", style: "line-height:1em; font-height:1em; "%>
               <%= link_to 'delete group', g, method: :delete, data: { confirm: 'Are you super sure?' } %>
+              </span>
             </li>
           <% end %>
         </ul>
@@ -29,14 +31,14 @@
       <div class="accordion-inner">
         <ul>
           <% @user.groups.each do |g| %>
-            <li>
+            <li class="title-names">
               <%= link_to g.name, g %>
             </li>
               <ul>
                 <% g.users.each do |u| %>
                   <li class="student" data-group-id="<%= g.id %>" data-user-id="<%= u.id %>" >
                     <%= link_to u.name, u %>
-                    <a href="#" class='remove'>remove user</a>
+                    <a href="#" class='remove'>remove student</a>
                   </li>
                 <% end %>
               </ul>
@@ -56,7 +58,7 @@
         <div>
           <ul>
             <% Star.where(:source_id => 5).each do |s| %>
-                <li>
+                <li class="title-names">
                   <%= link_to s.name, s %>
                   <%= link_to 'Delete Star', s, method: :delete, data: { confirm: 'Are you super sure?' } %>
                 </li>
