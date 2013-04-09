@@ -19,4 +19,4 @@
 <% end %>
 
 <%= render 'stars/studentcontent' %>
-<%= render :partial => 'achievements/student', :collection => @user.student_stars, :as => "student_star"  %>
+<%= render :partial => 'achievements/studentwithtitle', :collection => @user.student_stars, :as => "student_star"  %>
