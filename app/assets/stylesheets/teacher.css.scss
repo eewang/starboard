@@ -1,3 +1,15 @@
 // Place all the styles related to the teacher controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.accordion-inner ul {
+  }
+    
+.accordion-inner li {
+    list-style-type: none;
+    line-height: 2.8em;
+    a {
+      margin: 0, 10px, 0, 10px;
+    }
+}
+

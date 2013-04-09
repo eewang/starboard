@@ -6,19 +6,30 @@
   <%= image_tag @user.safe_profile_pic %>
 <% end %>
 
-<% @star_types.each do |star| %>
-  <% content_for ("#{ star }_count").to_sym do %>
-    <%= @user.send("#{ star }_stars").count unless star == 'show' %>
-  <% end %>
+<!-- what is this doing?? 
+<#% @star_types.each do |star| %>
+  <#% content_for ("#{ star }_count").to_sym do %>
+    <#%= @user.send("#{ star }_stars").count unless star == 'show' %>
+  <#% end %>
+<#% end %>
+
+<#% @star_types.each do |star| %>
+  <#% content_for ("#{ star }_link").to_sym do %>
+    <#%= link_to "#{ star.capitalize }", "/users/#{ @user.id }/#{ star }" %>
+  <#% end %>
+<#% end %>
+
+-->
+
+<% unless current_user.is_teacher? %>
+  <div class="span8 hidden-phone">
+    <%= render :partial => "achievements/achievement" %>
+  </div>
 <% end %>
 
-<% @star_types.each do |star| %>
-  <% content_for ("#{ star }_link").to_sym do %>
-    <%= link_to "#{ star.capitalize }", "/users/#{ @user.id }/#{ star }" %>
-  <% end %>
+<% if current_user.is_teacher? %>
+  <div class="span8 hidden-phone">
+    <%= render :partial => "teachers/dashboard" %>
+  </div>
 <% end %>
-
-<div class="span8 hidden-phone">
-  <%= render :partial => "achievements/achievement" %>
-
-</div>
+  
