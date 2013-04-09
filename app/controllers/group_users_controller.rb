@@ -2,6 +2,8 @@ class GroupUsersController < ApplicationController
 
   def new
     @group_user = GroupUser.new
+    # so the modal doesn't error out we build an achievement
+    @achievement = Achievement.new
     @group = Invitation.find_group_by_token(params[:invitation_token])
     @creator = User.find(@group.creator_id)
 
@@ -9,6 +11,10 @@ class GroupUsersController < ApplicationController
       format.html # new.html.erb
       format.json { render json: @star }
     end
+  end
+
+  def login
+    render new_session_path
   end
 
   def create

@@ -2,7 +2,7 @@ class EmailsWorker
 
   include Sidekiq::Worker
     sidekiq_options queue: "email"
-    sidekiq_options retry: true
+    # sidekiq_options retry: false
 
   REDIS_POOL = ConnectionPool.new(:size => 5, :timeout => 3) { Redis.new }
 
