@@ -58,7 +58,8 @@ class GroupsController < ApplicationController
         format.json { render json: @group }
       end
     else
-      redirect_to root_path
+      flash[:alert] = "Log in first."
+      redirect_to new_session_path
     end
   end
 
@@ -79,13 +80,15 @@ class GroupsController < ApplicationController
         if params[:emails]
           EmailsWorker.perform_async(@group.id, params[:emails])
         end
-
-        redirect_to @group
+        flash[:success] = "Group created, emails are on their way out!"
+        redirect_to group_path(@group)
       else
+        flash[:alert] = "Sorry, group didn't save..."
         redirect_to new_group_path
       end
     else 
-      redirect_to root_path
+      flash[:alert] = "Log in first."
+      redirect_to new_session_path
     end
   end
 
