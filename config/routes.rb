@@ -2,6 +2,8 @@ Starboard::Application.routes.draw do
 
   require 'sidekiq/web'
 
+  get '/users/remove_from_group/', to: 'users#remove_from_group'
+
   resources :groups
   # Group views
   ['stats', 'activity', 'combined', 'leaderboard'].each do |service|
@@ -52,6 +54,8 @@ Starboard::Application.routes.draw do
   resources :stars
   
   resources :sessions
+
+  resources :users
 
 
   resources :group_users
