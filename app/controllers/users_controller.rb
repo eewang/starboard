@@ -133,6 +133,7 @@ class UsersController < ApplicationController
     @group_user.first.delete
     @user.save
 
+    # flash[:success] = "Student removed from class."
     render :nothing => true
   end
 

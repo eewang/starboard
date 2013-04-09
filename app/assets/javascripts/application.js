@@ -17,3 +17,4 @@
 //= require_tree .
 //= require angular.min
 //= require_tree ./angular
+//= require teacher
