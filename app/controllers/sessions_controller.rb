@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-        if params[:invitation_token]
+        unless params[:invitation_token].empty?
           redirect_to group_signup_url(:invitation_token => params[:invitation_token])
         else
           redirect_to root_url, notice: "Logged in!"
