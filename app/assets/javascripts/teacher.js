@@ -15,8 +15,8 @@ $.each($('.teacher-dashboard .student'), function () {
     e.preventDefault();
     $(self).remove();
     // get request
-    var groupId = ("li[data-group-id=1]").first();
-    var userId = $("li[data-group-id=1]").first().data("user-id");
+    var groupId = $(self).first().data("group-id");
+    var userId = $(self).first().data("user-id");
     $.get(("/users/remove_from_group/?user=" + userId + "&group=" + groupId), function(html){
       console.log(html)
     });
