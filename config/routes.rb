@@ -54,7 +54,10 @@ Starboard::Application.routes.draw do
 
 
   resources :group_users
+  
+  get '/login/join/:invitation_token', to: 'group_users#login', as: 'group_login'
 
   get '/group/join/:invitation_token', to: 'group_users#new', as: 'group_signup'
+
 
 end

@@ -2,12 +2,22 @@ class GroupUsersController < ApplicationController
 
   def new
     @group_user = GroupUser.new
+    # so the modal doesn't error out we build an achievement
+    @achievement = Achievement.new
     @group = Invitation.find_group_by_token(params[:invitation_token])
     @creator = User.find(@group.creator_id)
 
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @star }
+    end
+  end
+
+  def login
+    if current_user
+      redirect_to group_signup_url(:invitation_token => params[:invitation_token])
+    else
+      render new_session_path
     end
   end
 
