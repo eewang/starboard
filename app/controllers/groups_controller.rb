@@ -81,7 +81,7 @@ class GroupsController < ApplicationController
           EmailsWorker.perform_async(@group.id, params[:emails])
         end
         flash[:success] = "Group created, emails are on their way out!"
-        redirect_to group_path(@group)
+        redirect_to "/groups/#{@group.id}/leaderboard"
       else
         flash[:alert] = "Sorry, group didn't save..."
         redirect_to new_group_path
