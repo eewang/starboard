@@ -18,4 +18,5 @@
   <% end %>
 <% end %>
 
+<%= render "stars/githubcontent" %>
 <%= render :partial => 'achievements/github', :collection => @user.github_stars, :as => "github_star" %>
