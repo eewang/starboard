@@ -99,8 +99,13 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.update_attributes(params[:group])
-        format.html { redirect_to @group, notice: 'Group was successfully updated.' }
-        format.json { head :no_content }
+        if params[:emails]
+          EmailsWorker.perform_async(@group.id, params[:emails])
+          format.html { redirect_to @group, notice: 'Invitations successfully sent.' }
+        else
+          format.html { redirect_to @group, notice: 'Group was successfully updated.' }
+          format.json { head :no_content }
+        end
       else
         format.html { render action: "edit" }
         format.json { render json: @group.errors, status: :unprocessable_entity }
