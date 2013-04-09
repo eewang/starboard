@@ -12,11 +12,18 @@
           <%# end %>
         <%# end %>
       <!-- </div> -->
-      <div class="give-star span2 pull-right">
           <% if current_user && current_user.is_teacher? %>
-             <a href="#refillStarModal" role="button" data-toggle="modal" class="give-star-btn btn">Refill Star Bank</a>
+            <div class="give-star span2 pull-right">
+              <a href="#refillStarModal" role="button" data-toggle="modal" class="give-star-btn btn">Refill Star Bank</a>
+            </div>
+            <% if @group %>
+                <% unless @group.id.nil? %>
+                  <div class="invite span2 pull-right", style="margin-right:20px">
+                    <a href="<%= edit_group_path(@group) %>" role="button" class="invite-btn btn">Invite Students</a>
+                  </div>
+                <% end %>
+            <% end %>
           <% end %>
-      </div>
     </div>
   </div>
 </div>

@@ -93,6 +93,20 @@ a {
       text-shadow: none;
     }
   }
+  .invite {
+    margin: 0;
+    a.invite-btn {
+      background: none;
+      background-color: rgba(121, 189, 143, 1);
+      color: #fff;
+      border: none;
+      width: 100%;
+      padding: 6px 0; 
+      border-radius: 2px;
+      font-size: 1.3em;
+      text-shadow: none;
+    }
+  }
   .section-title {
     color: rgba(0, 0, 0, 0.2);
     font-size: 1.6em;
