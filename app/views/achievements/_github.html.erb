@@ -1,1 +1,4 @@
-<%= link_to image_tag("gold_star.png"), star_path(github_star) %> 
+<div class="star">
+<%= image_tag("gold_star.png", "data-toggle" => "tooltip", :title => github_star.name ) %>
+
+</div>
