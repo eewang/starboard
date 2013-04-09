@@ -126,11 +126,16 @@ class UsersController < ApplicationController
     end
   end
 
-  # def set_as_teacher(user)
-  #   user.is_teacher = true
-  # end
+  def remove_from_group
+    @user = User.find_by_id(params[:user])
+    @group = Group.find_by_id(params[:group])
+    @group_user = GroupUser.where(:user_id => @user, :group_id => @group)
+    @group_user.first.delete
+    @user.save
 
-  # /users/:id
+    render :nothing => true
+  end
+
   def give_star
     if current_user.can_give_star?
       user = User.find(params[:id])
@@ -159,4 +164,5 @@ class UsersController < ApplicationController
       redirect_to @user
     end
   end
+
 end
