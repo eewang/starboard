@@ -20,7 +20,7 @@
 
   </head>
   <body>
-
+    <%= flash.inspect %>
     <%= render :partial => 'layouts/flash_messages', :locals => {:flash => flash} %>
 
     <%= render :partial => 'layouts/navbar' %>
