@@ -14,7 +14,11 @@ class GroupUsersController < ApplicationController
   end
 
   def login
-    render new_session_path
+    if current_user
+      redirect_to group_signup_url(:invitation_token => params[:invitation_token])
+    else
+      render new_session_path
+    end
   end
 
   def create
