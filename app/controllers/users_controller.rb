@@ -126,28 +126,22 @@ class UsersController < ApplicationController
     end
   end
 
-  # def set_as_teacher(user)
-  #   user.is_teacher = true
-  # end
+  def remove_from_group
+    @user = User.find_by_id(params[:user])
+    @group = Group.find_by_id(params[:group])
+    @group_user = GroupUser.where(:user_id => @user, :group_id => @group)
+    @group_user.first.delete
+    @user.save
 
-  # /users/:id
+    render :nothing => true
+  end
+
   def give_star
     if current_user.can_give_star?
       user = User.find(params[:id])
       current_user.give_achievement_to(user, params[:message])
     end
     redirect_to user
-  end
-
-  # /users/refill_star_bank/:id
-  def refill_star_bank
-    if current_user.is_teacher?
-      @user = User.find(params[:id])
-      @user.giftable_star_bank = 0 if @user.giftable_star_bank.nil? 
-      @user.giftable_star_bank = @user.giftable_star_bank + params[:star_bank].to_i
-      @user.save
-      redirect_to @user
-    end
   end
 
   def create_teacher_star
@@ -157,6 +151,53 @@ class UsersController < ApplicationController
       star = Star.where(:source_id => source_id).find_or_create_by_name(:name => params[:name])
       @user.achievements.create(:star_id => star.id)
       redirect_to @user
+    end
+  end
+
+  # GET /refill_star_bank
+  def refill_star_bank
+    if params[:group_id].present?
+      @group = Group.find(params[:group_id])
+      @users = @group.users
+    end
+
+    render :layout => false
+  end
+
+  # POST /refill_star_bank_create
+  def refill_star_bank_create
+    params[:user_names].each do |user_name|
+      user = User.where(:name => user_name).first
+      user.giftable_star_bank = 0 if user.giftable_star_bank.nil?
+      user.giftable_star_bank = user.giftable_star_bank + params[:number].to_i
+      user.save
+    end
+
+    respond_to do |f|
+      f.js {}
+      f.html {}
+    end
+  end
+
+  def create #achievements
+    @achievement = Achievement.new(params[:achievement])
+
+    if params[:star_name]
+      star_id = Source.teacher.stars.where(:name => params[:star_name]).first_or_create.id
+      @achievement.star_id = Source.teacher.id
+    else
+      star_id = Star.where(:name => "Gifted Star").first.id
+      @achievement.star_id = star_id
+    end
+
+    @achievement.sender_id = current_user.id
+    @achievement.user_id = User.where(:name => params[:user_name]).first.id
+
+    @achievement.save
+      
+    respond_to do |f|
+      f.js {}
+      f.html {}
     end
   end
 end

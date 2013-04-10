@@ -1,5 +1,4 @@
-// give a star, should be able to move to stars.js?
-
+// give a star
 $(document).ready(function(){
   $("a.give-star-btn").click(function(e){
     e.preventDefault();
@@ -27,12 +26,43 @@ $(document).ready(function(){
         });
       });
     }
-    // pop the modal up
-
     return false;
   });
+});
 
+// refill star bank
+$(document).ready(function(){
+  console.log("jquery awake");
+  $("a.refill-star-btn").click(function(e){
+    console.log("click works");
+    e.preventDefault();
+
+
+      $.get('/refill_star_bank', function(html, status){      
+        $("body").append(html);
+
+        console.log($('#refill_star_bank') + "id refill star bank found");
+        $('#refill_star_bank').modal('toggle');
+        // when the select box is changed
+          // fire another request to the server to get HTML that
+          // will allow you to give a new star to that group
+        $("#refill_star_bank select").change(function(){
+          group_id = $(this).find(":selected").attr("value");
+          console.log("group_id is " + group_id);
+          $.get('/refill_star_bank?group_id='+group_id, function(html, status){
+            $('#refill_star_bank').modal('toggle');
+            $('#refill_star_bank').replaceWith(html);
+            $('#refill_star_bank').modal('toggle');
+          });
+        });
+      });
+    
+    return false;
+  });
 })
+
+
+
 
 
 

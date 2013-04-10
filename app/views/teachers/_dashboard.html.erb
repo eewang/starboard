@@ -1,4 +1,4 @@
-<div class="accordion" id="accordion2">
+<div class="accordion teacher-dashboard" id="accordion2">
   <div class="accordion-group">
     <div class="accordion-heading">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
@@ -9,11 +9,39 @@
       <div class="accordion-inner">
         <ul>
           <% @user.groups.each do |g| %>
-            <li>
+            <li class="title-names">
               <%= link_to g.name, g %>
-              <%= link_to 'Edit', edit_group_path(g) %>
-              <%= link_to 'Delete Group', g, method: :delete, data: { confirm: 'Are you super sure?' } %>
+              <span class="edit-buttons">
+              <%= link_to 'delete', g, class: 'span 1 btn btn-danger pull-right', method: :delete, data: { confirm: 'Are you super sure?' } %>
+              <%= link_to 'edit', edit_group_path(g), class: 'span 1 btn btn-info pull-right' %>
+              </span>
             </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+   <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+        My Students
+      </a>
+    </div>
+    <div id="collapseTwo" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        <ul>
+          <% @user.groups.each do |g| %>
+            <li class="title-names">
+              <%= link_to g.name, g %>
+            </li>
+              <ul>
+                <% g.users.each do |u| %>
+                  <li class="student" data-group-id="<%= g.id %>" data-user-id="<%= u.id %>" >
+                    <%= link_to u.name, u %>
+                    <a href="#" id='remove' class='remove btn btn-danger'>remove</a>
+                  </li>
+                <% end %>
+              </ul>
           <% end %>
         </ul>
       </div>
@@ -21,18 +49,20 @@
   </div>
   <div class="accordion-group">
     <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-        Teacher Stars
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+        My Stars
       </a>
     </div>
-    <div id="collapseTwo" class="accordion-body collapse">
+    <div id="collapseThree" class="accordion-body collapse">
       <div class="accordion-inner">
         <div>
           <ul>
             <% Star.where(:source_id => 5).each do |s| %>
-                <li>
+                <li class="title-names">
                   <%= link_to s.name, s %>
-                  <%= link_to 'Delete Star', s, method: :delete, data: { confirm: 'Are you super sure?' } %>
+                  <span class="edit-buttons">
+                    <%= link_to 'delete', s, class: 'span 1 btn btn-danger pull-right', method: :delete, data: { confirm: 'Are you super sure?' } %>
+                  </span>
                 </li>
             <% end %>
             <li><%= link_to "Add Star", new_star_path %> </li>

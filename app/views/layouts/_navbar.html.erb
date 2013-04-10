@@ -10,7 +10,7 @@
       <div class="nav-collapse">
         <ul class="nav pull-right">
           <% if current_user and current_user.is_teacher? %>
-            <li class="pull-right"><%= link_to "DASHBOARD", @user %></li>
+            <li class="pull-right"><%= link_to "DASHBOARD", current_user %></li>
             <li class="pull-right"><%= link_to "NEW GROUP", new_group_path %></li>
             <li><%= link_to "LOGOUT", logout_path, :class => "logout" %></li>
           <% elsif current_user && !current_user.is_teacher? %>

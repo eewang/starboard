@@ -2,9 +2,11 @@ Starboard::Application.routes.draw do
 
   require 'sidekiq/web'
 
+  get '/users/remove_from_group/', to: 'users#remove_from_group'
+
   resources :groups
   # Group views
-  ['stats', 'activity', 'combined', 'leaderboard'].each do |service|
+  ['stats', 'activity', 'combined', 'leaderboard', 'blog_posts'].each do |service|
     get "/groups/:id/#{ service }" => "groups##{ service }", :as => service
   end
 
@@ -37,8 +39,6 @@ Starboard::Application.routes.draw do
 
   post '/users/give_star/:id' => 'users#give_star', :as => 'give_star'
 
-  post '/users/refill_star_bank/:id' => 'users#refill_star_bank', :as => 'refill_star_bank'
-
   post '/users/teacher_star/:id' => 'users#create_teacher_star', :as => 'teacher_star'
 
   get '/achievements/newest.json' => 'groups#get_recent_achievements'
@@ -51,12 +51,18 @@ Starboard::Application.routes.draw do
   
   resources :sessions
 
+  resources :users
+
 
   resources :group_users
   
   get '/login/join/:invitation_token', to: 'group_users#login', as: 'group_login'
 
   get '/group/join/:invitation_token', to: 'group_users#new', as: 'group_signup'
+
+  # refill star bank
+  get '/refill_star_bank', to: 'users#refill_star_bank', as: 'refill_star_bank'
+  post '/refill_star_bank', to: 'users#refill_star_bank_create', as: 'refill_star_bank_create'
 
 
 end

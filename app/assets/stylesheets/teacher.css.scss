@@ -2,14 +2,38 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.accordion-inner ul {
-  }
-    
-.accordion-inner li {
-    list-style-type: none;
-    line-height: 2.8em;
-    a {
-      margin: 0, 10px, 0, 10px;
-    }
+
+
+.accordion-heading {
+  font-size:2.2em;
+  line-height:2.4em;
 }
 
+.accordion-inner ul li {
+  font-size:1.4em;
+  line-height:1.4em;
+  list-style-type: none;
+  margin: 0, 10px, 0, 10px;
+}
+
+.title-names a {
+  font-size:1.6em;
+  line-height:1.8em;
+}
+
+.edit-buttons .btn { 
+  font-size:.6em;
+  font-weight: bold;
+  margin: 10px, 10px, 0, 10px;
+}
+
+#remove {
+  line-height:0.7em;
+  font-size:.5em;
+}
+
+.table-blog {
+  font_size: 1em;
+  width: 600px;
+  margin-left: 300px;
+}

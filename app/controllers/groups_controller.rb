@@ -32,7 +32,10 @@ class GroupsController < ApplicationController
           @active_nav = view.to_s
           @group = Group.find(params[:id])
           @users = User.joins(:groups).where("group_id = #{params[:id]}").sort_by { |user| user.achievements.count }.reverse
-
+          if view == :blog_posts
+            user_ids = @group.user_ids
+            @blog_posts = Achievement.where(:user_id => (user_ids), :star_id => 2).order('created_at ASC')
+          end
           respond_to do |format|
             format.html # leaderboard.html.erb
           end
@@ -44,7 +47,7 @@ class GroupsController < ApplicationController
     end
   end
 
-  group_views :leaderboard, :activity, :combined, :stats
+  group_views :leaderboard, :activity, :combined, :stats, :blog_posts
 
   # GET /groups/new
   # GET /groups/new.json

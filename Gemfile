@@ -60,7 +60,7 @@ gem 'debugger'
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
-gem 'whenever', :require => false
+gem 'clockwork'
 
 gem 'sinatra', :require => false
 gem 'slim'
