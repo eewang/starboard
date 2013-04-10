@@ -28,7 +28,7 @@ $(document).ready(function(){
     }
     return false;
   });
-})
+});
 
 // refill star bank
 $(document).ready(function(){
@@ -49,14 +49,21 @@ $(document).ready(function(){
         $("#refill_star_bank select").change(function(){
           group_id = $(this).find(":selected").attr("value");
           console.log("group_id is " + group_id);
-          // $.get('/achievements/new?group_id='+group_id, function(html, status){
-          //   $('#achievement_new_group_select').modal('toggle');
-          //   $('#achievement_new_group_select').replaceWith(html);
-          //   $('#achievement_new_group_select').modal('toggle');
-          // });
+          $.get('/refill_star_bank?group_id='+group_id, function(html, status){
+            $('#refill_star_bank').modal('toggle');
+            $('#refill_star_bank').replaceWith(html);
+            $('#refill_star_bank').modal('toggle');
+          });
         });
       });
     
     return false;
   });
 })
+
+
+
+
+
+
+

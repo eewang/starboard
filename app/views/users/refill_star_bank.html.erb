@@ -4,14 +4,32 @@
     <h3 id="myModalLabel">Refill Star Bank!</h3>
   </div> <!-- modal header --> 
 
+<% if @users %>
 
+  <div class="modal-body">
+    <div class="field">
+      <legend>Select a student to refill their star bank!</legend>
+      <% @users.each do |user| %>
+        <div>
+          <input type="checkbox" id="user_id" name="user_name" style="float:left;">
+          <label for="star-receiver"><%= user.name %></label>
+        </div>
+      <% end %>
+    </div>
+    <br>
+    <div class="field">
+      <label for="number-stars">
+        <legend>Add how many stars?</legend>
+      </label>
+        <input type="number" id="number-stars" style="height:30px;">
+    </div><br>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+      <%= submit_tag ('Submit'), :class => "btn" %>
+    </div>  
+  </div> <!-- modal body to select a student to refill their star bank -->
 
-
-
-
-
-
-
+<% else %>
 
   <div class="modal-body">
     <select name="group_id">
@@ -24,31 +42,7 @@
     </select>
   </div> <!-- modal body to select a group from a dropdown menu -->
 
-
-
-
-
-
-
-
-
-  <div class="modal-body">
-    <div class="field">
-      <label for="star-receiver" >Whose Starbank Would You Like to Refill?</label>
-          <input type="text" id="star-receiver" class="span3" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source="<%= @group.users.collect { |u| u.name } %>" name="user_name">
-      </div>
-    <div class="field">
-      <label for="number-stars"> How Many Stars Would You Like to Add to Their Star Bank? </label>
-        <input type="number" id="number-stars" class="span3" tyle="margin: 0 auto;" data-provide="typeahead" data-items="4">
-    </div>
-    <div class="modal-footer">
-      <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-      <%= submit_tag ('Submit')  %>
-    </div>  
-  </div> <!-- modal body to select a student to refill their star bank -->
-
-
-
+<% end %>
 
 </div> <!-- end of modal window -->
 

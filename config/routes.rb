@@ -62,7 +62,5 @@ Starboard::Application.routes.draw do
 
   # refill star bank
   get '/refill_star_bank', to: 'users#refill_star_bank', as: 'refill_star_bank'
-  get '/refill_star_bank', to: 'users#refill_star_bank_create', as: 'refill_star_bank_create'
-
 
 end

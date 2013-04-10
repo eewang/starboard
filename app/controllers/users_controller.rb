@@ -157,6 +157,10 @@ class UsersController < ApplicationController
 
   # GET /refill_star_bank
   def refill_star_bank
+    if params[:group_id].present?
+      @group = Group.find(params[:group_id])
+      @users = @group.users
+    end
     # if current_user.is_teacher?
       # @user = User.find(params[:id])
       # @user.giftable_star_bank = 0 if @user.giftable_star_bank.nil? 
@@ -167,23 +171,6 @@ class UsersController < ApplicationController
     render :layout => false
   end
 
-  # POST /refill_star_bank
-  def refill_star_bank_create
-    raise params.inspect
-  end
-
-  # Used for refill star bank
-  def new #achievements
-    @achievement = Achievement.new
-    if params[:group_id].present?
-      @group = Group.find(params[:group_id])
-      @users = @group.users
-    end
-
-    source_id = Source.teacher.id
-    @teacher_stars = Star.where(:source_id => source_id)
-    render :layout => false
-  end
 
   def create #achievements
     @achievement = Achievement.new(params[:achievement])
