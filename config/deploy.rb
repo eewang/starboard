@@ -1,3 +1,6 @@
+set :rvm_ruby_string, ENV['GEM_HOME'].gsub(/.*\//,"")
+
+require "rvm/capistrano"
 require 'bundler/capistrano'
 require 'sidekiq/capistrano'
 
