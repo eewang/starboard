@@ -12,7 +12,7 @@
         <% @blog_posts.each do |b| %>
           <tr>
             <td><%= link_to User.find_by_id(b.user_id).name, User.find_by_id(b.user_id).name %></td> 
-            <td><%= link_to User.find_by_id(b.user_id).blog_url, User.find_by_id(b.user_id).blog_url %>
+            <td><%= link_to User.find_by_id(b.user_id).blog_url.gsub('/atom.xml', ""), User.find_by_id(b.user_id).blog_url.gsub('/atom.xml', "") %>
             </td>
             <td>
               <%= b.created_at %>
