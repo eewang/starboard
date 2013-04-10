@@ -45,7 +45,7 @@ namespace :customs do
     run "ln -nfs #{shared_path}/sidekiq.yml #{release_path}/config/sidekiq.yml"
   end
   task :clockwork, :roles => :app do
-    run "clockworkd config/clock.rb"
+    run "bundle exec clockworkd config/clock.rb"
   end
 end
 
