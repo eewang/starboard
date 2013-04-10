@@ -125,6 +125,12 @@ class GroupsController < ApplicationController
     end
   end
 
+  def show_blog_posts
+    group = Group.find(params[:id])
+    user_ids = group.users.collect { |u| u.id }
+    @blog_posts = Achievement.where(:user_id => (user_ids), :star_id => 2).order('created_at ASC')
+  end
+
   # API Stuff
   def get_recent_achievements
     if current_user

@@ -62,5 +62,6 @@ Starboard::Application.routes.draw do
 
   get '/group/join/:invitation_token', to: 'group_users#new', as: 'group_signup'
 
+  get '/groups/:id/blog_posts', to: 'groups#show_blog_posts', as: 'group_blogs'
 
 end
