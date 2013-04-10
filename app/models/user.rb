@@ -134,7 +134,7 @@ class User < ActiveRecord::Base
   end
 
   def self.update_all
-    self.find_batches(:batch_size => 50) do |group|
+    self.find_in_batches(:batch_size => 50) do |group|
       group.each do |user|
         user.get_external_data
         user.save
