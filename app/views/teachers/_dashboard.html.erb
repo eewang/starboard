@@ -12,8 +12,8 @@
             <li class="title-names">
               <%= link_to g.name, g %>
               <span class="edit-buttons">
-              <%= link_to 'edit', edit_group_path(g), class: "btn", style: "line-height:1em; font-height:1em; "%>
-              <%= link_to 'delete group', g, method: :delete, data: { confirm: 'Are you super sure?' } %>
+              <%= link_to 'delete', g, class: 'span 1 btn btn-danger pull-right', method: :delete, data: { confirm: 'Are you super sure?' } %>
+              <%= link_to 'edit', edit_group_path(g), class: 'span 1 btn btn-info pull-right' %>
               </span>
             </li>
           <% end %>
@@ -38,7 +38,7 @@
                 <% g.users.each do |u| %>
                   <li class="student" data-group-id="<%= g.id %>" data-user-id="<%= u.id %>" >
                     <%= link_to u.name, u %>
-                    <a href="#" class='remove'>remove student</a>
+                    <a href="#" id='remove' class='remove btn btn-danger'>remove</a>
                   </li>
                 <% end %>
               </ul>
@@ -60,7 +60,9 @@
             <% Star.where(:source_id => 5).each do |s| %>
                 <li class="title-names">
                   <%= link_to s.name, s %>
-                  <%= link_to 'Delete Star', s, method: :delete, data: { confirm: 'Are you super sure?' } %>
+                  <span class="edit-buttons">
+                    <%= link_to 'delete', s, class: 'span 1 btn btn-danger pull-right', method: :delete, data: { confirm: 'Are you super sure?' } %>
+                  </span>
                 </li>
             <% end %>
             <li><%= link_to "Add Star", new_star_path %> </li>
