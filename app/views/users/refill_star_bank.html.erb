@@ -1,11 +1,36 @@
-
-<div id="refillStarModal" class="modal hide fade" tabindex="-1" role="dialog" 
-        aria-labelledby="myModalLabel" aria-hidden="true">
-
+<div id="refill_star_bank" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel">Refill Star Bank!</h3>
-  </div>  
+  </div> <!-- modal header --> 
+
+
+
+
+
+
+
+
+
+
+  <div class="modal-body">
+    <select name="group_id">
+      <option>Select a group please!</option>
+
+      <% current_user.groups.each do |group| %>
+        <option value="<%= group.id %>"><%= group.name %></option>
+      <% end %>
+
+    </select>
+  </div> <!-- modal body to select a group from a dropdown menu -->
+
+
+
+
+
+
+
+
 
   <div class="modal-body">
     <div class="field">
@@ -17,16 +42,15 @@
         <input type="number" id="number-stars" class="span3" tyle="margin: 0 auto;" data-provide="typeahead" data-items="4">
     </div>
     <div class="modal-footer">
-      <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-      <button class="btn btn-primary">Save changes</button>
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
       <%= submit_tag ('Submit')  %>
     </div>  
-  </div>
-
-</div>
+  </div> <!-- modal body to select a student to refill their star bank -->
 
 
 
+
+</div> <!-- end of modal window -->
 
 
 

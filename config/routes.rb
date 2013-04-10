@@ -39,8 +39,6 @@ Starboard::Application.routes.draw do
 
   post '/users/give_star/:id' => 'users#give_star', :as => 'give_star'
 
-  get '/users/refill_star_bank/:id' => 'users#refill_star_bank', :as => 'refill_star_bank'
-
   post '/users/teacher_star/:id' => 'users#create_teacher_star', :as => 'teacher_star'
 
   get '/achievements/newest.json' => 'groups#get_recent_achievements'
@@ -61,6 +59,10 @@ Starboard::Application.routes.draw do
   get '/login/join/:invitation_token', to: 'group_users#login', as: 'group_login'
 
   get '/group/join/:invitation_token', to: 'group_users#new', as: 'group_signup'
+
+  # refill star bank
+  get '/refill_star_bank', to: 'users#refill_star_bank', as: 'refill_star_bank'
+  get '/refill_star_bank', to: 'users#refill_star_bank_create', as: 'refill_star_bank_create'
 
 
 end
