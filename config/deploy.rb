@@ -1,4 +1,5 @@
 set :rvm_ruby_string, ENV['GEM_HOME'].gsub(/.*\//,"")
+set :rvm_type, :user
 
 require "rvm/capistrano"
 require 'bundler/capistrano'
