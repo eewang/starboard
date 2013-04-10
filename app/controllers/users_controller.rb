@@ -145,12 +145,7 @@ class UsersController < ApplicationController
     redirect_to user
   end
 
-  def victoria
-    @group = Group.first
-    render :partial => 'stars/refill_star_bank_modal'
-  end
-
-  # /users/refill_star_bank/:id
+  # GET /users/refill_star_bank/:id
   def refill_star_bank
     if current_user.is_teacher?
       @user = User.find(params[:id])

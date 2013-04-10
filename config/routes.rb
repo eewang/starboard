@@ -9,8 +9,6 @@ Starboard::Application.routes.draw do
   ['stats', 'activity', 'combined', 'leaderboard'].each do |service|
     get "/groups/:id/#{ service }" => "groups##{ service }", :as => service
   end
-
-  get '/users/victoria', :controller => 'users', :action => 'victoria'
   
   resources :users
   # User star views
@@ -41,7 +39,7 @@ Starboard::Application.routes.draw do
 
   post '/users/give_star/:id' => 'users#give_star', :as => 'give_star'
 
-  post '/users/refill_star_bank/:id' => 'users#refill_star_bank', :as => 'refill_star_bank'
+  get '/users/refill_star_bank/:id' => 'users#refill_star_bank', :as => 'refill_star_bank'
 
   post '/users/teacher_star/:id' => 'users#create_teacher_star', :as => 'teacher_star'
 
