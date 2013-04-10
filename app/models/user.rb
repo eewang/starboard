@@ -97,6 +97,10 @@ class User < ActiveRecord::Base
                                    :sender_id => self.id })
   end
 
+  def remove_star_from_starbank  
+    self.giftable_star_bank -= 1
+  end
+
   def blog_stars
     self.stars.select { |star| star.source.name == 'Blog' }
   end

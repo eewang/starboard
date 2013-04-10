@@ -26,11 +26,14 @@ class AchievementsController < ApplicationController
     @achievement.sender_id = current_user.id
     @achievement.user_id = User.where(:name => params[:user_name]).first.id
 
-    @achievement.save
+    if @achievement.save
+      current_user.remove_star_from_starbank
+      current_user.save
       
-    respond_to do |f|
-      f.js {}
-      f.html {}
+      respond_to do |f|
+        f.js {}
+        f.html {}
+      end
     end
   end
 
