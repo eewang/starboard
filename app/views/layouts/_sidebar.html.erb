@@ -13,6 +13,9 @@
             <a href="/groups/<%= @group.id %>/leaderboard">
               <li class="view-nav <%= 'active' if @active_nav == 'leaderboard' %>"><i class="icon-th-large"></i> Leaderboard</li>
             </a>
+            <a href="/groups/<%= @group.id %>/blog_posts">
+              <li class="view-nav <%= 'active' if @active_nav == 'blog_posts' %>"><i class="icon-pencil"></i> New Blog Posts</li>
+            </a>
             <a href="/groups/<%= @group.id %>/stats">
               <li class="view-nav <%= 'active' if @active_nav == 'stats' %>"><i class="icon-bar-chart"></i> Stats</li>
             </a>

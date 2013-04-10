@@ -6,7 +6,7 @@ Starboard::Application.routes.draw do
 
   resources :groups
   # Group views
-  ['stats', 'activity', 'combined', 'leaderboard'].each do |service|
+  ['stats', 'activity', 'combined', 'leaderboard', 'blog_posts'].each do |service|
     get "/groups/:id/#{ service }" => "groups##{ service }", :as => service
   end
 
@@ -61,7 +61,5 @@ Starboard::Application.routes.draw do
   get '/login/join/:invitation_token', to: 'group_users#login', as: 'group_login'
 
   get '/group/join/:invitation_token', to: 'group_users#new', as: 'group_signup'
-
-  get '/groups/:id/blog_posts', to: 'groups#show_blog_posts', as: 'group_blogs'
 
 end
