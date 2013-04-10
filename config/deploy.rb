@@ -1,5 +1,6 @@
 require 'bundler/capistrano'
 require 'sidekiq/capistrano'
+require 'clockwork'
 
 set :application, "starboard"
 set :repository,  "git@github.com:flatiron-school/starboard.git"
