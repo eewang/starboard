@@ -41,10 +41,14 @@ namespace :customs do
     run "ln -nfs #{shared_path}/user_pass.yml #{release_path}/config/user_pass.yml"
     run "ln -nfs #{shared_path}/sidekiq.yml #{release_path}/config/sidekiq.yml"
   end
+  task :clockwork, :roles => :app do
+    run "bundle exec clockworkd config/clock.rb"
+  end
 end
 
 before "deploy:assets:precompile","customs:symlink"
 after "deploy","deploy:cleanup"
+after "deploy","customs:clockwork"
 
 desc "tail production log files" 
 task :tail_logs, :roles => :app do
@@ -53,26 +57,5 @@ task :tail_logs, :roles => :app do
     puts  # for an extra line break before the host name
     puts "#{channel[:host]}: #{data}" 
     break if stream == :err
-  end
-end
-
-namespace :clockwork do
-  desc "Stop clockwork"
-  task :stop, :roles => :app, :on_no_matching_servers => :continue do
-    #2>/dev/null skips errors if the file is found but process is not running for some reason
-    run "if [ -d #{current_path} ] && [ -f #{cw_pid_file} ]; then cd #{current_path} && kill -int $(cat #{cw_pid_file}) 2>/dev/null; else echo 'clockwork was not running' ; fi"
-  end
- 
-  desc "Start clockwork"
-  task :start, :roles => :app, :on_no_matching_servers => :continue do
-    run "cd #{current_path}; nohup bundle exec clockwork config/clock.rb -e #{rails_env} >> #{current_path}/log/clockwork.log 2>&1 &", :pty => false
-    # get process id
-    run "ps -eo pid,command | grep clockwork | grep -v grep | awk '{print $1}' > #{cw_pid_file}"
-  end
- 
-  desc "Restart clockwork"
-  task :restart, :roles => #{clockwork_roles}, :on_no_matching_servers => :continue do
-    stop
-    start
   end
 end
