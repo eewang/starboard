@@ -61,34 +61,28 @@ after "deploy:stop", "clockwork:stop"
 after "deploy:start", "clockwork:start"
 after "deploy:restart", "clockwork:restart"
  
+set :clockwork_roles, :blabla
+set :cw_log_file, "#{current_path}/log/clockwork.log"
+set :cw_pid_file, "#{current_path}/tmp/pids/clockwork.pid"
+set :rails_env, ENV['rails_env'] || ''
+ 
 namespace :clockwork do
   desc "Stop clockwork"
-  task :stop, :roles => clockwork_roles, :on_error => :continue, :on_no_matching_servers => :continue do
-    run "if [ -d #{current_path} ] && [ -f #{pid_file} ]; then cd #{current_path} && kill -INT `cat #{pid
-_file}` ; fi"
+  task :stop, :roles => :app, :on_no_matching_servers => :continue do
+    #2>/dev/null skips errors if the file is found but process is not running for some reason
+    run "if [ -d #{current_path} ] && [ -f #{cw_pid_file} ]; then cd #{current_path} && kill -int $(cat #{cw_pid_file}) 2>/dev/null; else echo 'clockwork was not running' ; fi"
   end
  
   desc "Start clockwork"
-  task :start, :roles => clockwork_roles, :on_no_matching_servers => :continue do
-    run "daemon --inherit --name=clockwork --env='#{rails_env}' --output=#{log_file} --pidfile=#{pid_file
-} -D #{current_path} -- bundle exec clockwork config/clockwork.rb"
+  task :start, :roles => :app, :on_no_matching_servers => :continue do
+    run "cd #{current_path}; nohup bundle exec clockwork config/clock.rb -e #{rails_env} >> #{current_path}/log/clockwork.log 2>&1 &", :pty => false
+    # get process id
+    run "ps -eo pid,command | grep clockwork | grep -v grep | awk '{print $1}' > #{cw_pid_file}"
   end
  
   desc "Restart clockwork"
-  task :restart, :roles => clockwork_roles, :on_no_matching_servers => :continue do
+  task :restart, :roles => #{clockwork_roles}, :on_no_matching_servers => :continue do
     stop
     start
-  end
- 
-  def rails_env
-    fetch(:rails_env, false) ? "RAILS_ENV=#{fetch(:rails_env)}" : ''
-  end
- 
-  def log_file
-    fetch(:clockwork_log_file, "#{current_path}/log/clockwork.log")
-  end
- 
-  def pid_file
-    fetch(:clockwork_pid_file, "#{current_path}/tmp/pids/clockwork.pid")
   end
 end
