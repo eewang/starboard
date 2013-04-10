@@ -1,5 +1,5 @@
 <% flash.each do |key, value| %>
-  <div data-dismiss="alert" class="<%= flash_class(key) %> animated fadeInDown message">
+  <div data-dismiss="alert", class="<%= flash_class(key) %> animated fadeInDown message" id="flash-hide">
     <a href="#" class="close" style="font-size:3em;">×</a>
     <h4><%= value %></h4>
   </div>
