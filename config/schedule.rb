@@ -1,4 +1,5 @@
-env :PATH, "/home/stargroup/.rvm/rubies/ruby-1.9.3-p327/bin"
+env :PATH, ENV["PATH"]
+env "GEM_HOME", ENV["GEM_HOME"]
 
 set :output, "./log/whenever.log"
 set :job_template, "/bin/bash -i -c ':job'"
