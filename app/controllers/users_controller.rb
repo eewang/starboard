@@ -161,16 +161,24 @@ class UsersController < ApplicationController
       @group = Group.find(params[:group_id])
       @users = @group.users
     end
-    # if current_user.is_teacher?
-      # @user = User.find(params[:id])
-      # @user.giftable_star_bank = 0 if @user.giftable_star_bank.nil? 
-      # @user.giftable_star_bank = @user.giftable_star_bank + params[:star_bank].to_i
-      # @user.save
-      # redirect_to @user
-    # end
+
     render :layout => false
   end
 
+  # POST /refill_star_bank_create
+  def refill_star_bank_create
+    params[:user_names].each do |user_name|
+      user = User.where(:name => user_name).first
+      user.giftable_star_bank = 0 if user.giftable_star_bank.nil?
+      user.giftable_star_bank = user.giftable_star_bank + params[:number].to_i
+      user.save
+    end
+
+    respond_to do |f|
+      f.js {}
+      f.html {}
+    end
+  end
 
   def create #achievements
     @achievement = Achievement.new(params[:achievement])
