@@ -151,6 +151,7 @@ GEM
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
     netrc (0.7.7)
+    newrelic_rpm (3.6.0.83)
     nokogiri (1.5.8)
     oauth2 (0.8.1)
       faraday (~> 0.8)
@@ -286,6 +287,7 @@ DEPENDENCIES
   irbtools
   jquery-rails
   json
+  newrelic_rpm
   octokit
   omniauth-stackexchange
   pg
