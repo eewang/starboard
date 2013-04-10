@@ -1,6 +1,6 @@
 :verbose: false
 :pidfile: ./tmp/pids/sidekiq.pid
-:logfile: ./log/sidekiq.log
+:logfile: ../log/sidekiq.log
 :concurrency:  14
 :queues:
   - [high, 10]
