@@ -85,4 +85,3 @@ namespace :clockwork do
     stop
     start
   end
-end
