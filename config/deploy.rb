@@ -1,6 +1,5 @@
 require 'bundler/capistrano'
 require 'sidekiq/capistrano'
-require 'clockwork'
 
 set :application, "starboard"
 set :repository,  "git@github.com:flatiron-school/starboard.git"
@@ -57,15 +56,6 @@ task :tail_logs, :roles => :app do
   end
 end
 
-after "deploy:stop", "clockwork:stop"
-after "deploy:start", "clockwork:start"
-after "deploy:restart", "clockwork:restart"
- 
-set :clockwork_roles, :blabla
-set :cw_log_file, "#{current_path}/log/clockwork.log"
-set :cw_pid_file, "#{current_path}/tmp/pids/clockwork.pid"
-set :rails_env, ENV['rails_env'] || ''
- 
 namespace :clockwork do
   desc "Stop clockwork"
   task :stop, :roles => :app, :on_no_matching_servers => :continue do
@@ -81,7 +71,7 @@ namespace :clockwork do
   end
  
   desc "Restart clockwork"
-  task :restart, :roles => :clockwork_roles, :on_no_matching_servers => :continue do
+  task :restart, :roles => #{clockwork_roles}, :on_no_matching_servers => :continue do
     stop
     start
   end
