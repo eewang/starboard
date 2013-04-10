@@ -8,6 +8,8 @@ Starboard::Application.routes.draw do
     get "/groups/:id/#{ service }" => "groups##{ service }", :as => service
   end
 
+  get '/users/victoria', :controller => 'users', :action => 'victoria'
+  
   resources :users
   # User star views
   ['blog', 'codeschool', 'github', 'handraise', 'student', 'teacher', 'treehouse'].each do |service|

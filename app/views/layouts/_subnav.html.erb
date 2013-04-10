@@ -14,7 +14,7 @@
       <!-- </div> -->
           <% if current_user && current_user.is_teacher? %>
             <div class="give-star span2 pull-right">
-              <a href="#refillStarModal" role="button" data-toggle="modal" class="give-star-btn btn">Refill Star Bank</a>
+              <a href="#refillStarModal" role="button" data-toggle="modal" class="give-star-button btn">Refill Star Bank</a>
             </div>
             <% if @group %>
                 <% unless @group.id.nil? %>
