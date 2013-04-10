@@ -15,7 +15,7 @@
             <td><%= link_to User.find_by_id(b.user_id).blog_url.gsub('/atom.xml', ""), User.find_by_id(b.user_id).blog_url.gsub('/atom.xml', "") %>
             </td>
             <td>
-              <%= b.created_at %>
+              <%= b.created_at.strftime("Written on %m/%d/%Y") %>
             </td>
           </tr>
         <% end %>
