@@ -1,6 +1,4 @@
-job_type :rake, "{ cd #{@current_path} > /dev/null; } && RAILS_ENV=:environment bundle exec rake :task --silent :output"
-job_type :script, "{ cd #{@current_path} > /dev/null; } && RAILS_ENV=:environment bundle exec script/:task :output"
-job_type :runner, "{ cd #{@current_path} > /dev/null; } && RAILS_ENV=:environment bundle exec rails runner ':task' :output"
+env :PATH, "/home/stargroup/.rvm/rubies/ruby-1.9.3-p327/bin"
 
 set :output, "./log/whenever.log"
 set :job_template, "/bin/bash -i -c ':job'"
