@@ -20,14 +20,27 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :test do
+  gem 'faker'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'launchy'
+  gem 'factory_girl_rails'
+  gem 'rspec-rails'
+end
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
 
 group :production do
   gem 'pg'
+  gem 'newrelic_rpm'
 end
+
 
 # Frontend Stuff
 gem 'twitter-bootstrap-rails'
@@ -61,7 +74,6 @@ gem 'debugger'
 gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem 'rvm-capistrano'
-gem 'clockwork'
 
 gem 'sinatra', :require => false
 gem 'slim'

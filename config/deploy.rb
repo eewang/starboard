@@ -1,4 +1,5 @@
 set :rvm_ruby_string, ENV['GEM_HOME'].gsub(/.*\//,"")
+set :rvm_type, :user
 
 require "rvm/capistrano"
 require 'bundler/capistrano'
@@ -44,14 +45,14 @@ namespace :customs do
     run "ln -nfs #{shared_path}/user_pass.yml #{release_path}/config/user_pass.yml"
     run "ln -nfs #{shared_path}/sidekiq.yml #{release_path}/config/sidekiq.yml"
   end
-  task :clockwork, :roles => :app do
-    run "bundle exec clockworkd config/clock.rb"
-  end
 end
 
 before "deploy:assets:precompile","customs:symlink"
 after "deploy","deploy:cleanup"
-after "deploy","customs:clockwork"
+
+task :copy_keys, :roles => :app do
+  upload("config/user_pass.yml", "#{shared_path}/user_pass.yml")
+end
 
 desc "tail production log files" 
 task :tail_logs, :roles => :app do
