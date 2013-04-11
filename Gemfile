@@ -62,7 +62,6 @@ gem 'debugger'
 gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem 'rvm-capistrano'
-gem 'clockwork'
 
 gem 'sinatra', :require => false
 gem 'slim'
