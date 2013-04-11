@@ -24,19 +24,22 @@
     <%= render :partial => 'layouts/flash_messages', :locals => {:flash => flash} %>
 
     <%= render :partial => 'layouts/navbar' %>
+    
+    <% unless current_user %>
+      <%= render :partial => 'layouts/landing_page' %>
+    <% end %>
 
     <% if current_user %>
       <%= render :partial => 'layouts/subnav' %>
-    <% end %>
-
-    <div class="page container">
-      <div class="row">
-        <%= render :partial => 'layouts/sidebar' %>
-        <div class="content">
-          <%= yield %>
+        <div class="page container">
+          <div class="row">
+            <%= render :partial => 'layouts/sidebar' %>
+            <div class="content">
+              <%= yield %>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+    <% end %>
 
     <%= render :partial => 'stars/givestarmodal' %>
 
