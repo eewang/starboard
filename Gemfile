@@ -20,15 +20,25 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :test do
+  gem 'faker'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'launchy'
+end
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
 
 group :production do
   gem 'pg'
   gem 'newrelic_rpm'
 end
+
 
 # Frontend Stuff
 gem 'twitter-bootstrap-rails'
