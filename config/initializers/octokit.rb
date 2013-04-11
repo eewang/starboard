@@ -1,1 +1,1 @@
-$octokit = Octokit::Client.new(:login => ENV['githubuser'], :password => ENV['githubpassword'], :auto_traversal => true)
+$octokit = Octokit::Client.new(:login => ENV['GITHUB_USER'], :password => ENV['GITHUB_PASS'], :auto_traversal => true)

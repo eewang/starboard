@@ -50,6 +50,10 @@ end
 before "deploy:assets:precompile","customs:symlink"
 after "deploy","deploy:cleanup"
 
+task :copy_keys, :roles => :app do
+  upload("config/user_pass.yml", "#{shared_path}/user_pass.yml")
+end
+
 desc "tail production log files" 
 task :tail_logs, :roles => :app do
   trap("INT") { puts 'Interupted'; exit 0; }
