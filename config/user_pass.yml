@@ -3,3 +3,6 @@ EMAIL_PASSWORD: 'starboard2013'
 
 SIDEKIQ_ID: "stargroup"
 SIDEKIQ_PASS: "26west33"
+
+GITHUB_USER: "starboard2013"
+GITHUB_PASS: "fuxedllc26west33"
