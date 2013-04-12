@@ -2,15 +2,25 @@
 //All this logic will automatically be available in application.js.
 // You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+$(document).ready(function() {
+  $('#add-star').click(function(e) {
+    e.preventDefault();
+    console.log("add star working");       
 
-
+    // get request
+    $.get(("/stars/new/"), function(html){
+    $("body").append(html);
+    $('#star-modal').modal('toggle');
+    
+    });
+  });
+  return false;
+});
 
 $(document).ready(function() {
   
   $.each($('.teacher-dashboard .student'), function(){
-    console.log("jquery has awoken");
     var self = this;
-    console.log(this);
     $(self).find('.remove').click(function(e) {
       console.log("remove click works");
       e.preventDefault();
@@ -28,3 +38,7 @@ $(document).ready(function() {
   });
 
 });
+
+
+
+

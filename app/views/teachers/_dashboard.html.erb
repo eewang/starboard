@@ -65,7 +65,10 @@
                   </span>
                 </li>
             <% end %>
-            <li><%= link_to "Add Star", new_star_path %> </li>
+            <li>
+              <a href="#star-modal" id='add-star' data-toggle="modal">Add Star</a>
+              <%#= link_to "Add Star", new_star_path %> 
+            </li>
           </ul>
         </div>
       </div>

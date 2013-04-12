@@ -43,15 +43,11 @@ class StarsController < ApplicationController
     @star = Star.new(params[:star])
     source_id = Source.where(:name => "Teacher").first.id
     @star.source_id = source_id
-    @star.inspect
 
-    respond_to do |format|
-      if @star.save
-        format.html { redirect_to current_user, notice: 'Star was successfully created.' }
-        format.json { render json: @star, status: :created, location: @star }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @star.errors, status: :unprocessable_entity }
+    if @star.save
+     respond_to do |f|
+        flash[:notice] = 'Star successfully created.'
+        f.html { redirect_to current_user }
       end
     end
   end
