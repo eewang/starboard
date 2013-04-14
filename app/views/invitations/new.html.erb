@@ -1,0 +1,30 @@
+<h3>Add Students</h3>
+
+  <%= form_for(@invitation) do |f| %>
+    <% if @invitation.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@invitation.errors.count, "error") %> prohibited this invitation from being saved:</h2>
+
+        <ul>
+        <% @invitation.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <p>Student Emails (comma delimted)</p>
+      <%=  select_tag 'id', options_for_select(@teacher_groups.collect{ |t| [t.name, t.id] }) %>
+    </div>
+
+    <div>
+    <p>Student Emails (comma delimted)</p>
+    <%= text_area_tag 'emails' %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+
+  <% end %>

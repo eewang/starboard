@@ -17,6 +17,9 @@
               </span>
             </li>
           <% end %>
+          <li>
+            <%= link_to "Add Class", new_group_path %>
+          </li>
         </ul>
       </div>
     </div>
@@ -43,6 +46,9 @@
                 <% end %>
               </ul>
           <% end %>
+          <li>
+            <%= link_to "Add Student", new_invitation_path %>
+          </li>
         </ul>
       </div>
     </div>
@@ -67,7 +73,6 @@
             <% end %>
             <li>
               <a href="#star-modal" id='add-star' data-toggle="modal">Add Star</a>
-              <%#= link_to "Add Star", new_star_path %> 
             </li>
           </ul>
         </div>
