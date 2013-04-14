@@ -104,7 +104,7 @@ class GroupsController < ApplicationController
       if @group.update_attributes(params[:group])
         if params[:emails]
           EmailsWorker.perform_async(@group.id, params[:emails])
-          format.html { redirect_to @group, notice: 'Invitations successfully sent.' }
+          format.html { redirect_to current_user, notice: 'Invitations successfully sent.' }
         else
           format.html { redirect_to @group, notice: 'Group was successfully updated.' }
           format.json { head :no_content }
