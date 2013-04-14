@@ -8,7 +8,7 @@
     <div id="collapseOne" class="accordion-body collapse in">
       <div class="accordion-inner">
         <ul>
-          <% current_user.groups.where(:creator_id => current_user.id).each do |g| %>
+          <% Group.where(:creator_id => current_user.id).each do |g| %>
             <li class="title-names">
               <%= link_to g.name, g %>
               <span class="edit-buttons">
@@ -33,7 +33,7 @@
     <div id="collapseTwo" class="accordion-body collapse in">
       <div class="accordion-inner">
         <ul>
-          <% @user.groups.each do |g| %>
+          <% Group.where(:creator_id => current_user.id).each do |g| %>
             <li class="title-names">
               <%= link_to g.name, g %>
             </li>

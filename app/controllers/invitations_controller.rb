@@ -2,7 +2,7 @@ class InvitationsController < ApplicationController
 
   def new
     @invitation = Invitation.new
-    @teacher_groups = current_user.groups.where(:creator_id => current_user.id)
+    @teacher_groups = Group.where(:creator_id => current_user.id)
   end
 
   def create
