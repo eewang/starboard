@@ -28,7 +28,7 @@ class GroupsController < ApplicationController
   def self.group_views(*views)
     views.each do |view|
       define_method "#{view}" do
-        if current_user
+        # if current_user
           @active_nav = view.to_s
           @group = Group.find(params[:id])
           @users = User.joins(:groups).where("group_id = #{params[:id]}").sort_by { |user| user.achievements.count }.reverse
@@ -39,10 +39,12 @@ class GroupsController < ApplicationController
           respond_to do |format|
             format.html # leaderboard.html.erb
           end
-        else
-          flash[:notice] = "You need to login."
-          redirect_to root_path
-        end
+        # else
+        #   flash[:alert] = "You need to login."
+        #   raise params.inspect
+          
+        #   redirect_to new_session_path
+        # end
       end
     end
   end

@@ -25,11 +25,11 @@
 
     <%= render :partial => 'layouts/navbar' %>
     
-    <% unless current_user %>
-      <%= render :partial => 'layouts/landing_page' %>
-    <% end %>
+    <%# unless current_user %>
+      <%#= render :partial => 'layouts/landing_page' %>
+    <%# end %>
 
-    <% if current_user %>
+    <%# if current_user %>
       <%= render :partial => 'layouts/subnav' %>
         <div class="page container">
           <div class="row">
@@ -39,7 +39,7 @@
             </div>
           </div>
         </div>
-    <% end %>
+    <%# end %>
 
     <%= render :partial => 'stars/givestarmodal' %>
 

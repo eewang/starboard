@@ -12,26 +12,10 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/1
-  # GET /users/1.json
-  def show
-    if current_user
-      @user = User.find(params[:id])
-      @teacher_groups = Group.where(:creator_id => current_user.id)
-
-      respond_to do |format|
-        format.html # show.html.erb
-        format.json { render json: @user }
-      end
-    else
-      redirect_to root_path
-    end
-  end
-
   def self.user_views(*views)
     views.each do |view|
       define_method "#{view}" do
-        if current_user
+        # if current_user
           @active_nav = view.to_s
           @user = User.find(params[:id])
           @star_types = views.collect { |type| type.to_s }
@@ -40,7 +24,7 @@ class UsersController < ApplicationController
             format.html
             format.json { render json: @user }
           end
-        end
+        # end
       end
     end
   end

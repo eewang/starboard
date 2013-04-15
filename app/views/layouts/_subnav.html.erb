@@ -1,9 +1,11 @@
 <div class="subnav hidden-phone">
   <div class="container">
     <div class="row">
-      <div class="give-star span4">
-        <%= link_to 'Give a Star', '#give-star', :role => 'button', :class => 'give-star-btn btn gift-star', :data => {:group => current_group_id, :stars => current_user.giftable_star_bank } %>
-      </div>
+      <% if current_user %>
+        <div class="give-star span4">
+          <%= link_to 'Give a Star', '#give-star', :role => 'button', :class => 'give-star-btn btn gift-star', :data => {:group => current_group_id, :stars => current_user.giftable_star_bank } %>
+        </div>
+      <% end %>
       <div class="section-title span3"><i class="icon-th-large"></i>  <%= yield :section_title %></div>
       <!-- <div class="section-title"> -->
         <%# if current_user %>

@@ -1,7 +1,9 @@
 <div class="sidebar span4">
   <div class="profile-pic">
+    <%# if current_user %>
     <% if current_user %>
       <%= content_for?(:sidebar_profile_pic) ? yield(:sidebar_profile_pic) : (image_tag current_user.safe_profile_pic) %>
+    <% end %>
     </div>
     <ul class="navigation">
       <% if @group %>
@@ -24,6 +26,8 @@
             </a>
           </ul>
       <% end %>
+
+    <% if current_user %>
       <li class="head">Stars <%= link_to 'See All', user_path(current_user), :class => 'see-all' %></li>
       <ul>
         <li class="view-nav <%= 'active' if @active_nav == 'blog' %>">
@@ -62,6 +66,8 @@
           <span class="count"><%= content_for?(:treehouse_count) ? yield(:treehouse_count) : current_user.treehouse_stars.count %></span>
         </li>
       </ul>
+    <% end %>
+
       <% if @users %>
         <li class="head classmates">Class</li>
         <ul>
@@ -70,6 +76,6 @@
           <% end %>
         </ul>
       <% end %>
-    <% end %>
+    <%# end %>
   </ul>
 </div>

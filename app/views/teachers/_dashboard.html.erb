@@ -8,14 +8,16 @@
     <div id="collapseOne" class="accordion-body collapse in">
       <div class="accordion-inner">
         <ul>
-          <% Group.where(:creator_id => current_user.id).each do |g| %>
-            <li class="title-names">
-              <%= link_to g.name, g %>
-              <span class="edit-buttons">
-              <%= link_to 'delete', g, class: 'span 1 btn btn-danger pull-right', method: :delete, data: { confirm: 'Are you super sure?' } %>
-              <%= link_to 'edit', edit_group_path(g), class: 'span 1 btn btn-info pull-right' %>
-              </span>
-            </li>
+          <% if current_user %>
+            <% Group.where(:creator_id => current_user.id).each do |g| %>
+              <li class="title-names">
+                <%= link_to g.name, g %>
+                <span class="edit-buttons">
+                <%= link_to 'delete', g, class: 'span 1 btn btn-danger pull-right', method: :delete, data: { confirm: 'Are you super sure?' } %>
+                <%= link_to 'edit', edit_group_path(g), class: 'span 1 btn btn-info pull-right' %>
+                </span>
+              </li>
+            <% end %>
           <% end %>
           <li>
             <%= link_to "Add Class", new_group_path %>
@@ -33,18 +35,20 @@
     <div id="collapseTwo" class="accordion-body collapse in">
       <div class="accordion-inner">
         <ul>
-          <% Group.where(:creator_id => current_user.id).each do |g| %>
-            <li class="title-names">
-              <%= link_to g.name, g %>
-            </li>
-              <ul>
-                <% g.users.each do |u| %>
-                  <li class="student" data-group-id="<%= g.id %>" data-user-id="<%= u.id %>" >
-                    <%= link_to u.name, u %>
-                    <a href="#" id='remove' class='remove btn btn-danger'>remove</a>
-                  </li>
-                <% end %>
-              </ul>
+          <% if current_user %>
+            <% Group.where(:creator_id => current_user.id).each do |g| %>
+              <li class="title-names">
+                <%= link_to g.name, g %>
+              </li>
+                <ul>
+                  <% g.users.each do |u| %>
+                    <li class="student" data-group-id="<%= g.id %>" data-user-id="<%= u.id %>" >
+                      <%= link_to u.name, u %>
+                      <a href="#" id='remove' class='remove btn btn-danger'>remove</a>
+                    </li>
+                  <% end %>
+                </ul>
+            <% end %>
           <% end %>
           <li>
             <%= link_to "Add Student", new_invitation_path %>
