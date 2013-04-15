@@ -12,21 +12,21 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/1
-  # GET /users/1.json
-  def show
-    if current_user
-      @user = User.find(params[:id])
-      @teacher_groups = Group.where(:creator_id => current_user.id)
+  # # GET /users/1
+  # # GET /users/1.json
+  # def show
+  #   if current_user
+  #     @user = User.find(params[:id])
+  #     @groups = Group.all
 
-      respond_to do |format|
-        format.html # show.html.erb
-        format.json { render json: @user }
-      end
-    else
-      redirect_to root_path
-    end
-  end
+  #     respond_to do |format|
+  #       format.html # show.html.erb
+  #       format.json { render json: @user }
+  #     end
+  #   else
+  #     redirect_to root_path
+  #   end
+  # end
 
   def self.user_views(*views)
     views.each do |view|
@@ -35,6 +35,7 @@ class UsersController < ApplicationController
           @active_nav = view.to_s
           @user = User.find(params[:id])
           @star_types = views.collect { |type| type.to_s }
+          @groups = Group.all
 
           respond_to do |format|
             format.html
@@ -132,6 +133,15 @@ class UsersController < ApplicationController
     @group = Group.find_by_id(params[:group])
     @group_user = GroupUser.where(:user_id => @user, :group_id => @group)
     @group_user.first.delete
+    @user.save
+
+    render :nothing => true
+  end
+
+  def make_teacher
+    @user = User.find_by_id(params[:user])
+    @user.is_teacher = true
+    @user.groups = []
     @user.save
 
     render :nothing => true
