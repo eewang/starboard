@@ -5,7 +5,7 @@ class GroupsController < ApplicationController
   # GET /groups.json
   def index
     if current_user
-      @groups = Group.all
+      @groups = current_user.groups
       if @groups.count == 1
         redirect_to "/groups/#{@groups.first.id}"
       else
