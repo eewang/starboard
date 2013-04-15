@@ -14,10 +14,6 @@ $(document).ready(function() {
     
     });
   });
-  return false;
-});
-
-$(document).ready(function() {
   
   $.each($('.teacher-dashboard .student'), function(){
     var self = this;
@@ -29,12 +25,27 @@ $(document).ready(function() {
       var groupId = $(self).first().data("group-id");
       var userId = $(self).first().data("user-id");
 
-      $.get(("/users/remove_from_group/?user=" + userId + "&group=" + groupId), function(html){
-      console.log(html);
-      alert("Student successfully removed from class.");
+      $.get("/users/remove_from_group/?user=" + userId + "&group=" + groupId, function (html) {
+        console.log(html);
+        alert("Student successfully removed from class.");
       });
 
     });
+
+    $(self).find('#make-teacher').click(function(e) {
+      console.log("make-teacher click works");
+      e.preventDefault();
+      $(self).remove();
+
+      var userId = $(self).first().data("user-id");
+
+      $.get("/users/make_teacher/?user=" + userId, function(html){
+      console.log(html);
+      alert("Teacher created.");
+      });
+
+    });
+
   });
 
 });

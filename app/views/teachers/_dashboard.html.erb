@@ -8,7 +8,7 @@
     <div id="collapseOne" class="accordion-body collapse in">
       <div class="accordion-inner">
         <ul>
-          <% Group.where(:creator_id => current_user.id).each do |g| %>
+          <% groups.each do |g| %>
             <li class="title-names">
               <%= link_to g.name, g %>
               <span class="edit-buttons">
@@ -33,7 +33,7 @@
     <div id="collapseTwo" class="accordion-body collapse in">
       <div class="accordion-inner">
         <ul>
-          <% Group.where(:creator_id => current_user.id).each do |g| %>
+          <% groups.each do |g| %>
             <li class="title-names">
               <%= link_to g.name, g %>
             </li>
@@ -42,6 +42,7 @@
                   <li class="student" data-group-id="<%= g.id %>" data-user-id="<%= u.id %>" >
                     <%= link_to u.name, u %>
                     <a href="#" id='remove' class='remove btn btn-danger'>remove</a>
+                    <a href="#" id='make-teacher' class='make-teacher btn btn-info'>make teacher</a>
                   </li>
                 <% end %>
               </ul>
