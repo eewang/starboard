@@ -44,8 +44,6 @@ namespace :customs do
     run "ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml"
     run "ln -nfs #{shared_path}/user_pass.yml #{release_path}/config/user_pass.yml"
     run "ln -nfs #{shared_path}/sidekiq.yml #{release_path}/config/sidekiq.yml"
-    run "bundle exec RAILS_ENV=production clockworkd --clock=lib/clock.rb stop"
-    run "bundle exec RAILS_ENV=production clockworkd --clock=lib/clock.rb start"
   end
 end
 
