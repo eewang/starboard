@@ -6,5 +6,5 @@ if defined?(PhusionPassenger)
   end
 end
 
-
-
+class SidekiqException < Exception
+end
