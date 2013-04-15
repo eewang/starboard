@@ -3,6 +3,7 @@ Starboard::Application.routes.draw do
   require 'sidekiq/web'
 
   get '/users/remove_from_group/', to: 'users#remove_from_group'
+  get '/users/make_teacher/', to: 'users#make_teacher'
 
   resources :groups
   # Group views

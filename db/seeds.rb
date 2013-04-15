@@ -173,8 +173,8 @@ users = User.first_or_create([
 ])
 
 
-group1 = Group.create({name: 'Flatiron 001', creator_id: 1})
-group2 = Group.create({name: 'Flatiron 002', creator_id: 1})
+group1 = Group.create({name: 'Flatiron 001', creator_id: 2})
+group2 = Group.create({name: 'Flatiron 002', creator_id: 2})
 
 
 # # Populate profile pic attribute from email address attribute
