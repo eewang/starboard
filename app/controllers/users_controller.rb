@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   def show
     if current_user
       @user = User.find(params[:id])
+      @teacher_groups = Group.where(:creator_id => current_user.id)
 
       respond_to do |format|
         format.html # show.html.erb

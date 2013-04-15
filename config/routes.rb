@@ -53,6 +53,8 @@ Starboard::Application.routes.draw do
 
   resources :users
 
+  resources :invitations
+
 
   resources :group_users
   

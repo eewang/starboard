@@ -28,6 +28,7 @@ class TeachersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    
     if @user.is_teacher?
       @groups = Group.where(:creator_id => params[:id])
       render 'users/show'
