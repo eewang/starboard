@@ -2,4 +2,4 @@
   <%= @group.name %>
 <% end %>
 
-<%= render 'grid' %>
+<%= render 'grid', :locals => { :users => @users }%>
