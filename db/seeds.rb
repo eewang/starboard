@@ -1,3 +1,5 @@
+User.create(:name => "demo", :email => "demo@gmail.com")
+
 sources = Source.first_or_create([
     {name: "Treehouse"},
     {name: "Codeschool"},

@@ -28,20 +28,21 @@ class GroupsController < ApplicationController
   def self.group_views(*views)
     views.each do |view|
       define_method "#{view}" do
-        if current_user
-          @active_nav = view.to_s
-          @group = Group.find(params[:id])
-          @users = User.joins(:groups).where("group_id = #{params[:id]}").sort_by { |user| user.achievements.count }.reverse
-          if view == :blog_posts
-            user_ids = @group.user_ids
-            @blog_posts = Achievement.where(:user_id => (user_ids), :star_id => 2).order('created_at ASC')
-          end
-          respond_to do |format|
-            format.html # leaderboard.html.erb
-          end
-        else
-          flash[:notice] = "You need to login."
-          redirect_to root_path
+
+        unless current_user
+          user = User.where(:email => "demo@gmail.com").first
+          session[:user_id] = user.id
+        end
+
+        @active_nav = view.to_s
+        @group = Group.find(params[:id])
+        @users = User.joins(:groups).where("group_id = #{params[:id]}").sort_by { |user| user.achievements.count }.reverse
+        if view == :blog_posts
+          user_ids = @group.user_ids
+          @blog_posts = Achievement.where(:user_id => (user_ids), :star_id => 2).order('created_at ASC')
+        end
+        respond_to do |format|
+          format.html # leaderboard.html.erb
         end
       end
     end

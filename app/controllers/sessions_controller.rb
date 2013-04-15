@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    @new_groups = Group.order("updated_at desc").limit(3)
   end
 
   def create
