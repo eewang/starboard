@@ -1,5 +1,3 @@
-User.create(:name => "demo", :email => "demo@gmail.com")
-
 sources = Source.first_or_create([
     {name: "Treehouse"},
     {name: "Codeschool"},
@@ -17,6 +15,12 @@ star = Star.first_or_create([
 ])
 
 users = User.first_or_create([
+  {
+    name: 'demo',
+    email: 'demo@gmail.com',
+    password: 'hella',
+    password_confirmation: 'hella'
+    },
   { 
     name: 'Tyler',
     email: 'tyebud@gmail.com',
@@ -147,6 +151,15 @@ users = User.first_or_create([
     password: 'hella',
     password_confirmation: 'hella'
   },
+  { name: 'Victoria Friedman',
+    email: 'victoria.m.friedman@gmail.com',
+    blog_url: 'http://vicfriedman.github.com/atom.xml',
+    github_username: 'vicfriedman',
+    codeschool_username: 'victoriamfriedman',
+    treehouse_username: 'victoriafriedman',
+    password: 'hella',
+    password_confirmation: 'hella'
+    },
   {
     name: 'Andrew Callahan',
     email: 'andrew.callahan@flatironschool.com',
