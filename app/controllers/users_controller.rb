@@ -190,25 +190,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def create #achievements
-    @achievement = Achievement.new(params[:achievement])
-
-    if params[:star_name]
-      star_id = Source.teacher.stars.where(:name => params[:star_name]).first_or_create.id
-      @achievement.star_id = Source.teacher.id
-    else
-      star_id = Star.where(:name => "Gifted Star").first.id
-      @achievement.star_id = star_id
-    end
-
-    @achievement.sender_id = current_user.id
-    @achievement.user_id = User.where(:name => params[:user_name]).first.id
-
-    @achievement.save
-      
-    respond_to do |f|
-      f.js {}
-      f.html {}
-    end
-  end
 end
+
+
