@@ -1,3 +1,6 @@
 <div class="star">
-  <%= image_tag("gold_star.png", "data-toggle" => "tooltip", :title => student_star.name ) %>
+  <% @user.achievements.where("message IS NOT NULL").each do |achievement| %>
+    <%= image_tag("gold_star.png", "data-toggle" => "tooltip", :title => achievement.message ) %>
+  <% end %>
 </div>
+
