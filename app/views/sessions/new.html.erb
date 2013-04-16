@@ -1,27 +1,33 @@
-<h1>Log In</h1>
+<div class="hero-unit" style="width:300px; padding:10px 30px;">
 
-<%= form_tag sessions_path do %>
-  <div class="field">
-    <%= label_tag :email %><br />
-    <%= email_field_tag :email, params[:email] %>
-  </div>
+  <h1>Log In</h1>
+  <br>
+  <%= form_tag sessions_path do %>
+    <div class="field">
+      <%= label_tag :email %>
+      <%= email_field_tag :email, params[:email] %>
+    </div>
 
-  <div class="field">
-    <%= label_tag :password %><br />
-    <%= password_field_tag :password %>
-  </div>
+    <div class="field">
+      <%= label_tag :password %>
+      <%= password_field_tag :password %>
+    </div>
 
-  <%= hidden_field_tag 'invitation_token', params[:invitation_token] %>
+    <%= hidden_field_tag 'invitation_token', params[:invitation_token] %>
 
-  <div class="actions">
-    <%= submit_tag "Log In" %>
-  </div>
-<% end %>
-
-<h2>Or check out some sample groups...</h2>
-
-<% if @new_groups %>
-  <% @new_groups.each do |group| %>
-    <%= link_to group.name, groups_path + "/" + group.id.to_s %>
+    <div class="actions">
+      <%= submit_tag "Log In" %>
+    </div>
   <% end %>
+
+</div>
+
+<% if @flatiron_group %>
+  <div class="hero-unit" style="width:300px; padding:10px 30px;">
+    <h2>Check out: </h2>
+    <p>The Flatiron School's Winter Class</p>
+    <p>
+      <%= link_to @flatiron_group.name, groups_path + "/" + @flatiron_group.id.to_s, :class => "btn btn-primary btn-large" %>
+    </p>
+  </div>
 <% end %>

@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    @new_groups = Group.find_by_name("flatiron 001")
+    @flatiron_group = Group.where("name like ?", "%Flatiron%").first
   end
 
   def create
