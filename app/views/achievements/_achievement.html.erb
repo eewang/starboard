@@ -44,3 +44,7 @@
   <h3>Codeschool</h3>
   <%= render :partial => "achievements/codeschool", :collection => @user.codeschool_stars, :as => "codeschool_star" %>
 </div>
+
+<div>
+  <%= link_to "Edit Profile", edit_user_path(@user) %>
+</div>
