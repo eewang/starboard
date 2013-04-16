@@ -61,7 +61,7 @@
           <%= content_for?(:treehouse_link) ? yield(:treehouse_link) : link_to('Treehouse', "/users/#{current_user.id}/treehouse") %> 
           <span class="count"><%= content_for?(:treehouse_count) ? yield(:treehouse_count) : current_user.treehouse_stars.count %></span>
         </li>
-        <li class="head"><%= link_to "Edit Profile", edit_user_path(@user) %></li>
+        <li class="head"><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
       </ul>
       <% if @users %>
         <li class="head classmates">Class</li>
