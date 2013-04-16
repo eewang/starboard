@@ -152,6 +152,7 @@ class UsersController < ApplicationController
       user = User.find(params[:id])
       current_user.give_achievement_to(user, params[:message])
     end
+    flash[:notice] = "Star given to #{user.name}!"
     redirect_to user
   end
 
