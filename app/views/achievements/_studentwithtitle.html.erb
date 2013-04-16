@@ -1,8 +1,7 @@
 <div class="span8">
-  <p><%= link_to image_tag("gold_star.png"), star_path(student_star) %></p>
-  <p>
+  <ul>
     <% @user.achievements.where("message IS NOT NULL").each do |achievement| %>
-      <%= User.find_by_id(achievement.sender_id).name %>: <%= achievement.message %>
+      <li><%= User.find_by_id(achievement.sender_id).name %>: <%= achievement.message %></li>
     <% end %>
-  </p>
+  </ul>
 </div>
