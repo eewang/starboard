@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    @new_groups = Group.order("updated_at desc").limit(3)
+    @new_groups = Group.find_by_name("flatiron 001")
   end
 
   def create
