@@ -4,11 +4,9 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    unless current_user
+    if current_user.nil?
       redirect_to '/login'
-    end
-
-    if current_user.is_teacher?
+    elsif current_user.is_teacher?
       redirect_to current_user
     else
       redirect_to "/groups/#{current_user.groups.first.id}/leaderboard"
