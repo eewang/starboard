@@ -36,8 +36,9 @@ group :development do
   gem 'factory_girl_rails'
 end
 
+gem 'pg'
+  
 group :production do
-  gem 'pg'
   gem 'newrelic_rpm'
 end
 

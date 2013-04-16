@@ -19,7 +19,7 @@ class Treehouse
   }
 
   def get_data(username)
-    th_json = self.class.get("http://www.teamtreehouse.com/#{username}.json")
+    th_json = Treehouse.get("http://www.teamtreehouse.com/#{username}.json")
     case th_json.code
       when 200
         self.check_star_requirement(th_json)
