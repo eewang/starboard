@@ -5,15 +5,7 @@ class GroupsController < ApplicationController
   # GET /groups.json
   def index
     if current_user
-      @groups = Group.all
-      if @groups.count == 1
-        redirect_to "/groups/#{@groups.first.id}"
-      else
-        respond_to do |format|
-          format.html # index.html.erb
-          format.json { render json: @groups }
-        end
-      end
+        redirect_to "/groups/#{current_user.groups.first.id}/leaderboard"
     else
       redirect_to '/login'
     end
