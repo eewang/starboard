@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130408142447) do
+ActiveRecord::Schema.define(:version => 20130416150541) do
 
   create_table "achievements", :force => true do |t|
     t.integer  "user_id"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20130408142447) do
     t.integer  "blog_count"
     t.boolean  "is_teacher"
     t.string   "tagline"
+    t.text     "thbadges"
   end
 
 end

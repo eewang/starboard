@@ -6,7 +6,10 @@ class TreehouseChart
   def self.update_treehouse_badges
     User.all.each do |user|
       begin
-        TreehouseChart.update_badges(user)
+        badges = TreehouseChart.update_badges(user)
+        unless user.update_attribute(:thbadges, badges.join(", "))
+          puts Rails.logger.info(user.errors.messages.inspect)
+        end
       rescue
         next
       end

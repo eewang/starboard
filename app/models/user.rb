@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   include HTTParty
 
-  attr_accessible :name, :profile_pic, :treehouse_username, :codeschool_username, :github_username, :blog_url, :blog_count, :email, :password, :password_confirmation, :is_teacher, :th_badges
+  attr_accessible :name, :profile_pic, :treehouse_username, :codeschool_username, :github_username, :blog_url, :blog_count, :email, :password, :password_confirmation, :is_teacher, :thbadges
 
   validates_uniqueness_of :email
   before_save :get_profile_pic
