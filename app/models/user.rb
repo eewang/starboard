@@ -96,7 +96,7 @@ class User < ActiveRecord::Base
   end
 
   def remove_star_from_starbank  
-    self.giftable_star_bank -= 1
+    # self.giftable_star_bank -= 1
   end
 
   def blog_stars
