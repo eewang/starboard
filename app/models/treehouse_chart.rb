@@ -3,6 +3,16 @@ require 'pry'
 class TreehouseChart
   include HTTParty
 
+  def self.update_treehouse_badges
+    User.all.each do |user|
+      begin
+        TreehouseChart.update_badges(user)
+      rescue
+        next
+      end
+    end
+  end
+
   def self.update_badges(user)
     badges_array = TreehouseChart.get_data(user.treehouse_username)
     x_axis_days_array = TreehouseChart.build_x_axis
@@ -12,15 +22,15 @@ class TreehouseChart
 
   def self.get_data(username)
     json = Treehouse.get("http://www.teamtreehouse.com/#{username}.json")
-    parse_badges(json)
+      parse_badges(json)
   end
 
   def self.parse_badges(json)
-    earned_dates = json["badges"].collect { |badge| badge["earned_date"] }
-    earned_dates.collect do |day|
-      date = Time.parse(day)
-      "#{date.month}/#{date.day}"
-    end
+      earned_dates = json["badges"].collect { |badge| badge["earned_date"] }
+      earned_dates.collect do |day|
+        date = Time.parse(day)
+        "#{date.month}/#{date.day}"
+      end
   end
 
   def self.build_x_axis
