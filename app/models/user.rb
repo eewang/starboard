@@ -25,7 +25,11 @@ class User < ActiveRecord::Base
     
     external_services.each do |service, identifier|
       if identifier
-        UsersWorker.perform_async(self.id, service, identifier)
+        begin
+          UsersWorker.perform_async(self.id, service, identifier)
+        rescue SidekiqException => e
+          p "There was an error calling a worker task - user_id: #{self.id} - service: #{service} - identifier: #{identifier} - #{e}"
+        end
       end
     end
   end

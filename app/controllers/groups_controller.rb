@@ -22,6 +22,7 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    @users = Group.find(params[:id]).users
     redirect_to "/groups/#{params[:id]}/leaderboard"
   end
 
