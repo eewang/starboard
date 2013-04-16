@@ -44,7 +44,7 @@
     <select name="group_id">
       <option>Select a group please!</option>
 
-      <% current_user.groups.each do |group| %>
+      <% Group.all.each do |group| %>
         <option value="<%= group.id %>"><%= group.name %></option>
       <% end %>
 
