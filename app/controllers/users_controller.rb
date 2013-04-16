@@ -46,7 +46,7 @@ class UsersController < ApplicationController
     end
   end
 
-  user_views :show, :blog, :codeschool, :github, :handraise, :student, :teacher, :treehouse
+  user_views :show, :blog, :codeschool, :github, :student, :teacher, :treehouse
 
   # GET /users/new
   # GET /users/new.json
