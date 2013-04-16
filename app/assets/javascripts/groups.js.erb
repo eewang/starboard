@@ -13,7 +13,7 @@ $(function () {
       x: -20 //center
     },
     xAxis: {
-      categories: <%= ChartHelper.build_x_axis %>
+      categories: <%= TreehouseChart.build_x_axis %>
     },
     yAxis: {
       title: {
@@ -39,7 +39,7 @@ $(function () {
       <% User.includes.each do |user| %>
       {
           name: '<%= user.name %>',
-          data: <%= ChartHelper.build_achievements_for(user) %>
+          data: [<%= user.thbadges %>]
       },
       <% end %>
     ]
