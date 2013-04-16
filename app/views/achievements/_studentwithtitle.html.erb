@@ -1,7 +1,9 @@
 <div class="span8">
   <ul>
     <% @user.achievements.where("message IS NOT NULL").each do |achievement| %>
-      <li><%= User.find_by_id(achievement.sender_id).name %>: <%= achievement.message %></li>
+      <li>
+        <%= User.find_by_id(achievement.sender_id).name %>: <%= achievement.message %>
+      </li>
     <% end %>
   </ul>
 </div>
