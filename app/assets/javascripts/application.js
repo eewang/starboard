@@ -19,3 +19,4 @@
 //= require angular.min
 //= require_tree ./angular
 
+$('.count').tooltip({delay: { show: 500, hide: 100 }});

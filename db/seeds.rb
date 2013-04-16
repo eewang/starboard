@@ -174,15 +174,12 @@ users = User.first_or_create([
 
 
 group1 = Group.create({name: 'Flatiron 001', creator_id: 2})
-group2 = Group.create({name: 'Flatiron 002', creator_id: 2})
 
 
 # # Populate profile pic attribute from email address attribute
 User.all.each do |user|
-  user.get_profile_pic
   user.giftable_star_bank = 5
   user.groups << group1
-  user.groups << group2
   user.save
 end
 
