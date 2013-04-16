@@ -48,7 +48,7 @@
 }
 
 .message {
-  height:80px;
+  max-height:80px;
   text-align:center; 
   left:24%; 
   right:40%; 
