@@ -1,5 +1,5 @@
 <div class="star">
-  <% @user.achievements.where("message IS NOT NULL").each do |achievement| %>
+  <% Achievement.student_message(@user).each do |achievement| %>
     <%= image_tag("gold_star.png", "data-toggle" => "tooltip", :title => achievement.message ) %>
   <% end %>
 </div>
