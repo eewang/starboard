@@ -6,7 +6,6 @@ $(function () {
 
     var seriesArray = [];
     $.each(json, function(name, data) {
-
       seriesArray.push({
         name: name,
         data: data,
