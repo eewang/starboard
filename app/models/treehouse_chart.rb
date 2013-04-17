@@ -4,16 +4,7 @@ class TreehouseChart
   include HTTParty
 
   def self.update_treehouse_badges
-    User.all.each do |user|
-      begin
-        badges = TreehouseChart.update_badges(user)
-        unless user.update_attribute(:thbadges, badges.join(", "))
-          puts Rails.logger.info(user.errors.messages.inspect)
-        end
-      rescue
-        next
-      end
-    end
+    TreehouseWorker.perform_async
   end
 
   def self.update_badges(user)
