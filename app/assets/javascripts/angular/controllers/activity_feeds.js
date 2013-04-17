@@ -40,3 +40,5 @@ function ActivityFeedsController ($scope, $http) {
     console.log(error);
   });
 }
+
+ActivityFeedsController.$inject = ['$scope', '$http'];
