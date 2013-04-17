@@ -138,4 +138,23 @@ class GroupsController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def treehousechart
+    flatiron_group = Group.where("name like ?", "%Flatiron%").first
+    badges = {}
+    flatiron_group.users.collect do |user|
+      if user.thbadges && user.name
+        array = user.thbadges.split(", ").collect do |int|
+          int.to_i
+        end
+        badges[user.name] = array
+      end
+    end
+
+
+    respond_to do |format|
+      format.html { redirect_to groups_url }
+      format.json { render json: badges }
+    end
+  end
 end

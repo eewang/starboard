@@ -2,6 +2,8 @@ Starboard::Application.routes.draw do
 
   require 'sidekiq/web'
 
+  get '/treehousechart' => 'groups#treehousechart'
+
   get '/users/remove_from_group/', to: 'users#remove_from_group'
   get '/users/make_teacher/', to: 'users#make_teacher'
 
