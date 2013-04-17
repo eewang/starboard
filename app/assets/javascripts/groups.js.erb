@@ -1,5 +1,7 @@
 $(function () {
-  console.log("student chart loaded");
+
+  $('.count').tooltip({delay: { show: 500, hide: 100 }});
+
   if ($('#user_chart')[0]){
     $('#user_chart').highcharts({
     chart: {
