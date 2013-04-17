@@ -5,7 +5,7 @@ function ActivityFeedsController ($scope, $http) {
   match = regex.exec(url);
   groupId = match[1];
 
-  $http.get('/achievements/newest.json?groupid=' + groupId + '&latestachievement=').success(function (data) {
+  $http.get('/achievements/newest.json?groupid=' + groupId + '&latestachievement=0').success(function (data) {
     $scope.achievements = data;
     $scope.orderProp = '-id';
 
@@ -37,7 +37,6 @@ function ActivityFeedsController ($scope, $http) {
     recursivePoll();
     
   }).error(function (error) {
-    console.log(error);
   });
 }
 

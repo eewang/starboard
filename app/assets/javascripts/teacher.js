@@ -36,6 +36,7 @@ $(document).ready(function() {
       var userId = $(self).first().data("user-id");
 
       $.get("/users/make_teacher/?user=" + userId, function(html){
+
       alert("Teacher created.");
       });
 

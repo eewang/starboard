@@ -12,7 +12,7 @@ class Group < ActiveRecord::Base
   def get_recent_achievements(latestid=nil)
     group_achievements = []
     self.users.each do |user|
-      if latestid == nil
+      if latestid == 0
         group_achievements.concat(Achievement.find(:all, :order => "id desc", :limit => 10, :conditions => ["user_id = ?", user.id]))
       else
         group_achievements.concat(Achievement.find(:all, :order => "id desc", :limit => 10, :conditions => ["id > ? AND user_id = ?", latestid, user.id]))
