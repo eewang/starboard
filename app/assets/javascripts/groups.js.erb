@@ -2,6 +2,7 @@ $('.count').tooltip({delay: { show: 500, hide: 100 }});
 
 //HIGHCHARTS
 $(function () {
+  console.log("student chart loaded");
   if ($('#user_chart')[0]){
     $('#user_chart').highcharts({
     chart: {
@@ -14,7 +15,11 @@ $(function () {
       x: -20 //center
     },
     xAxis: {
-      categories: <%= TreehouseChart.build_x_axis %>
+      type: 'datetime',
+      maxZoom: 130 * 24 * 3600000,
+      title: {
+        text: null
+      }
     },
     yAxis: {
       title: {
@@ -32,16 +37,21 @@ $(function () {
       layout: 'vertical',
       align: 'right',
       verticalAlign: 'top',
-      x: -10,
+      x: 20,
       y: 100,
       borderWidth: 0
     },
     series: [
       <% User.includes.each do |user| %>
-      {
+        {
           name: '<%= user.name %>',
+          pointInterval: 24 * 3600 * 1000,
+          marker: {
+            radius: 0
+          },
+          // pointStart: Date.UTC(<%= (Time.now - 130.days).to_i %>),
           data: [<%= user.thbadges %>]
-      },
+        },
       <% end %>
     ]
   });
