@@ -14,9 +14,10 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require bootstrap
+//= require angular.min
 //= require teacher
 //= require users
 //= require stars
-//= require angular.min
+//= require groups
 //= require_tree ./angular
 //= require highcharts
