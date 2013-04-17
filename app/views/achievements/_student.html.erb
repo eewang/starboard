@@ -1,6 +1,6 @@
 <div class="star">
   <% Achievement.student_message(@user).each do |achievement| %>
-    <%= image_tag("gold_star.png", "data-toggle" => "tooltip", :title => achievement.message ) %>
+    <%= image_tag("gold_star.png", "data-toggle" => "tooltip", :title => achievement.message, :class => 'starz'  ) %>
   <% end %>
 </div>
 

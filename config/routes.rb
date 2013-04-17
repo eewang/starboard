@@ -19,22 +19,14 @@ Starboard::Application.routes.draw do
     get "/users/:id/#{ service }" => "users##{ service }", :as => service
   end
 
-  get '/signup', :controller => 'users', :action => 'new'
-
-
   mount Sidekiq::Web, at: '/sidekiq'
-
-  resources :invitations
 
   get '/signup/:invitation_token', :controller => 'users', :action => 'new', as: 'join'
 
-  get 'teacher/signup', to: 'teachers#new', as: 'teacher_signup'
-  post 'teacher/signup', to: 'teachers#create', as: 'teacher_signup'
 
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
-  post 'handraise', to: 'handraise#create'
 
   get '/teachers/:id' => 'teachers#show', as: 'teacher_show'
 
@@ -46,20 +38,19 @@ Starboard::Application.routes.draw do
 
   get '/achievements/newest.json' => 'groups#get_recent_achievements'
 
-  resources :requirements
-
   resources :achievements
 
-  resources :stars
+  # get '/signup', :controller => 'users', :action => 'new'
+  # get 'teacher/signup', to: 'teachers#new', as: 'teacher_signup'
+  # post 'teacher/signup', to: 'teachers#create', as: 'teacher_signup'
+  # post 'handraise', to: 'handraise#create'
+  # resources :stars
   
   resources :sessions
 
-  resources :users
-
   resources :invitations
 
-
-  resources :group_users
+  # resources :group_users
   
   get '/login/join/:invitation_token', to: 'group_users#login', as: 'group_login'
 
@@ -68,6 +59,5 @@ Starboard::Application.routes.draw do
   # refill star bank
   get '/refill_star_bank', to: 'users#refill_star_bank', as: 'refill_star_bank'
   post '/refill_star_bank', to: 'users#refill_star_bank_create', as: 'refill_star_bank_create'
-
 
 end
