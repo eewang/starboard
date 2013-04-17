@@ -31,11 +31,12 @@ class GroupsController < ApplicationController
 
         @active_nav = view.to_s
         @group = Group.find(params[:id])
-        users = User.joins(:groups).where("group_id = #{params[:id]}").sort_by { |user| user.achievements.count }.reverse
+        users = User.joins(:groups).where("group_id = #{@group.id}").sort_by { |user| user.achievements.count }.reverse
         @users = users.delete_if { |u| u.email == "demo@gmail.com" }
         if view == :blog_posts
           user_ids = @group.user_ids
-          @blog_posts = Achievement.where(:user_id => (user_ids), :star_id => 2).order('created_at ASC')
+          star_id = Star.where(:name => "Write a Blog Post").first.id
+          @blog_posts = Achievement.where(:user_id => (user_ids), :star_id => star_id).order('created_at ASC')
         end
         respond_to do |format|
           format.html # leaderboard.html.erb
