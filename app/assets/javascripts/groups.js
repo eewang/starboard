@@ -50,7 +50,7 @@ $(function () {
         layout: 'vertical',
         align: 'right',
         verticalAlign: 'top',
-        x: 20,
+        x: 0,
         y: 100,
         borderWidth: 0
       },

@@ -144,10 +144,15 @@ class GroupsController < ApplicationController
     badges = {}
     flatiron_group.users.collect do |user|
       if user.thbadges && user.name
+        if user.name.size > 12
+          name = user.name[0..10] + "..."
+        else
+          name = user.name
+        end
         array = user.thbadges.split(", ").collect do |int|
           int.to_i
         end
-        badges[user.name] = array
+        badges[name] = array
       end
     end
 
