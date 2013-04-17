@@ -18,7 +18,6 @@ default_run_options[:pty] = true
 # set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
-after "deploy:update_code", "deploy:migrate"
 
 role :web, "192.34.56.207"                          # Your HTTP server, Apache/etc
 role :app, "192.34.56.207"                          # This may be the same as your `Web` server
@@ -50,6 +49,9 @@ namespace :customs do
 end
 
 before "deploy:assets:precompile","customs:symlink"
+
+before "deploy:assets:precompile", "deploy:migrate"
+
 after "deploy","deploy:cleanup"
 
 task :copy_keys, :roles => :app do
