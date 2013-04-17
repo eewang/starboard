@@ -16,6 +16,6 @@ every 5.minutes, 'update_users' do
   User.update_all
 end
 
-every 1.day, 'update_charts' do
-  TreehouseChart.update_badges
+every 1.hour, 'update_charts' do
+  TreehouseChart.update_treehouse_badges
 end

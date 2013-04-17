@@ -37,7 +37,7 @@ class TreehouseChart
   end
 
   def self.build_x_axis
-    dates = Array.new(200).each_with_index.collect do |date, index|
+    dates = Array.new(130).each_with_index.collect do |date, index|
       date = (Time.now  - index.day)
     end
     dates = dates.reverse
