@@ -19,7 +19,7 @@
             <% if @group %>
                 <% unless @group.id.nil? %>
                   <div class="invite span2 pull-right", style="margin-right:20px">
-                    <a href="<%= edit_group_path(@group) %>" role="button" class="invite-btn btn">Invite Students</a>
+                    <a href="<%= new_invitation_path %>" role="button" class="invite-btn btn">Add Students</a>
                   </div>
                 <% end %>
             <% end %>

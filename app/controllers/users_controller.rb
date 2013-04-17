@@ -46,7 +46,7 @@ class UsersController < ApplicationController
     end
   end
 
-  user_views :show, :blog, :codeschool, :github, :handraise, :student, :teacher, :treehouse
+  user_views :show, :blog, :codeschool, :github, :student, :teacher, :treehouse
 
   # GET /users/new
   # GET /users/new.json
@@ -152,6 +152,7 @@ class UsersController < ApplicationController
       user = User.find(params[:id])
       current_user.give_achievement_to(user, params[:message])
     end
+    flash[:notice] = "Star given to #{user.name}!"
     redirect_to user
   end
 

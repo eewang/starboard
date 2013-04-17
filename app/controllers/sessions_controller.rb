@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    @new_groups = Group.order("updated_at desc").limit(3)
+    @flatiron_group = Group.where("name like ?", "%Flatiron%").first
   end
 
   def create

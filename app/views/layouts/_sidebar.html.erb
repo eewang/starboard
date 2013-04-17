@@ -1,7 +1,7 @@
 <div class="sidebar span4">
   <div class="profile-pic">
     <% if current_user %>
-      <%= content_for?(:sidebar_profile_pic) ? yield(:sidebar_profile_pic) : (image_tag current_user.safe_profile_pic) %>
+      <%= content_for?(:sidebar_profile_pic) ? yield(:sidebar_profile_pic) : (image_tag current_user.profile_pic) %>
     </div>
     <ul class="navigation">
       <% if @group %>
@@ -41,11 +41,6 @@
           <%= content_for?(:github_link) ? yield(:github_link) : link_to('Github', "/users/#{current_user.id}/github") %>
           <span class="count"><%= content_for?(:github_count) ? yield(:github_count) : current_user.github_stars.count %></span>
         </li>
-        <li class="view-nav <%= 'active' if @active_nav == 'handraise' %>">
-          <i class="icon-hand-up"></i>
-          <%= content_for?(:handraise_link) ? yield(:handraise_link) : link_to('Handraise', "/users/#{current_user.id}/handraise") %>
-          <span class="count"><%= content_for?(:handraise_count) ? yield(:handraise_count) : current_user.handraise_stars.count %></span>
-        </li>
         <li class="view-nav <%= 'active' if @active_nav == 'student' %>">
           <i class="icon-beer"></i>
           <%= content_for?(:student_link) ? yield(:student_link) : link_to('Student', "/users/#{current_user.id}/student") %> 
@@ -61,12 +56,13 @@
           <%= content_for?(:treehouse_link) ? yield(:treehouse_link) : link_to('Treehouse', "/users/#{current_user.id}/treehouse") %> 
           <span class="count"><%= content_for?(:treehouse_count) ? yield(:treehouse_count) : current_user.treehouse_stars.count %></span>
         </li>
+        <li class="head"><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
       </ul>
       <% if @users %>
         <li class="head classmates">Class</li>
         <ul>
           <% @users.each do |user| %>
-            <li class="classmate"> <%= image_tag user.safe_profile_pic %> <%= link_to user.name, user_path(user) %> <span class="count"><%= user.achievements.count %></span></li>
+            <li class="classmate"> <%= image_tag user.profile_pic %> <%= link_to user.name, user_path(user) %> <span class="count"><%= user.achievements.count %></span></li>
           <% end %>
         </ul>
       <% end %>

@@ -4,18 +4,12 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    if current_user
-      @groups = Group.all
-      if @groups.count == 1
-        redirect_to "/groups/#{@groups.first.id}"
-      else
-        respond_to do |format|
-          format.html # index.html.erb
-          format.json { render json: @groups }
-        end
-      end
-    else
+    if current_user.nil?
       redirect_to '/login'
+    elsif current_user.is_teacher?
+      redirect_to current_user
+    else
+      redirect_to "/groups/#{current_user.groups.first.id}/leaderboard"
     end
   end
 
@@ -37,7 +31,8 @@ class GroupsController < ApplicationController
 
         @active_nav = view.to_s
         @group = Group.find(params[:id])
-        @users = User.joins(:groups).where("group_id = #{params[:id]}").sort_by { |user| user.achievements.count }.reverse
+        users = User.joins(:groups).where("group_id = #{params[:id]}").sort_by { |user| user.achievements.count }.reverse
+        @users = users.delete_if { |u| u.email == "demo@gmail.com" }
         if view == :blog_posts
           user_ids = @group.user_ids
           @blog_posts = Achievement.where(:user_id => (user_ids), :star_id => 2).order('created_at ASC')

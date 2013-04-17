@@ -17,7 +17,7 @@ class AchievementsController < ApplicationController
 
     if params[:star_name]
       star_id = Source.teacher.stars.where(:name => params[:star_name]).first_or_create.id
-      @achievement.star_id = Source.teacher.id
+      @achievement.star_id = star_id
     else
       star_id = Star.where(:name => "Gifted Star").first.id
       @achievement.star_id = star_id

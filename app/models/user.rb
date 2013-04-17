@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :profile_pic, :treehouse_username, :codeschool_username, :github_username, :blog_url, :blog_count, :email, :password, :password_confirmation, :is_teacher, :thbadges
 
   validates_uniqueness_of :email
+  before_save :get_profile_pic
 
   has_secure_password
 
@@ -54,13 +55,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def safe_profile_pic
-    if !self.profile_pic 
-      self.update_attribute(:profile_pic, "/assets/defaults/zoo#{rand(9) + 1}.jpg")
-    end
-    profile_pic
-  end
-  
   def get_profile_pic_from_email(email)
     hash = Digest::MD5.hexdigest(email.strip.downcase)
     if check_if_gravatar_exists(hash)
@@ -82,7 +76,7 @@ class User < ActiveRecord::Base
   end
 
   def get_profile_pic
-    self.update_attribute(:profile_pic, get_profile_pic_from_email(self.email))
+    self.profile_pic = get_profile_pic_from_email(self.email)
   end
 
   def award_giftable_stars(int)
@@ -102,7 +96,7 @@ class User < ActiveRecord::Base
   end
 
   def remove_star_from_starbank  
-    self.giftable_star_bank -= 1
+    # self.giftable_star_bank -= 1
   end
 
   def blog_stars

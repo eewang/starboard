@@ -12,10 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require teacher
-//= require highcharts
 //= require twitter/bootstrap
-//= require_tree .
+//= require bootstrap
+//= require teacher
+//= require users
+//= require stars
 //= require angular.min
 //= require_tree ./angular
-
+//= require highcharts
